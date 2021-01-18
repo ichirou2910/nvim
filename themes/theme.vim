@@ -16,7 +16,7 @@ if exists('+termguicolors')
 	" hi! NonText ctermbg=None guibg=None
 	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=NONE guifg=#ffffff
 	hi! StatusLine gui=bold guibg=#0c2461
-	hi! StatusLineNC gui=bold guifg=#ffffff guibg=#222222
+	hi! StatusLineNC gui=bold guifg=#ffffff guibg=#011628
 	" hi! Comment cterm=italic ctermbg=NONE guibg=NONE
 	" hi! LineNr guibg=NONE
 	" hi! CursorLineNr ctermbg=236 ctermfg=NONE guibg=#303030
