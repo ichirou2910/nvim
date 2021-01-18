@@ -31,8 +31,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'machakann/vim-highlightedyank'
   else
 
-    " Sneak
-    Plug 'justinmk/vim-sneak'
     " Surround
     Plug 'tpope/vim-surround'
     " Files

@@ -37,7 +37,7 @@ augroup end
 function! StatusLineGit()
 	if isdirectory('.git')
 		let [a,m,r] = GitGutterGetHunkSummary()
-		return printf('+%d ~%d -%d (%s) %s', a, m, r, get(b:, "git_branch", ""), get(b:, "git_commit", ""))
+		return printf('(%s) %s +%d ~%d -%d', get(b:, "git_branch", ""), get(b:, "git_commit", ""), a, m, r)
 	else
 		return ''
 	endif
@@ -113,13 +113,14 @@ endfunction
 " Colorized NV
 " set statusline+=%3*\ [N%*          
 " set statusline+=%6*V]%*            
-set statusline+=%1*\ %{StatusLineCoc()}%*
+set statusline+=%8*\ %*
+set statusline+=%4*\ %{StatusLineCoc()}%*
 set statusline+=%3*%{StatusLinePart('\[N')}%*
 set statusline+=%6*%{StatusLinePart('V\]')}%*
 
 " Git status
 " set statusline+=%7*\ %*
-set statusline+=%7*\ %{StatusLinePart(StatusLineGit())}\ %*
+set statusline+=%1*\ %{StatusLinePart(StatusLineGit())}\ %*
 
 " Modified flag
 " set statusline+=%2*%m\ %*     
@@ -134,18 +135,19 @@ set statusline+=%4*%=%{StatusLineFileFormat()}\ %*
 set statusline+=%7*%{StatusLineFileType()}\ %*             
 
 " Current line
-set statusline+=%1*%5{StatusLineCurLine()}%*             	
+set statusline+=%6*%5{StatusLineCurLine()}%*             	
 
 " Max line
 set statusline+=%2*%{StatusLineMaxLine()}%*              
 
 " Current column
-set statusline+=%1*%4{StatusLineCurCol()}\ %*            
+set statusline+=%6*%4{StatusLineCurCol()}\ %*            
 
-hi User1 gui=bold guifg=#eea040 guibg=#0c2461
-hi User2 gui=bold guifg=#dd3333 guibg=#0c2461
+hi User1 gui=bold guifg=#e67e22 guibg=#0c2461
+hi User2 gui=bold guifg=#fc514e guibg=#0c2461
 hi User3 gui=bold guifg=#57c7ff guibg=#0c2461
 hi User4 gui=bold guifg=#eeee40 guibg=#0c2461
 hi User5 gui=bold guifg=#ffffff guibg=#0c2461
 hi User6 gui=bold guifg=#a0ee40 guibg=#0c2461
 hi User7 gui=bold guifg=#ff6ac1 guibg=#0c2461
+hi User8 gui=bold guifg=NONE guibg=#b2ceee
