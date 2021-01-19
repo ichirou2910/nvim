@@ -11,6 +11,11 @@ source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
 
+" Filetype-specific mappings
+for f in split(glob('$HOME/.config/nvim/keys/filetypes/*.vim'), '\n')
+  exe 'source' f
+endfor
+
 if exists('g:vscode')
   " VS Code extension
   source $HOME/.config/nvim/vscode/settings.vim

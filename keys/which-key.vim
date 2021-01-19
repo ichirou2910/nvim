@@ -84,6 +84,7 @@ let g:which_key_map.B = {
 let g:which_key_map.f = {
       \ 'name' : '+find & replace' ,
       \ 'b' : [':Farr --source=vimgrep'    , 'buffer'],
+      \ 's' : ['<Plug>(coc-rename)'        , 'symbol'],
       \ 'p' : [':Farr --source=rgnvim'     , 'project'],
       \ }
 
