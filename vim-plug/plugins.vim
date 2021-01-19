@@ -22,8 +22,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'suy/vim-context-commentstring'
     " highlight all matches under cursor
     " Plug 'RRethy/vim-illuminate'
-    " Embed nvim for browser
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   if exists('g:vscode')
     " Easy motion for VSCode
@@ -62,7 +60,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Status Line
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
-    Plug 'ap/vim-buftabline'
+    " Plug 'ap/vim-buftabline'
+    Plug 'ichirou2910/vim-buftabline'
     Plug 'kevinhwang91/rnvimr'
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
