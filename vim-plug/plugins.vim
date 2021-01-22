@@ -29,6 +29,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'machakann/vim-highlightedyank'
   else
 
+    Plug 'tpope/vim-dispatch'
     " Surround
     Plug 'tpope/vim-surround'
     " Files
@@ -41,6 +42,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'sheerun/vim-polyglot'
     Plug 'jackguo380/vim-lsp-cxx-highlight'
+    Plug 'pboettch/vim-cmake-syntax'
     " Cool Icons
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
@@ -56,7 +58,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Cmake
-    Plug 'vhdirk/vim-cmake'
+    " Plug 'vhdirk/vim-cmake'
+    Plug 'ilyachur/cmake4vim'
     " Status Line
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'

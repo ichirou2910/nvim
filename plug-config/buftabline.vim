@@ -1,6 +1,6 @@
 let g:buftabline_numbers = 2
 let g:buftabline_indicators = 1
-let g:buftabline_icons = 1
+let g:buftabline_icons = 0
 " let g:buftabline_indicators_char = ''
 let g:buftabline_path = 1
 
