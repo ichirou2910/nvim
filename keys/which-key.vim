@@ -226,6 +226,12 @@ let g:which_key_map.l = {
       " \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
 
 " t is for terminal
+let g:which_key_map.L = {
+      \ 'name' : '+terminal' ,
+      \ 'f' : [':CocList --input=flutter commands'                               , 'flutter'],
+      \ }
+
+" t is for terminal
 let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
       \ ';' : [':FloatermNew --wintype=normal --height=6'        , 'terminal'],

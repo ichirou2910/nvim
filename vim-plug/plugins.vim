@@ -60,6 +60,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Cmake
     " Plug 'vhdirk/vim-cmake'
     Plug 'ilyachur/cmake4vim'
+    " Rest API
+    Plug 'diepm/vim-rest-console'
     " Status Line
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'

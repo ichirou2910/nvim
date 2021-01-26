@@ -42,6 +42,7 @@ else
   source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/buftabline.vim
   source $HOME/.config/nvim/plug-config/cmake4vim.vim
+  source $HOME/.config/nvim/plug-config/rest-console.vim
   source $HOME/.config/nvim/plug-config/goyo.vim
   source $HOME/.config/nvim/plug-config/vim-rooter.vim
   source $HOME/.config/nvim/plug-config/start-screen.vim
