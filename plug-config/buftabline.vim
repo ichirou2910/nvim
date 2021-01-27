@@ -15,7 +15,7 @@ nmap <A-8> <Plug>BufTabLine.Go(8)
 nmap <A-9> <Plug>BufTabLine.Go(9)
 nmap <A-0> <Plug>BufTabLine.Go(-1)
 
-hi! BufTabLineCurrent guibg=NONE guifg=#57c7ff
+hi! BufTabLineCurrent guibg=NONE guifg=#eeeeee
 hi! BufTabLineCharModifiedCurrent guibg=NONE guifg=#dd3333
 hi! BufTabLineNumCurrent guibg=NONE guifg=#a0ee40
 hi! BufTabLinePath guibg=NONE guifg=#eea040

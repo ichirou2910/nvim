@@ -18,6 +18,7 @@ if exists('+termguicolors')
 	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=NONE guifg=#ffffff
 	hi! StatusLine gui=bold guibg=#282c34
 	hi! StatusLineNC guibg=#5c6370
+	hi! Todo gui=bold guibg=#282c34
 	" hi! Comment cterm=italic ctermbg=NONE guibg=NONE
 	" hi! LineNr guibg=NONE
 	" hi! CursorLineNr ctermbg=236 ctermfg=NONE guibg=#303030

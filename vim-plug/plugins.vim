@@ -50,11 +50,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Closetags
     Plug 'alvan/vim-closetag'
     " Themes
-    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-    Plug 'joshdick/onedark.vim'
-    Plug 'frankier/neovim-colors-solarized-truecolor-only'
+    " Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    " Plug 'joshdick/onedark.vim'
+    " Plug 'frankier/neovim-colors-solarized-truecolor-only'
     Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
+    " Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Cmake
