@@ -20,6 +20,6 @@ hi! BufTabLineCharModifiedCurrent guibg=NONE guifg=#dd3333
 hi! BufTabLineNumCurrent guibg=NONE guifg=#a0ee40
 hi! BufTabLinePath guibg=NONE guifg=#eea040
 hi! BufTabLineHidden guibg=NONE guifg=#3e4452
-hi! BufTabLineActive guibg=NONE guifg=#3e4452
+hi! BufTabLineActive guibg=NONE guifg=#57c7ff
 hi! BufTabLineFill guibg=NONE guifg=#3e4452
 

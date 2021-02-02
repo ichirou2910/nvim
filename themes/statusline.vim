@@ -99,28 +99,21 @@ function! StatusLinePart(part)
 endfunction
 
 " Colorized NV
-" set statusline+=%3*\ [N%*          
-" set statusline+=%6*V]%*            
-" set statusline+=%#Normal# 
 set statusline+=%4*\ %{StatusLineCoc()}%*
 set statusline+=%3*%{StatusLinePart('\[N')}%*
 set statusline+=%6*%{StatusLinePart('V\]')}%*
 
 " Git status
-" set statusline+=%7*\ %*
-set statusline+=%1*\ %{StatusLinePart(StatusLineGit())}\ %*
-
-" Modified flag
-" set statusline+=%2*%m\ %*     
+set statusline+=%7*\ %{StatusLinePart(StatusLineGit())}\ %*
 
 " CoC status
 set statusline+=%5*%{StatusLinePart(get(b:,'coc_current_function',''))}%*
 
-" File format
-set statusline+=%4*%=%{StatusLineFileFormat()}\ %*       
-
 " File type
-set statusline+=%7*%{StatusLineFileType()}\ %*             
+set statusline+=%3*%=%{StatusLineFileType()}\ %*             
+
+" File format
+set statusline+=%4*%{StatusLineFileFormat()}\ %*       
 
 " Current line
 set statusline+=%6*%5{StatusLineCurLine()}%*             	
@@ -130,8 +123,6 @@ set statusline+=%2*%{StatusLineMaxLine()}%*
 
 " Current column
 set statusline+=%6*%4{StatusLineCurCol()}\ %*
-
-" set statusline+=%8*\ %*
 
 hi User1 gui=bold guifg=#e67e22 guibg=#282c34
 hi User2 gui=bold guifg=#fc514e guibg=#282c34

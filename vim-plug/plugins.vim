@@ -66,8 +66,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
     " Plug 'ap/vim-buftabline'
-    Plug 'ichirou2910/vim-buftabline'
+    " Plug 'ichirou2910/vim-buftabline'
     Plug 'kevinhwang91/rnvimr'
+    " Buffer management
+    Plug 'zefei/vim-wintabs'
+    Plug 'zefei/vim-wintabs-powerline'
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -125,6 +128,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'moll/vim-bbye'
     " Seamless navigation with tmux
     Plug 'christoomey/vim-tmux-navigator'
+    " Sessions
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-session'
   endif
 
 call plug#end()
