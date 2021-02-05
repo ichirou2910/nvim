@@ -31,6 +31,15 @@ function! StatusLineGit()
 	endif
 endfunction
 
+function! StatusLineFilePath()
+	let l:type= &filetype
+	if has_key(g:statusline_override_filtypes, l:type)
+		return ''
+	else
+		return expand('%:f')
+	endif
+endfunction
+
 function! StatusLineFileType()
 	let l:type= &filetype
 	if has_key(g:statusline_override_filtypes, l:type)
@@ -109,8 +118,14 @@ set statusline+=%7*\ %{StatusLinePart(StatusLineGit())}\ %*
 " CoC status
 set statusline+=%5*%{StatusLinePart(get(b:,'coc_current_function',''))}%*
 
+" File path
+set statusline+=%1*%{StatusLineFilePath()}\ %*             
+
+" Session status
+set statusline+=%7*%=%{StatusLinePart(ObsessionStatus())}\ %*
+
 " File type
-set statusline+=%3*%=%{StatusLineFileType()}\ %*             
+set statusline+=%3*%{StatusLineFileType()}\ %*             
 
 " File format
 set statusline+=%4*%{StatusLineFileFormat()}\ %*       
@@ -124,11 +139,11 @@ set statusline+=%2*%{StatusLineMaxLine()}%*
 " Current column
 set statusline+=%6*%4{StatusLineCurCol()}\ %*
 
-hi User1 gui=bold guifg=#e67e22 guibg=#282c34
-hi User2 gui=bold guifg=#fc514e guibg=#282c34
-hi User3 gui=bold guifg=#57c7ff guibg=#282c34
-hi User4 gui=bold guifg=#eeee40 guibg=#282c34
-hi User5 gui=bold guifg=#ffffff guibg=#282c34
-hi User6 gui=bold guifg=#a0ee40 guibg=#282c34
-hi User7 gui=bold guifg=#ae81ff guibg=#282c34
+hi User1 guifg=#e67e22 guibg=#282c34
+hi User2 guifg=#fc514e guibg=#282c34
+hi User3 guifg=#57c7ff guibg=#282c34
+hi User4 guifg=#eeee40 guibg=#282c34
+hi User5 guifg=#ffffff guibg=#282c34
+hi User6 guifg=#a0ee40 guibg=#282c34
+hi User7 guifg=#ae81ff guibg=#282c34
 " hi User8 gui=bold guifg=NONE guibg=#be5046

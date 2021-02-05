@@ -12,10 +12,12 @@ if exists('+termguicolors')
 
 	colorscheme nightfly
 
+	let g:oceanic_material_transparent_background = 1
+
 	hi! LineNr ctermbg=NONE guibg=NONE
 	hi! Normal ctermbg=None guibg=None
 	" hi! NonText ctermbg=None guibg=None
-	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=NONE guifg=#ffffff
+	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=#121212 guifg=#ffffff
 	hi! StatusLine gui=bold guibg=#0e0e0e
 	hi! StatusLineNC guibg=#0e0e0e
 	hi! Todo gui=bold guibg=#282c34

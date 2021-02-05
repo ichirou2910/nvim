@@ -22,6 +22,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'suy/vim-context-commentstring'
     " highlight all matches under cursor
     " Plug 'RRethy/vim-illuminate'
+    " Line pulse while moving between search matches
+    Plug 'inside/vim-search-pulse'
 
   if exists('g:vscode')
     " Easy motion for VSCode
@@ -50,13 +52,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Closetags
     Plug 'alvan/vim-closetag'
     " Themes
-    " Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-    " Plug 'joshdick/onedark.vim'
-    " Plug 'frankier/neovim-colors-solarized-truecolor-only'
     Plug 'bluz71/vim-nightfly-guicolors'
-    " Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
+    Plug 'ichirou2910/oceanic-material'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'OmniSharp/omnisharp-vim'
     " Cmake
     " Plug 'vhdirk/vim-cmake'
     Plug 'ilyachur/cmake4vim'
@@ -82,8 +82,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'rhysd/git-messenger.vim'
     " Terminal
     Plug 'voldikss/vim-floaterm'
-    " Start Screen
-    Plug 'mhinz/vim-startify'
     " Vista
     Plug 'liuchengxu/vista.vim'
     " See what keys do like in emacs
@@ -129,8 +127,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Seamless navigation with tmux
     Plug 'christoomey/vim-tmux-navigator'
     " Sessions
-    Plug 'xolox/vim-misc'
-    Plug 'xolox/vim-session'
+    Plug 'tpope/vim-obsession'
+    " Plug 'xolox/vim-misc'
+    " Plug 'xolox/vim-session'
   endif
 
 call plug#end()

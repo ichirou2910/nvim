@@ -40,13 +40,13 @@ else
   source $HOME/.config/nvim/plug-config/codi.vim
   source $HOME/.config/nvim/plug-config/vim-wiki.vim
   source $HOME/.config/nvim/plug-config/coc.vim
+  source $HOME/.config/nvim/plug-config/omnisharp.vim
   source $HOME/.config/nvim/plug-config/vim-wintabs.vim
   " source $HOME/.config/nvim/plug-config/buftabline.vim
   source $HOME/.config/nvim/plug-config/cmake4vim.vim
   source $HOME/.config/nvim/plug-config/rest-console.vim
   source $HOME/.config/nvim/plug-config/goyo.vim
   source $HOME/.config/nvim/plug-config/vim-rooter.vim
-  source $HOME/.config/nvim/plug-config/start-screen.vim
   source $HOME/.config/nvim/plug-config/gitgutter.vim
   source $HOME/.config/nvim/plug-config/git-messenger.vim
   source $HOME/.config/nvim/plug-config/closetags.vim
