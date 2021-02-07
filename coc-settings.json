@@ -3,17 +3,44 @@
   "suggest.echodocSupport": true,
   // TODO add more labels and give them cool glyphs
   "suggest.completionItemKindLabels": {
-    "text": " ",
-    "method": " ",
-    "function": ""
+    "text": "",
+    "method": "",
+    "function": "",
+    "constructor": "",
+    "field": "",
+    "variable": "",
+    "class": "",
+    "interface": "ﰮ",
+    "module": "",
+    "property": "",
+    "unit": "",
+    "value": "",
+    "enum": "了",
+    "keyword": "",
+    "snippet": "",
+    "color": "",
+    "file": "",
+    "reference": "ref",
+    "folder": "", 
+    "enumMember": "",
+    "constant": "",
+    "struct": "",
+    "event": "ev",
+    "operator": "op",
+    "typeParameter": "tp"
   },
+  "snippets.priority": 1,
+  "suggest.languageSourcePriority": 99,
+  "coc.source.file.priority": 2,
+  "coc.source.around.priority": 3,
+  "coc.source.buffer.priority": 4,
 
   // diagnostics
   "diagnostic.errorSign": "??",
   "diagnostic.warningSign": "!!",
   "diagnostic.infoSign": "i>",
   "diagnostic.hintSign": "?> ",
-  "diagnostic.virtualText": true,
+  /* "diagnostic.virtualText": true, */
   // "diagnostic.displayByAle": true,
   // "diagnostic.virtualText": true, // this won't work with codelens when error on same line
 
@@ -41,14 +68,32 @@
   "coc.preferences.hoverTarget": "float",
 
   // python config
-  "python.linting.enabled": false,
-  "python.linting.pylintEnabled": false,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.stubPath": "typings",
+  "python.analysis.typeshedPaths": [],
+  "python.analysis.diagnosticSeverityOverrides": {},
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.useLibraryCodeForTypes": true,
+  /* "python.pythonPath": "python", */
+  /* "python.venvPath": "~/.virtualenvs", */
   "python.formatting.provider": "black",
-  // "python.formatting.blackPath": "~/.local/bin/black",
-  // "python.linting.pylintPath": "~/.miniconda/envs/neovim/bin/pylint",
-  // "python.condaPath": "~/.miniconda/bin/conda",
-  // "python.sortImports.path": "~/.miniconda/envs/neovim/bin/isort",
-  // "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
+  "python.formatting.blackPath": "~/.local/bin/black",
+  "python.formatting.blackArgs": [],
+  "python.formatting.autopep8Path": "autopep8",
+  "python.formatting.autopep8Args": [],
+  "python.formatting.yapfPath": "yapf",
+  "python.formatting.yapfArgs": [],
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.banditEnabled": false,
+  "python.linting.mypyEnabled": false,
+  "python.linting.pytypeEnabled": false,
+  "python.linting.prospectorEnabled": false,
+  "python.linting.pydocstyleEnabled": false,
+  "python.linting.pylamaEnabled": false,
+  "python.linting.pylintEnabled": false,
 
   // snippets
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
@@ -58,6 +103,7 @@
   "emmet.includeLanguages": {
     "vue-html": "html",
     "razor": "html",
+    "djangohtml": "html",
     "javascript": "javascriptreact"
   },
 

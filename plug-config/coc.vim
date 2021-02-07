@@ -14,7 +14,6 @@
     \ 'coc-emoji',
     \ 'coc-cssmodules',
     \ 'coc-yaml',
-    \ 'coc-python',
     \ 'coc-pyright',
     \ 'coc-svg',
     \ 'coc-vimlsp',
