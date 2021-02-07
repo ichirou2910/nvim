@@ -56,7 +56,6 @@ else
   source $HOME/.config/nvim/plug-config/far.vim
   source $HOME/.config/nvim/plug-config/tagalong.vim
   " source $HOME/.config/nvim/plug-config/illuminate.vim
-  source $HOME/.config/nvim/plug-config/bracey.vim
   source $HOME/.config/nvim/plug-config/asynctask.vim
   source $HOME/.config/nvim/plug-config/window-swap.vim
   source $HOME/.config/nvim/plug-config/markdown-preview.vim

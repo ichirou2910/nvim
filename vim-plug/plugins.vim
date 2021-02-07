@@ -53,7 +53,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'alvan/vim-closetag'
     " Themes
     Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'ichirou2910/oceanic-material'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'OmniSharp/omnisharp-vim'
@@ -128,8 +127,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     " Sessions
     Plug 'tpope/vim-obsession'
-    " Plug 'xolox/vim-misc'
-    " Plug 'xolox/vim-session'
   endif
 
 call plug#end()
