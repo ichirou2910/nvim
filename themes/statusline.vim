@@ -3,18 +3,6 @@ set showtabline=2                       " Always show tabs
 " Initialize
 set statusline=
 
-" function! GitUpdate()
-" 	if isdirectory('.git')
-" 		let b:git_commit = '[' . system("echo $(git status --porcelain=v2 -bz) | rev | cut -d '#' -f1 | rev | cut -d ' ' -f3- | awk '{print $1\" \" $2}' | tr -d '\n'") . ']' |
-" 		let b:git_branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-" 	endif
-" endfunction
-
-" augroup gitstatusline
-"     au!
-"     autocmd BufEnter,FocusGained,BufWritePost * call GitUpdate()
-" augroup end
-
 let g:statusline_override_filtypes = {
 			\ 'coc-explorer': 'CoC Explorer',
 			\ 'vista': 'Vista',
@@ -146,4 +134,3 @@ hi User4 guifg=#eeee40 guibg=#282c34
 hi User5 guifg=#ffffff guibg=#282c34
 hi User6 guifg=#a0ee40 guibg=#282c34
 hi User7 guifg=#ae81ff guibg=#282c34
-" hi User8 gui=bold guifg=NONE guibg=#be5046

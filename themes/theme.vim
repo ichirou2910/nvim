@@ -1,18 +1,9 @@
-" let g:solarized_termcolors=256
-
-" let g:onedark_termcolors=16
-
-" let g:onedark_terminal_italics = 1
-" let g:jellybeans_use_term_italics = 1
-
 if exists('+termguicolors')
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	set termguicolors
 
 	colorscheme nightfly
-
-	let g:oceanic_material_transparent_background = 1
 
 	hi! LineNr ctermbg=NONE guibg=NONE
 	hi! Normal ctermbg=None guibg=None
