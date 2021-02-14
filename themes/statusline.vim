@@ -24,7 +24,7 @@ function! StatusLineFilePath()
 	if has_key(g:statusline_override_filtypes, l:type)
 		return ''
 	else
-		return expand('%:f')
+		return fnamemodify(expand('%'), ":~:.")
 	endif
 endfunction
 
