@@ -40,11 +40,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'airblade/vim-rooter'
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
+    Plug 'Yggdroot/indentLine'
     " Better Syntax Support
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'sheerun/vim-polyglot'
     Plug 'jackguo380/vim-lsp-cxx-highlight'
     Plug 'pboettch/vim-cmake-syntax'
+    Plug 'tpope/vim-haml'
     " Cool Icons
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
@@ -53,6 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'alvan/vim-closetag'
     " Themes
     Plug 'bluz71/vim-nightfly-guicolors'
+    Plug 'joshdick/onedark.vim'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'OmniSharp/omnisharp-vim'
@@ -119,6 +122,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'norcalli/nvim-colorizer.lua'
     " Rainbow brackets
     Plug 'luochen1990/rainbow'
+    Plug 'junegunn/rainbow_parentheses.vim'
     " Better Whitespace
     Plug 'ntpeters/vim-better-whitespace'
     " Buffer delete
