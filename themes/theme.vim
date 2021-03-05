@@ -8,14 +8,14 @@ if exists('+termguicolors')
 	hi! LineNr ctermbg=NONE guibg=NONE
 	hi! Normal ctermbg=None guibg=None
 	" hi! NonText ctermbg=None guibg=None
-	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=NONE guifg=#ffffff
+	hi! VertSplit ctermbg=NONE ctermfg=68 guibg=NONE guifg=#121212
 	hi! StatusLine gui=bold guibg=#0e0e0e
 	hi! StatusLineNC guibg=#0e0e0e
 	hi! Todo gui=bold guibg=#282c34
 	" hi! Comment cterm=italic ctermbg=NONE guibg=NONE
 	" hi! LineNr guibg=NONE
 	" hi! CursorLineNr ctermbg=236 ctermfg=NONE guibg=#303030
-	" hi! CursorLine ctermbg=236 ctermfg=NONE guibg=#303030
+	hi! CursorLine ctermbg=236 ctermfg=NONE guibg=#212529
 	" hi! SignColumn ctermbg=NONE guibg=NONE
 	" hi! Folded ctermbg=NONE guibg=NONE
 	" hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#080808
