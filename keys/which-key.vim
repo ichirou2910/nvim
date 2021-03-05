@@ -189,12 +189,11 @@ let g:which_key_map.l = {
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
-      " \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
 
 " L is for specific Language plugin command
 let g:which_key_map.L = {
       \ 'name' : '+terminal' ,
-      \ 'f' : [':CocList --input=flutter commands'                               , 'flutter'],
+      \ 'f' : [':CocList --input=flutter commands'   , 'flutter'],
       \ }
 
 " s is for search
@@ -217,9 +216,9 @@ let g:which_key_map.s = {
       \ 'M' : [':Maps'                  , 'normal maps'] ,
       \ 'p' : [':Helptags'              , 'help tags'] ,
       \ 'P' : [':Tags'                  , 'project tags'],
+      \ 'r' : [':Rg'                    , 'text Rg'],
       \ 's' : [':CocList snippets'      , 'snippets'],
       \ 'S' : [':Colors'                , 'color schemes'],
-      \ 't' : [':Rg'                    , 'text Rg'],
       \ 'T' : [':BTags'                 , 'buffer tags'],
       \ 'w' : [':Windows'               , 'search windows'],
       \ 'y' : [':Filetypes'             , 'file types'],
