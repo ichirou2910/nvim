@@ -25,31 +25,36 @@ exec 'nnoremap <Leader>Ss :Obsession ' . g:session_dir . '/*.vim<C-D><BS><BS><BS
 exec 'nnoremap <Leader>Sl :source ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 " Not a fan of floating windows for this
-let g:which_key_use_floating_win = 0
+let g:which_key_use_floating_win = 1
 
 " Change the colors if you want
 highlight default link WhichKey          Operator
 highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Identifier
 highlight default link WhichKeyDesc      Function
+highlight WhichKeyFloating ctermbg=NONE ctermfg=NONE guibg=#1d2124
+
+" Position
+let g:which_key_position = 'topleft'
+let g:which_key_centered = 0
+
 
 " Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+" autocmd! FileType which_key
+" autocmd  FileType which_key set laststatus=0 noshowmode noruler
+"   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 
 " Single mappings
 let g:which_key_map['/'] = [ ':call Comment()'                    , 'comment' ]
-let g:which_key_map['.'] = [ ':e $MYVIMRC'                        , 'open init' ]
 let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                             , 'balance windows' ]
-let g:which_key_map['b'] = [ 'Buffers'                               , 'fzf-buffer' ]
-let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
+let g:which_key_map['b'] = [ 'Buffers'                            , 'fzf-buffer' ]
+let g:which_key_map['e'] = [ ':NvimTreeToggle'                    , 'explorer' ]
 let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
 let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
 let g:which_key_map['n'] = [ ':let @/ = ""'                       , 'no highlight' ]
-let g:which_key_map['q'] = [ '<Plug>(wintabs_close)'                           , 'delete buffer']
+let g:which_key_map['q'] = [ '<Plug>(wintabs_close)'              , 'delete buffer']
 let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
 let g:which_key_map['u'] = [ ':UndotreeToggle'                    , 'undo tree']
 let g:which_key_map['v'] = [ '<C-W>v'                             , 'split right']

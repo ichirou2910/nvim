@@ -35,27 +35,34 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Surround
     Plug 'tpope/vim-surround'
     " Files
+    Plug 'kyazdani42/nvim-tree.lua'
     Plug 'tpope/vim-eunuch'
     " Have the file system follow you around
     Plug 'airblade/vim-rooter'
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
     Plug 'Yggdroot/indentLine'
-    " Better Syntax Support
+    " Treesitter 
     Plug 'nvim-treesitter/nvim-treesitter'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-    Plug 'pboettch/vim-cmake-syntax'
-    Plug 'tpope/vim-haml'
+    Plug 'nvim-treesitter/playground'
+    Plug 'p00f/nvim-ts-rainbow'
+    " Status Line
+    " Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
     " Cool Icons
+    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " Closetags
     Plug 'alvan/vim-closetag'
     " Themes
-    Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'joshdick/onedark.vim'
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    " Better Syntax Support
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    Plug 'pboettch/vim-cmake-syntax'
+    Plug 'tpope/vim-haml'
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'sheerun/vim-polyglot'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'OmniSharp/omnisharp-vim'
@@ -64,9 +71,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ilyachur/cmake4vim'
     " Rest API
     Plug 'diepm/vim-rest-console'
-    " Status Line
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     " Plug 'ap/vim-buftabline'
     " Plug 'ichirou2910/vim-buftabline'
     Plug 'kevinhwang91/rnvimr'
