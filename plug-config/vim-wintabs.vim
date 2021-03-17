@@ -1,6 +1,6 @@
 let g:wintabs_display ="statusline"
 
-let g:wintabs_ui_buffer_name_format = ' %o: %t '
+let g:wintabs_ui_buffer_name_format = ' %i %t '
 
 nmap <A-1> :WintabsGo 1<CR>
 nmap <A-2> :WintabsGo 2<CR>
@@ -18,8 +18,8 @@ let g:wintabs_powerline_sep_buffer_transition= ""
 let g:wintabs_powerline_sep_buffer = ""
 
 hi! WintabsEmpty guifg=NONE guibg=#0e0e0e
-hi! WintabsActive guifg=#000000 guibg=#61afef
+hi! WintabsActive guifg=#ffffff guibg=#0e0e0e
 hi! WintabsInactive guifg=#6b717d guibg=#0e0e0e
 hi! link WintabsArrow WintabsInactive
-hi! WintabsActiveNC guifg=#6b717d guibg=#2c2f33
+hi! WintabsActiveNC guifg=#6b717d guibg=#0e0e0e
 hi! link WintabsInactiveNC WintabsInactive
