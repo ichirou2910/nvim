@@ -75,7 +75,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'ichirou2910/vim-buftabline'
     Plug 'kevinhwang91/rnvimr'
     " Buffer management
-    Plug 'ichirou2910/vim-wintabs'
+    Plug 'zefei/vim-wintabs'
     Plug 'zefei/vim-wintabs-powerline'
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

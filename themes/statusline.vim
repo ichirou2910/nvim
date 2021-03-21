@@ -5,6 +5,7 @@ set statusline=
 
 let g:statusline_override_filtypes = {
 			\ 'coc-explorer': 'CoC Explorer',
+			\ 'NvimTree': 'NVIM Tree',
 			\ 'vista': 'Vista',
 			\}
 
