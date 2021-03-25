@@ -38,13 +38,6 @@ highlight WhichKeyFloating ctermbg=NONE ctermfg=NONE guibg=#1d2124
 let g:which_key_position = 'topleft'
 let g:which_key_centered = 0
 
-
-" Hide status line
-" autocmd! FileType which_key
-" autocmd  FileType which_key set laststatus=0 noshowmode noruler
-"   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-
 " Single mappings
 let g:which_key_map['/'] = [ ':call Comment()'                    , 'comment' ]
 let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
@@ -54,6 +47,7 @@ let g:which_key_map['e'] = [ ':CocCommand explorer'                    , 'explor
 let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
 let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
 let g:which_key_map['n'] = [ ':let @/ = ""'                       , 'no highlight' ]
+let g:which_key_map['p'] = [ ':Files'                             , 'open file']
 let g:which_key_map['q'] = [ '<Plug>(wintabs_close)'              , 'delete buffer']
 let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
 let g:which_key_map['u'] = [ ':UndotreeToggle'                    , 'undo tree']
@@ -179,8 +173,7 @@ let g:which_key_map.l = {
       \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
       \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
-      \ 'o' : [':Vista!!'                            , 'outline'],
-      \ 'O' : [':CocList outline'                    , 'outline'],
+      \ 'o' : [':CocList outline'                    , 'outline'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
