@@ -41,7 +41,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'airblade/vim-rooter'
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
-    Plug 'Yggdroot/indentLine'
+    " Plug 'Yggdroot/indentLine'
+    Plug 'nathanaelkane/vim-indent-guides'
     " Treesitter 
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground'
