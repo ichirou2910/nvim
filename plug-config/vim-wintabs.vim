@@ -17,7 +17,7 @@ let g:wintabs_powerline_arrow_right = ""
 let g:wintabs_powerline_sep_buffer_transition= ""
 let g:wintabs_powerline_sep_buffer = ""
 
-hi! WintabsEmpty guifg=NONE guibg=#121212
+hi! WintabsEmpty guifg=NONE guibg=#101010
 hi! WintabsActive guifg=#ffffff guibg=#2c2f33
 hi! WintabsInactive guifg=#888888 guibg=#121212
 hi! link WintabsArrow WintabsInactive
