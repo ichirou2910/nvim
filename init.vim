@@ -7,7 +7,11 @@ let g:vimspector_enable_mappings='HUMAN'
 source $HOME/.config/nvim/vim-plug/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
-source $HOME/.config/nvim/general/theme.vim
+
+if !exists('g:vscode')
+  source $HOME/.config/nvim/general/theme.vim
+endif
+
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
