@@ -39,16 +39,6 @@ else
   " SHIFT-TAB will go back
   nnoremap <silent> <S-TAB> :WintabsPrevious<CR>
 
-  " Move selected line / block of text in visual mode
-  " shift + k to move up
-  " shift + j to move down
-  xnoremap K :move '<-2<CR>gv-gv
-  xnoremap J :move '>+1<CR>gv-gv
-
-  " Alternate way to save
-  nnoremap <silent> <C-s> :w<CR>
-  " Alternate way to quit
-  nnoremap <silent> <C-Q> :wq!<CR>
   " Use control-c instead of escape
   nnoremap <silent> <C-c> <Esc>
   " <TAB>: completion.
@@ -79,6 +69,12 @@ else
   nnoremap <silent> <M-k>    :resize +2<CR>
   nnoremap <silent> <M-h>    :vertical resize -2<CR>
   nnoremap <silent> <M-l>    :vertical resize +2<CR>
+
+  " Search for currently selected text
+  vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+  " Turn off search highlight
+  nnoremap <esc><esc> :silent! nohls<cr>
 
 endif
 
