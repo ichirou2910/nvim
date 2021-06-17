@@ -41,8 +41,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'airblade/vim-rooter'
     " auto set indent settings
     Plug 'tpope/vim-sleuth'
-    " Plug 'Yggdroot/indentLine'
-    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'Yggdroot/indentLine'
+    " Plug 'nathanaelkane/vim-indent-guides'
     " Treesitter 
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground'
@@ -126,14 +126,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
     " Rainbow brackets
-    Plug 'luochen1990/rainbow'
-    Plug 'junegunn/rainbow_parentheses.vim'
+    " Plug 'luochen1990/rainbow'
+    " Plug 'junegunn/rainbow_parentheses.vim'
     " Better Whitespace
     Plug 'ntpeters/vim-better-whitespace'
     " Buffer delete
     Plug 'moll/vim-bbye'
     " Seamless navigation with tmux
     Plug 'christoomey/vim-tmux-navigator'
+    " Tmux interaction from vim
+    Plug 'preservim/vimux'
     " Sessions
     Plug 'tpope/vim-obsession'
   endif
