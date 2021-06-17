@@ -64,6 +64,7 @@ else
   source $HOME/.config/nvim/plug-config/asynctask.vim
   source $HOME/.config/nvim/plug-config/window-swap.vim
   source $HOME/.config/nvim/plug-config/markdown-preview.vim
+  source $HOME/.config/nvim/plug-config/vimux.vim
   " luafile $HOME/.config/nvim/lua/plugins/galaxyline-config.lua
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   luafile $HOME/.config/nvim/lua/plugins/nvimtree-config.lua

@@ -24,7 +24,6 @@ let g:session_dir = '~/.vim/sessions'
 exec 'nnoremap <Leader>Ss :Obsession ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 exec 'nnoremap <Leader>Sl :source ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
-" Not a fan of floating windows for this
 let g:which_key_use_floating_win = 1
 
 " Change the colors if you want
@@ -49,7 +48,7 @@ let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window
 let g:which_key_map['n'] = [ ':let @/ = ""'                       , 'no highlight' ]
 let g:which_key_map['p'] = [ ':Files'                             , 'open file']
 let g:which_key_map['q'] = [ '<Plug>(wintabs_close)'              , 'delete buffer']
-let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
+let g:which_key_map['r'] = [ ':FloatermNew ranger'                , 'ranger' ]
 let g:which_key_map['u'] = [ ':UndotreeToggle'                    , 'undo tree']
 let g:which_key_map['v'] = [ '<C-W>v'                             , 'split right']
 let g:which_key_map['W'] = [ 'w'                                  , 'write' ]
@@ -61,16 +60,12 @@ let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
 let g:which_key_map.a = {
       \ 'name' : '+actions' ,
       \ 'c' : [':ColorizerToggle'        , 'colorizer'],
-      \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'i' : [':IndentGuidesToggle'     , 'toggle indent color'],
       \ 'l' : [':Bracey'                 , 'start live server'],
       \ 'L' : [':BraceyStop'             , 'stop live server'],
       \ 'm' : [':MarkdownPreview'        , 'markdown preview'],
       \ 'M' : [':MarkdownPreviewStop'    , 'markdown preview stop'],
-      \ 'n' : [':set nonumber!'          , 'line-numbers'],
-      \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
-      \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'v' : [':Codi'                   , 'virtual repl on'],
       \ 'V' : [':Codi!'                  , 'virtual repl off'],
       \ 'w' : [':StripWhitespace'        , 'strip whitespace'],
@@ -186,7 +181,7 @@ let g:which_key_map.l = {
 
 " L is for specific Language plugin command
 let g:which_key_map.L = {
-      \ 'name' : '+terminal' ,
+      \ 'name' : '+lsp' ,
       \ 'f' : [':CocList --input=flutter commands'   , 'flutter'],
       \ }
 
@@ -218,11 +213,10 @@ let g:which_key_map.s = {
       \ 'y' : [':Filetypes'             , 'file types'],
       \ 'z' : [':FZF'                   , 'FZF'],
       \ }
-      " \ 's' : [':Snippets'     , 'snippets'],
 
 " S is for Session
 let g:which_key_map.S = {
-      \ 'name' : '+Session' ,
+      \ 'name' : '+session' ,
       \ 'f' : [':Obsession!'          , 'Stop record']  ,
       \ 'S' : [':Obsession'          , 'Default record']  ,
       \ 's': 'Start record' ,
@@ -232,84 +226,11 @@ let g:which_key_map.S = {
 " t is for terminal
 let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
-      \ ';' : [':FloatermNew --wintype=normal --height=6'        , 'terminal'],
-      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
-      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-      \ 'n' : [':FloatermNew node'                              , 'node'],
-      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
-      \ 'p' : [':FloatermNew python'                            , 'python'],
-      \ 'm' : [':FloatermNew lazynpm'                           , 'npm'],
-      \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-      \ 't' : [':FloatermToggle'                                , 'toggle'],
-      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
-      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ 'c' : [':VimuxPromptCommand'                            , 'vimux command'],
+      \ 'n' : [':call VimuxCreateNewPane()'                     , 'vimux new pane'],
+      \ 's' : [':call VimuxSetPane()'                           , 'vimux set pane'],
+      \ 't' : [':FloatermToggle'                                , 'toggle terminal'],
       \ }
-
-" T is for terminal
-let g:which_key_map.T = {
-      \ 'name' : '+tabline' ,
-      \ 'b' : [':XTabListBuffers'         , 'list buffers'],
-      \ 'd' : [':XTabCloseBuffer'         , 'close buffer'],
-      \ 'D' : [':XTabDeleteTab'           , 'close tab'],
-      \ 'h' : [':XTabHideBuffer'          , 'hide buffer'],
-      \ 'i' : [':XTabInfo'                , 'info'],
-      \ 'l' : [':XTabLock'                , 'lock tab'],
-      \ 'm' : [':XTabMode'                , 'toggle mode'],
-      \ 'n' : [':tabNext'                 , 'next tab'],
-      \ 'N' : [':XTabMoveBufferNext'      , 'buffer->'],
-      \ 't' : [':tabnew'                  , 'new tab'],
-      \ 'p' : [':tabprevious'             , 'prev tab'],
-      \ 'P' : [':XTabMoveBufferPrev'      , '<-buffer'],
-      \ 'x' : [':XTabPinBuffer'           , 'pin buffer'],
-      \ }
-
-" w is for wiki
-" let g:which_key_map.w = {
-"       \ 'name' : '+wiki' ,
-"       \ 'w' : ['<Plug>VimwikiIndex'                              , 'ncdu'],
-"       \ 'n' : ['<plug>(wiki-open)'                              , 'ncdu'],
-"       \ 'j' : ['<plug>(wiki-journal)'                              , 'ncdu'],
-"       \ 'R' : ['<plug>(wiki-reload)'                              , 'ncdu'],
-"       \ 'c' : ['<plug>(wiki-code-run)'                              , 'ncdu'],
-"       \ 'b' : ['<plug>(wiki-graph-find-backlinks)'                              , 'ncdu'],
-"       \ 'g' : ['<plug>(wiki-graph-in)'                              , 'ncdu'],
-"       \ 'G' : ['<plug>(wiki-graph-out)'                              , 'ncdu'],
-"       \ 'l' : ['<plug>(wiki-link-toggle)'                              , 'ncdu'],
-"       \ 'd' : ['<plug>(wiki-page-delete)'                              , 'ncdu'],
-"       \ 'r' : ['<plug>(wiki-page-rename)'                              , 'ncdu'],
-"       \ 't' : ['<plug>(wiki-page-toc)'                              , 'ncdu'],
-"       \ 'T' : ['<plug>(wiki-page-toc-local)'                              , 'ncdu'],
-"       \ 'e' : ['<plug>(wiki-export)'                              , 'ncdu'],
-"       \ 'u' : ['<plug>(wiki-list-uniq)'                              , 'ncdu'],
-"       \ 'U' : ['<plug>(wiki-list-uniq-local)'                              , 'ncdu'],
-"       \ }
-
-" Global
-" <Plug>VimwikiIndex
-" <Plug>VimwikiTabIndex
-" <Plug>VimwikiUISelect
-" <Plug>VimwikiDiaryIndex
-" <Plug>VimwikiMakeDiaryNote
-" <Plug>VimwikiTabMakeDiaryNote
-" <Plug>VimwikiMakeYesterdayDiaryNote
-" <Plug>VimwikiMakeTomorrowDiaryNote
-"
-" " Local
-" <Plug>Vimwiki2HTML
-" <Plug>Vimwiki2HTMLBrowse
-" <Plug>VimwikiDiaryGenerateLinks
-" <Plug>VimwikiFollowLink
-" <Plug>VimwikiSplitLink
-" <Plug>VimwikiVSplitLink
-" <Plug>VimwikiTabnewLink
-" <Plug>VimwikiGoBackLink
-" <Plug>VimwikiNextLink
-" <Plug>VimwikiPrevLink
-" <Plug>VimwikiGoto
-" <Plug>VimwikiDeleteLink
-" <Plug>VimwikiRenameLink
-" <Plug>VimwikiAddHeaderLevel
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

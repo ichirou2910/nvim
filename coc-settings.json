@@ -34,6 +34,7 @@
   "coc.source.file.priority": 2,
   "coc.source.around.priority": 3,
   "coc.source.buffer.priority": 4,
+  "coc.source.OmniSharp.enable": true,
 
   // diagnostics
   "diagnostic.errorSign": "??",
@@ -51,9 +52,11 @@
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
+    "scss",
     "markdown",
     "javascript",
     "javascriptreact",
+    "typescript",
     "typescriptreact",
     "graphql",
     "html",
@@ -66,7 +69,6 @@
     "cs",
     "dart"
   ],
-  "coc.preferences.hoverTarget": "float",
 
   // python config
   "python.analysis.autoImportCompletions": true,
