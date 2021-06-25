@@ -21,7 +21,7 @@
     "color": "",
     "file": "",
     "reference": "ref",
-    "folder": "", 
+    "folder": "",
     "enumMember": "",
     "constant": "",
     "struct": "",
@@ -129,30 +129,46 @@
   "explorer.icon.enableVimDevicons": false,
   "explorer.icon.customIcons": {
     "icons": {
-      "javascript" : {
+      "javascript": {
         "code": "",
         "color": "#f0db4f"
       },
-      "typescript" : {
-        "code": "ﯤ",
-        "color": "#007acc"
-      },
-      "javascriptreact" : {
+      "javascriptreact": {
         "code": "",
         "color": "#61dafb"
       },
-      "typescriptreact" : {
+      "typescript": {
+        "code": "ﯤ",
+        "color": "#007acc"
+      },
+      "typescriptreact": {
         "code": "",
         "color": "#007acc"
       },
       "razor": {
         "code": "",
         "color": "#42a5f5"
+      },
+      "docker": {
+        "code": "",
+        "color": "#0087c9"
+      },
+      "folderClosed": {
+        "code": "",
+        "color": "#00afaf"
+      },
+      "folderOpened": {
+        "code": "",
+        "color": "#00afaf"
       }
     },
-    "extensions": {},
+    "extensions": {
+      "tsx": "typescriptreact"
+    },
     "filenames": {},
-    "dirnames": {},
+    "dirnames": {
+      "node_modules": "folderClosed"
+    },
     "patternMatches": {},
     "dirPatternMatches": {}
   },
