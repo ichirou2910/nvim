@@ -69,6 +69,7 @@ else
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   luafile $HOME/.config/nvim/lua/plugins/nvimtree-config.lua
   luafile $HOME/.config/nvim/lua/plugins/treesitter-config.lua
+  luafile $HOME/.config/nvim/lua/theme.lua
   source $HOME/.config/nvim/plug-config/vimspector.vim " Uncomment if you want to use Vimspector
 endif
 

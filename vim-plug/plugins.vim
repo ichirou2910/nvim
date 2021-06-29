@@ -57,13 +57,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Closetags
     Plug 'alvan/vim-closetag'
     " Themes
-    Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    " Plug 'christianchiarulli/nvcode-color-schemes.vim'
     " Better Syntax Support
     Plug 'jackguo380/vim-lsp-cxx-highlight'
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tpope/vim-haml'
     Plug 'dart-lang/dart-vim-plugin'
-    Plug 'sheerun/vim-polyglot'
+    " Plug 'sheerun/vim-polyglot'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'OmniSharp/omnisharp-vim'
@@ -125,6 +125,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mattn/webapi-vim'
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'siduck76/nvim-base16.lua'
     " Rainbow brackets
     " Plug 'luochen1990/rainbow'
     " Plug 'junegunn/rainbow_parentheses.vim'
