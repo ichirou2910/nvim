@@ -145,7 +145,7 @@ fg("DashboardFooter", grey_fg)
 
 local theme = base16.themes["onedark"]
 
-fg("TSError", '#'..theme.base00)
+fg("TSError", '#'..theme.base08)
 fg("TSPunctDelimiter", '#'..theme.base0F)
 fg("TSPunctBracket", '#'..theme.base0F)
 fg("TSPunctSpecial", '#'..theme.base0F)
