@@ -48,7 +48,6 @@ else
   source $HOME/.config/nvim/plug-config/vim-wintabs.vim
   " source $HOME/.config/nvim/plug-config/buftabline.vim
   source $HOME/.config/nvim/plug-config/cmake4vim.vim
-  source $HOME/.config/nvim/plug-config/nvimtree-config.vim
   source $HOME/.config/nvim/plug-config/rest-console.vim
   source $HOME/.config/nvim/plug-config/goyo.vim
   source $HOME/.config/nvim/plug-config/vim-rooter.vim
@@ -67,7 +66,7 @@ else
   source $HOME/.config/nvim/plug-config/vimux.vim
   " luafile $HOME/.config/nvim/lua/plugins/galaxyline-config.lua
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
-  luafile $HOME/.config/nvim/lua/plugins/nvimtree-config.lua
+  luafile $HOME/.config/nvim/lua/plugins/nvimtree.lua
   luafile $HOME/.config/nvim/lua/plugins/treesitter-config.lua
   luafile $HOME/.config/nvim/lua/theme.lua
   source $HOME/.config/nvim/plug-config/vimspector.vim " Uncomment if you want to use Vimspector

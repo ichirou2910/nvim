@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Surround
     Plug 'tpope/vim-surround'
     " Files
+    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'tpope/vim-eunuch'
     " Have the file system follow you around

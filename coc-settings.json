@@ -125,8 +125,8 @@
   "explorer.git.icon.status.untracked": "U",
   "explorer.git.icon.status.unmerged": "#",
   "explorer.filename.colored.enable": false,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.icon.enableVimDevicons": false,
+  "explorer.icon.enableNerdfont": false,
+  "explorer.icon.enableVimDevicons": true,
   "explorer.icon.customIcons": {
     "icons": {
       "javascript": {

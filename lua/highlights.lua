@@ -68,12 +68,12 @@ fg("NvimTreeFolderName", blue)
 fg("NvimTreeOpenedFolderName", blue)
 fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
-fg("NvimTreeVertSplit", darker_black)
-bg("NvimTreeVertSplit", darker_black)
+fg("NvimTreeVertSplit", "#3a404d")
+bg("NvimTreeVertSplit", "NONE")
 
-fg("NvimTreeRootFolder", darker_black)
-bg("NvimTreeNormal", darker_black)
-fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
+-- fg("NvimTreeRootFolder", darker_black)
+-- bg("NvimTreeNormal", darker_black)
+-- fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 
 -- telescope
 fg("TelescopeBorder", line)
@@ -147,7 +147,7 @@ local theme = base16.themes["onedark"]
 
 fg("TSError", '#'..theme.base00)
 fg("TSPunctDelimiter", '#'..theme.base0F)
-fg("TSPunctBracket", '#'..theme.base0F)
+fg("TSPunctBracket", "#2876b8")
 fg("TSPunctSpecial", '#'..theme.base0F)
 fg("TSConstant", '#'..theme.base09)
 fg("TSConstBuiltin", '#'..theme.base0A)
