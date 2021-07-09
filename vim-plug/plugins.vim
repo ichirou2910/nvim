@@ -11,15 +11,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Comments
     Plug 'tpope/vim-commentary'
     " Change dates fast
-    Plug 'tpope/vim-speeddating'
+    " Plug 'tpope/vim-speeddating'
     " Convert binary, hex, etc..
-    Plug 'glts/vim-radical'
+    " Plug 'glts/vim-radical'
     " Repeat stuff
     Plug 'tpope/vim-repeat'
     " Text Navigation
     Plug 'unblevable/quick-scope'
     " Useful for React Commenting 
-    Plug 'suy/vim-context-commentstring'
+    " Plug 'suy/vim-context-commentstring'
     " highlight all matches under cursor
     " Plug 'RRethy/vim-illuminate'
     " Line pulse while moving between search matches
@@ -47,7 +47,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Treesitter 
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-treesitter/playground'
-    Plug 'p00f/nvim-ts-rainbow'
+    " Plug 'p00f/nvim-ts-rainbow'
     " Status Line
     " Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
     " Cool Icons
@@ -56,11 +56,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " Closetags
-    Plug 'alvan/vim-closetag'
+    " Plug 'alvan/vim-closetag'
     " Themes
     " Plug 'christianchiarulli/nvcode-color-schemes.vim'
     " Better Syntax Support
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    " Plug 'jackguo380/vim-lsp-cxx-highlight'
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tpope/vim-haml'
     Plug 'dart-lang/dart-vim-plugin'
@@ -72,10 +72,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'vhdirk/vim-cmake'
     Plug 'ilyachur/cmake4vim'
     " Rest API
-    Plug 'diepm/vim-rest-console'
+    " Plug 'diepm/vim-rest-console'
     " Plug 'ap/vim-buftabline'
     " Plug 'ichirou2910/vim-buftabline'
-    Plug 'kevinhwang91/rnvimr'
+    " Plug 'kevinhwang91/rnvimr'
     " Buffer management
     Plug 'zefei/vim-wintabs'
     Plug 'zefei/vim-wintabs-powerline'
@@ -111,7 +111,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Auto change html tags
     Plug 'AndrewRadev/tagalong.vim'
     " live server
-    Plug 'turbio/bracey.vim'
+    " Plug 'turbio/bracey.vim'
     " Smooth scroll
     Plug 'psliwka/vim-smoothie'
     " async tasks
