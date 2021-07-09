@@ -194,3 +194,8 @@ fg("TSLiteral", "#ffff00")
 fg("TSURI", "#ffff00")
 fg("TSTag", '#'..theme.base0A)
 fg("TSTagDelimiter", '#'..theme.base0F)
+-- Gitgutter
+fg("GitGutterAdd", '#'..theme.base0B, "NONE")
+fg("GitGutterChange", '#'..theme.base0D, "NONE")
+fg("GitGutterDelete", '#'..theme.base08, "NONE")
+fg("GitGutterChangeDelete", '#'..theme.base0E, "NONE")
