@@ -66,7 +66,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'dart-lang/dart-vim-plugin'
     " Plug 'sheerun/vim-polyglot'
     " Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'OmniSharp/omnisharp-vim'
     " Cmake
     " Plug 'vhdirk/vim-cmake'
@@ -95,7 +95,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " See what keys do like in emacs
     Plug 'liuchengxu/vim-which-key'
     " Zen mode
-    Plug 'junegunn/goyo.vim'
+    " Plug 'junegunn/goyo.vim'
     " Snippets
     Plug 'honza/vim-snippets'
     Plug 'mattn/emmet-vim'
@@ -140,6 +140,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'preservim/vimux'
     " Sessions
     Plug 'tpope/vim-obsession'
+    " Nvim LSP
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim'
+    Plug 'folke/lsp-colors.nvim'
+    Plug 'nvim-lua/completion-nvim'
+    " Auto complete
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
+    " Format
+    Plug 'sbdchd/neoformat'
   endif
 
 call plug#end()
