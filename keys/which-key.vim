@@ -137,9 +137,8 @@ let g:which_key_map.g = {
 
 let g:which_key_map.j = {
       \ 'name' : '+jumps' ,
-      \ 'j' : ['<C-i>'                             , 'jump next'],
-      \ 'k' : ['<C-o>'                             , 'jump prev'],
-      \ 'o' : [':jumps'                            , 'list jumps'],
+      \ 'n' : ['<C-i>'                             , 'jump next'],
+      \ 'p' : ['<C-o>'                             , 'jump prev'],
       \ }
 
 " l is for language server protocol
