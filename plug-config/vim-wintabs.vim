@@ -12,10 +12,10 @@ nmap <A-7> :WintabsGo 7<CR>
 nmap <A-8> :WintabsGo 8<CR>
 nmap <A-9> :WintabsGo -1<CR>
 
-let g:wintabs_powerline_arrow_left = ""
-let g:wintabs_powerline_arrow_right = ""
-let g:wintabs_powerline_sep_buffer_transition= ""
-let g:wintabs_powerline_sep_buffer = ""
+" let g:wintabs_powerline_arrow_left = ""
+" let g:wintabs_powerline_arrow_right = ""
+" let g:wintabs_powerline_sep_buffer_transition= ""
+" let g:wintabs_powerline_sep_buffer = ""
 
 hi! WintabsEmpty guifg=NONE guibg=#252931
 hi! WintabsActive guifg=#dce0e5 guibg=#1e222a
