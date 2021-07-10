@@ -16,6 +16,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'unblevable/quick-scope'
     " Line pulse while moving between search matches
     Plug 'inside/vim-search-pulse'
+    " Startup time
+    Plug 'tweekmonster/startuptime.vim'
 
   if exists('g:vscode')
     " Easy motion for VSCode
@@ -40,15 +42,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-treesitter/playground'
     " Cool Icons
     Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     " Better Syntax Support
     Plug 'pboettch/vim-cmake-syntax'
-    Plug 'tpope/vim-haml'
+    " Plug 'tpope/vim-haml'
     Plug 'dart-lang/dart-vim-plugin'
-    " Intellisense
-    Plug 'OmniSharp/omnisharp-vim'
     " Cmake
     Plug 'ilyachur/cmake4vim'
     " Buffer management
@@ -86,9 +85,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'psliwka/vim-smoothie'
     " Markdown Preview
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
-    " Easily Create Gists
-    Plug 'mattn/vim-gist'
-    Plug 'mattn/webapi-vim'
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'siduck76/nvim-base16.lua'

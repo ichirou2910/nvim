@@ -32,7 +32,6 @@ else
   source $HOME/.config/nvim/plug-config/indent-line.vim
   source $HOME/.config/nvim/plug-config/fzf.vim
   source $HOME/.config/nvim/plug-config/vim-wiki.vim
-  source $HOME/.config/nvim/plug-config/omnisharp.vim
   source $HOME/.config/nvim/plug-config/vim-wintabs.vim
   source $HOME/.config/nvim/plug-config/cmake4vim.vim
   source $HOME/.config/nvim/plug-config/vim-rooter.vim
