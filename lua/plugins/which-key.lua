@@ -98,7 +98,7 @@ M.config = function()
         P = { "<cmd>Git pull<CR>", "Pull" },
         r = { "<cmd>GRemove<CR>", "Remove" },
         s = { "<Plug>(GitGutterStageHunk)", "Stage hunk" },
-        S = { "<cmd>Gstatus<CR>", "Status" },
+        S = { "<cmd>Git<CR>", "Status" },
         u = { "<Plug>(GitGutterUndoHunk)", "Undo hunk" },
       },
 
