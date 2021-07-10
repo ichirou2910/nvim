@@ -104,11 +104,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-obsession'
     " Nvim LSP
     Plug 'neovim/nvim-lspconfig'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'folke/lsp-colors.nvim'
-    Plug 'nvim-lua/completion-nvim'
+    Plug 'kabouzeid/nvim-lspinstall'
+    Plug 'onsails/lspkind-nvim'
+    " Plug 'glepnir/lspsaga.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
     " Auto complete
-    Plug 'hrsh7th/nvim-compe'
+    Plug 'nvim-lua/completion-nvim'
+    " Snippets
     Plug 'hrsh7th/vim-vsnip'
     " Format
     Plug 'sbdchd/neoformat'

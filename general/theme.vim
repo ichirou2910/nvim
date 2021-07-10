@@ -25,4 +25,9 @@ if (has('termguicolors'))
 	" hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#080808
 	" hi! WildMenu ctermfg=226 ctermbg=0 guifg=#ffff00 guibg=#000000
 	" hi! GitGutterChangeDelete ctermbg=NONE guibg=NONE
+	hi default link WhichKey          Operator
+	hi default link WhichKeySeperator DiffAdded
+	hi default link WhichKeyGroup     Identifier
+	hi default link WhichKeyDesc      Function
+	hi WhichKeyFloat ctermbg=NONE ctermfg=NONE guibg=#1b1f27
 endif

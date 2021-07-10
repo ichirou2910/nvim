@@ -42,7 +42,7 @@ else
   " Use control-c instead of escape
   nnoremap <silent> <C-c> <Esc>
   " <TAB>: completion.
-  inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  " inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
   " Better window navigation
   nnoremap <C-h> <C-w>h
