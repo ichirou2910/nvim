@@ -30,10 +30,6 @@ else
   inoremap <expr> <c-j> ("\<C-n>")
   inoremap <expr> <c-k> ("\<C-p>")
 
-  " Easy CAPS
-  " inoremap <c-u> <ESC>viwUi
-  " nnoremap <c-u> viwU<Esc>
-
   " TAB in general mode will move to text buffer
   nnoremap <silent> <TAB> :WintabsNext<CR>
   " SHIFT-TAB will go back
@@ -41,8 +37,6 @@ else
 
   " Use control-c instead of escape
   nnoremap <silent> <C-c> <Esc>
-  " <TAB>: completion.
-  " inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
   " Better window navigation
   nnoremap <C-h> <C-w>h

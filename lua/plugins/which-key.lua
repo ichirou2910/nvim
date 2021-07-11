@@ -45,10 +45,6 @@ M.config = function()
       triggers = {"<leader>"}
     }
 
-    -- Set leader
-      -- vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-    vim.g.mapleader = " "
-
     local opts = {
       mode = "n", -- NORMAL mode
       prefix = "<leader>",

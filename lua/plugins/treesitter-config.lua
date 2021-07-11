@@ -14,21 +14,3 @@ require'nvim-treesitter.configs'.setup {
     enable = false
   }
 }
-
-
--- require'nvim-treesitter.configs'.setup {
---   refactor = {
---     highlight_current_scope = { enable = false },
---   },
--- }
-
--- require'nvim-treesitter.configs'.setup {
---   refactor = {
---     smart_rename = {
---       enable = true,
---       keymaps = {
---         smart_rename = "grr",
---       },
---     },
---   },
--- }
