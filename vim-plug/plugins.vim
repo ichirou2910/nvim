@@ -69,7 +69,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " WhichKey
     Plug 'folke/which-key.nvim'
     " Snippets
-    Plug 'honza/vim-snippets'
     Plug 'mattn/emmet-vim'
     " Interactive code
     Plug 'metakirby5/codi.vim'
@@ -110,6 +109,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/completion-nvim'
     " Snippets
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
     " Format
     Plug 'sbdchd/neoformat'
   endif
