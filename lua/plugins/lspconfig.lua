@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-    function on_attach(client, bufnr)
+    local function on_attach(client, bufnr)
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -70,6 +70,10 @@ M.config = function()
         }
     end
 
+    -- some servers need this
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
     -- lspInstall + lspconfig stuff
 
     local function setup_servers()
@@ -82,6 +86,7 @@ M.config = function()
             if lang ~= "lua" then
                 lspconf[lang].setup {
                     on_attach = on_attach,
+                    capabilities = capabilities,
                     root_dir = vim.loop.cwd
                 }
             elseif lang == "lua" then
