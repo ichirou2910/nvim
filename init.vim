@@ -26,6 +26,7 @@ else
   source $HOME/.config/nvim/themes/statusline.vim
 
   " Plugin Configuration
+  source $HOME/.config/nvim/plug-config/emmet.vim
   source $HOME/.config/nvim/plug-config/vim-commentary.vim
   source $HOME/.config/nvim/plug-config/rainbow.vim
   source $HOME/.config/nvim/plug-config/better-whitespace.vim
