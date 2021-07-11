@@ -74,7 +74,7 @@ else
   vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
   " Turn off search highlight
-  nnoremap <esc><esc> :silent! nohls<cr>
+  nnoremap <C-n> :silent! nohl<cr>
 
 endif
 
