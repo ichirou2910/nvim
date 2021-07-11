@@ -27,6 +27,10 @@ local function bg(group, color)
     cmd("hi " .. group .. " guibg=" .. color)
 end
 
+local function fg_bg(group, fgcol, bgcol)
+    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+end
+
 -- blankline
 fg("IndentBlanklineChar", line)
 
@@ -41,6 +45,12 @@ bg("Pmenu", one_bg)
 bg("PmenuSbar", one_bg2)
 bg("PmenuSel", green)
 bg("PmenuThumb", nord_blue)
+
+-- Gitgutter
+fg_bg("GitGutterAdd", '#98c379', "NONE")
+fg_bg("GitGutterChange", '#61afef', "NONE")
+fg_bg("GitGutterDelete", '#e06c75', "NONE")
+fg_bg("GitGutterChangeDelete", '#c678dd', "NONE")
 
 -- line n.o
 cmd "hi clear CursorLine"
