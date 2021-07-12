@@ -102,7 +102,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'onsails/lspkind-nvim'
-    " Plug 'glepnir/lspsaga.nvim'
+    Plug 'glepnir/lspsaga.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'

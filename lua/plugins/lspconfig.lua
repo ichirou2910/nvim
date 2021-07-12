@@ -14,7 +14,9 @@ M.config = function()
         -- Mappings.
         local opts = {noremap = true, silent = true}
 
-        buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+        buf_set_keymap("n", "K",
+                       "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>",
+                       opts)
         -- buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
         -- buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
         -- buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
@@ -146,7 +148,7 @@ M.config = function()
                      {virtual_text = false, signs = true, underline = true})
 
     vim.api.nvim_command(
-        [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]])
+        [[autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()]])
 end
 
 return M

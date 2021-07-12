@@ -49,6 +49,7 @@ else
 
   lua require('plugins.lspconfig').config()
   lua require('plugins.which-key').config()
+  lua require('plugins.lspsaga')
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   luafile $HOME/.config/nvim/lua/plugins/nvimtree.lua
   luafile $HOME/.config/nvim/lua/plugins/treesitter-config.lua
