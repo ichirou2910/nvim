@@ -83,12 +83,13 @@ M.config = function()
         local servers = require "lspinstall".installed_servers()
 
         for _, lang in pairs(servers) do
-            if lang ~= "lua" then
-                lspconf[lang].setup {
-                    on_attach = on_attach,
+            if lang == "efm" then
+                local config = {
                     capabilities = capabilities,
-                    root_dir = vim.loop.cwd
+                    on_attach = on_attach,
                 }
+                config = vim.tbl_extend("force", config, require'lsp.efm')
+                lspconf[lang].setup(config)
             elseif lang == "lua" then
                 lspconf[lang].setup {
                     root_dir = vim.loop.cwd,
@@ -110,6 +111,12 @@ M.config = function()
                             }
                         }
                     }
+                }
+            else
+                lspconf[lang].setup {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    root_dir = vim.loop.cwd
                 }
             end
         end

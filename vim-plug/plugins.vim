@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'machakann/vim-highlightedyank'
   else
 
+    " Async dispatch
     Plug 'tpope/vim-dispatch'
     " Surround
     Plug 'tpope/vim-surround'
