@@ -38,7 +38,7 @@ set updatetime=300                      " Faster completion
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch
 set switchbuf=useopen,usetab
-set completeopt=menuone,noinsert
+set completeopt=menuone,noselect
 
 " New stuff
 " set notimeout nottimeout

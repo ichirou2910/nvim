@@ -107,7 +107,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     " Auto complete
-    Plug 'nvim-lua/completion-nvim'
+    " Plug 'nvim-lua/completion-nvim'
+    Plug 'hrsh7th/nvim-compe'
     " Snippets
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'

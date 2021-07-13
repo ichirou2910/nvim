@@ -45,11 +45,12 @@ else
   source $HOME/.config/nvim/plug-config/tagalong.vim
   source $HOME/.config/nvim/plug-config/markdown-preview.vim
   source $HOME/.config/nvim/plug-config/vimux.vim
-  source $HOME/.config/nvim/plug-config/completion.vim
+  " source $HOME/.config/nvim/plug-config/completion.vim
 
   lua require('plugins.lspconfig').config()
   lua require('plugins.which-key').config()
   lua require('plugins.lspsaga')
+  lua require('plugins.compe').config()
   luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   luafile $HOME/.config/nvim/lua/plugins/nvimtree.lua
   luafile $HOME/.config/nvim/lua/plugins/treesitter-config.lua

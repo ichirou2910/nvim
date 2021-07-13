@@ -40,8 +40,16 @@ M.config = function()
             vim.api.nvim_command [[augroup END]]
         end
 
-        -- completion
-        require'completion'.on_attach(client, bufnr)
+        -- document highlight
+        -- if client.resolved_capabilities.document_highlight then
+        --     vim.api.nvim_exec([[
+        --         augroup lsp_document_highlight
+        --             autocmd! * <buffer>
+        --             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        --             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        --         augroup END
+        --     ]], false)
+        -- end
 
         -- protocol.SymbolKind = { }
         local protocol = require 'vim.lsp.protocol'
