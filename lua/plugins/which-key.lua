@@ -125,10 +125,10 @@ M.config = function()
             p = {
                 "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev diagnostic"
             },
-            z = {"<cmd>LspInfo<cr>", "Info"},
             q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             r = {"<cmd>lua vim.lsp.buf.references()<cr>", "References"},
-            R = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"}
+            R = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
+            z = {"<cmd>LspInfo<cr>", "Info"}
         },
 
         s = {

@@ -55,10 +55,10 @@ M.config = function()
         local protocol = require 'vim.lsp.protocol'
 
         protocol.CompletionItemKind = {
-            '', -- Text
+            '', -- Text
             '', -- Method
-            '', -- Function
-            '', -- Constructor
+            '', -- Function
+            '', -- Constructor
             '', -- Field
             '', -- Variable
             '', -- Class
@@ -76,7 +76,7 @@ M.config = function()
             '', -- Folder
             '', -- EnumMember
             '', -- Constant
-            '', -- Struct
+            'ﳤ', -- Struct
             '', -- Event
             'op', -- Operator
             '' -- TypeParameter
