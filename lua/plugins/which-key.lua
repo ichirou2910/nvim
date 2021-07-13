@@ -149,6 +149,13 @@ M.config = function()
             f = {"<cmd>Obsession!<CR>", "Stop record"},
             s = "Start record",
             l = "Load record"
+        },
+
+        t = {
+            name = "Terminal",
+            c = {"<cmd>VimuxPromptCommand<CR>", "Vimux commmand"},
+            n = {"<cmd>call VimuxCreateNewPane<CR>", "Vimux new pane"},
+            t = {"<cmd>FloatermToggle<CR>", "Toggle terminal"}
         }
     }
 
