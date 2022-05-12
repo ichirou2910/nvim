@@ -1,0 +1,12 @@
+dein
+tags*
+.netrwhist
+pythonpath.vim
+nodepath.vim
+autoload/plugged/*
+autoload/plug.vim.old
+vimspector-config/*
+session
+wiki/
+pack/
+plugin/
