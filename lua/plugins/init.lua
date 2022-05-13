@@ -17,6 +17,10 @@ vim.api.nvim_create_autocmd(
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
+    use({ "lewis6991/impatient.nvim" })
+
+    use({ "nathom/filetype.nvim" })
+
     -- Indent
     use("tpope/vim-sleuth")
     use({
@@ -58,7 +62,7 @@ require("packer").startup(function(use)
     use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make", "Focus", "Start" } })
 
     -- Surround
-    use("tpope/vim-surround")
+    use({ "tpope/vim-surround", event = "BufRead" })
 
     -- Files
     use("tpope/vim-eunuch")
@@ -71,6 +75,7 @@ require("packer").startup(function(use)
         requires = {
             "kyazdani42/nvim-web-devicons", -- optional, for file icon
         },
+        event = "BufWinEnter",
         config = "require('plugins.configs.nvim-tree')",
     })
 
@@ -87,6 +92,7 @@ require("packer").startup(function(use)
     })
     use({
         "SmiteshP/nvim-gps",
+        module = "nvim-gps",
         requires = "nvim-treesitter/nvim-treesitter",
         config = "require('plugins.configs.nvim-gps')",
     })
@@ -103,7 +109,7 @@ require("packer").startup(function(use)
     })
 
     -- Quickfix
-    use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+    use({ "kevinhwang91/nvim-bqf", ft = "qf", event = "BufWinEnter" })
 
     -- Sidebar manager
     use({
@@ -125,7 +131,7 @@ require("packer").startup(function(use)
             })
         end,
     })
-    use("tpope/vim-fugitive")
+    use({ "tpope/vim-fugitive" })
     use("junegunn/gv.vim")
     use({
         "lewis6991/gitsigns.nvim",
@@ -138,6 +144,7 @@ require("packer").startup(function(use)
     -- Terminal
     use({
         "akinsho/toggleterm.nvim",
+        cmd = { "ToggleTerm", "TermExec" },
         config = "require('plugins.configs.toggleterm')",
     })
 
@@ -156,7 +163,7 @@ require("packer").startup(function(use)
 
     -- Debugging
     use({ "mfussenegger/nvim-dap", config = "require('plugins.configs.dap')" })
-    use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')" })
+    use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')", after = "nvim-dap" })
 
     -- Smooth scroll
     use({ "psliwka/vim-smoothie", config = vim.cmd([[let g:smoothie_enabled = 1]]) })
@@ -223,6 +230,7 @@ require("packer").startup(function(use)
     -- Bars
     use({
         "nvim-lualine/lualine.nvim",
+        after = "nvim-treesitter",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
         config = "require('plugins.configs.lualine')",
     })
@@ -237,12 +245,17 @@ require("packer").startup(function(use)
     use({
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
+        event = "VimEnter",
+        cmd = { "TroubleToggle", "Trouble" },
         config = "require('plugins.configs.trouble')",
     })
 
     -- Nvim LSP
     use({
         "neovim/nvim-lspconfig",
+        after = "nvim-treesitter",
+        event = "BufRead",
+        -- opt = true,
         requires = {
             "jose-elias-alvarez/null-ls.nvim",
             "Hoffs/omnisharp-extended-lsp.nvim",
@@ -267,6 +280,8 @@ require("packer").startup(function(use)
     -- Auto complete + snippets
     use({
         "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        -- opt = true,
         requires = {
             "onsails/lspkind-nvim",
             "hrsh7th/cmp-nvim-lsp",
@@ -287,6 +302,7 @@ require("packer").startup(function(use)
     -- Auto pairs for '(' '[' '{'
     use({
         "windwp/nvim-autopairs",
+        run = "make",
         after = "nvim-cmp",
         config = "require('plugins.configs.pairs')",
     })

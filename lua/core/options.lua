@@ -48,6 +48,8 @@ vim.opt.wrap = false
 vim.opt.title = true
 vim.opt.cul = true -- cursor line
 
+vim.opt.timeoutlen = 500
+
 -- default notification provider
 vim.notify = require("notify")
 
