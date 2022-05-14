@@ -1,5 +1,3 @@
-require("impatient")
-
 local modules = { "core", "plugins" }
 
 if not vim.g.vscode then

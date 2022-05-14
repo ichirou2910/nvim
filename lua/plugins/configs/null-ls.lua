@@ -4,6 +4,8 @@ if not ok then
     return
 end
 
+local lsp_utils = require("lsp.utils")
+
 local builtins = null_ls.builtins
 
 local sources = {
@@ -21,8 +23,8 @@ local sources = {
 }
 
 local M = {}
-M.setup = function(on_attach)
-    null_ls.setup({ on_attach = on_attach, sources = sources })
+M.setup = function()
+    null_ls.setup({ sources = sources, on_attach = lsp_utils.lsp_attach, debounce = 150 })
 end
 
 return M
