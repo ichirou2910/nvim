@@ -9,4 +9,4 @@ vimspector-config/*
 session
 wiki/
 pack/
-plugin/
+packer_compiled.lua
