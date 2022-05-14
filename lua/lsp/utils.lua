@@ -87,8 +87,8 @@ function M.lsp_config(client, bufnr)
             callback = function()
                 vim.lsp.buf.format()
             end,
+            buffer = bufnr,
             group = formatGroup,
-            pattern = "*",
         })
     end
 end
