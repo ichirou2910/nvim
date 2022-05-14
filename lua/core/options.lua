@@ -50,9 +50,6 @@ vim.opt.cul = true -- cursor line
 
 vim.opt.timeoutlen = 500
 
--- default notification provider
-vim.notify = require("notify")
-
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 vim.opt.fillchars = { eob = " " }
 

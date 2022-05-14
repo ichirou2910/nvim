@@ -17,25 +17,10 @@ local function setup_servers()
 
     -- tsserver
     local function lsp_tsserver()
-        lspconfig.tsserver.setup({
-            -- Needed for inlayHints. Merge this table with your settings or copy
-            -- it from the source if you want to add your own init_options.
-            init_options = require("nvim-lsp-ts-utils").init_options,
-            --
-            on_attach = function(client, bufnr)
-                local ts_utils = require("nvim-lsp-ts-utils")
-
-                -- defaults
-                ts_utils.setup({
-                    enable_import_on_completion = true,
-                })
-
-                -- required to fix code action ranges and filter diagnostics
-                ts_utils.setup_client(client)
-
-                -- call local on_attach
-                lsp_utils.lsp_attach(client, bufnr)
-            end,
+        require("typescript").setup({
+            server = {
+                on_attach = lsp_utils.lsp_attach,
+            },
         })
     end
 

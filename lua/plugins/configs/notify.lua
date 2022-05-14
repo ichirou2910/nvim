@@ -22,3 +22,6 @@ require("notify").setup({
         TRACE = "✎",
     },
 })
+
+-- default notification provider
+vim.notify = require("notify")

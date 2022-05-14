@@ -37,15 +37,15 @@ require("packer").init({
 
 -- local use = require("packer").use
 require("packer").startup(function(use)
-    use({ "lewis6991/impatient.nvim" })
-
     use("wbthomason/packer.nvim")
+
+    use({ "lewis6991/impatient.nvim" })
 
     use({ "nathom/filetype.nvim" })
 
     -- Necessary deps
     use("nvim-lua/popup.nvim")
-    use("nvim-lua/plenary.nvim")
+    use({ "nvim-lua/plenary.nvim", module = "plenary" })
 
     -- Icons
     use({
@@ -59,7 +59,7 @@ require("packer").startup(function(use)
     use("tpope/vim-sleuth")
     use({
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
+        event = "BufReadPre",
         config = "require('plugins.configs.blankline')",
     })
 
@@ -74,6 +74,7 @@ require("packer").startup(function(use)
     -- Better Comments
     use({
         "numToStr/Comment.nvim",
+        keys = { "gc", "gcc", "gbc" },
         config = "require('plugins.configs.comment')",
     })
 
@@ -87,7 +88,7 @@ require("packer").startup(function(use)
     })
 
     -- Notification
-    use({ "rcarriga/nvim-notify", config = "require('plugins.configs.notify')" })
+    use({ "rcarriga/nvim-notify", event = "VimEnter", config = "require('plugins.configs.notify')" })
 
     -- Startup time
     use("tweekmonster/startuptime.vim")
@@ -96,7 +97,7 @@ require("packer").startup(function(use)
     use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
 
     -- Surround
-    use({ "tpope/vim-surround", event = "BufRead" })
+    use({ "tpope/vim-surround", event = "InsertEnter" })
 
     -- Files
     use("tpope/vim-eunuch")
@@ -119,14 +120,10 @@ require("packer").startup(function(use)
         opt = true,
         config = "require('plugins.configs.treesitter')",
         requires = {
-            { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+            "windwp/nvim-ts-autotag",
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            { "jose-elias-alvarez/typescript.nvim" },
             { "Hoffs/omnisharp-extended-lsp.nvim" },
-            {
-                "windwp/nvim-autopairs",
-                run = "make",
-                after = "nvim-cmp",
-                config = "require('plugins.configs.pairs')",
-            },
             {
                 "nvim-treesitter/playground",
                 cmd = "TSHighlightCapturesUnderCursor",
@@ -139,10 +136,25 @@ require("packer").startup(function(use)
         },
     })
     use({
+        "windwp/nvim-autopairs",
+        wants = "nvim-treesitter",
+        module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+        config = "require('plugins.configs.pairs')",
+    })
+    use({
         "SmiteshP/nvim-gps",
         module = "nvim-gps",
         requires = "nvim-treesitter/nvim-treesitter",
+        wants = "nvim-treesitter",
         config = "require('plugins.configs.nvim-gps')",
+    })
+    use({
+        "windwp/nvim-ts-autotag",
+        wants = "nvim-treesitter",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-ts-autotag").setup({ enable = true })
+        end,
     })
 
     -- Theme
@@ -165,23 +177,26 @@ require("packer").startup(function(use)
     })
 
     -- Git
-    use({
-        "chipsenkbeil/distant.nvim",
-        config = function()
-            require("distant").setup({
-                -- Applies Chip's personal settings to every machine you connect to
-                --
-                -- 1. Ensures that distant servers terminate with no connections
-                -- 2. Provides navigation bindings for remote directories
-                -- 3. Provides keybinding to jump into a remote file's parent directory
-                ["*"] = require("distant.settings").chip_default(),
-            })
-        end,
-    })
-    use({ "tpope/vim-fugitive", event = "BufRead" })
+    -- use({
+    --     "chipsenkbeil/distant.nvim",
+    --     config = function()
+    --         require("distant").setup({
+    --             -- Applies Chip's personal settings to every machine you connect to
+    --             --
+    --             -- 1. Ensures that distant servers terminate with no connections
+    --             -- 2. Provides navigation bindings for remote directories
+    --             -- 3. Provides keybinding to jump into a remote file's parent directory
+    --             ["*"] = require("distant.settings").chip_default(),
+    --         })
+    --     end,
+    -- })
+    use({ "tpope/vim-fugitive", cmd = "Git" })
     use("junegunn/gv.vim")
     use({
         "lewis6991/gitsigns.nvim",
+        event = "BufReadPre",
+        wants = "plenary.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
         config = "require('plugins.configs.gitsigns')",
     })
 
@@ -195,6 +210,7 @@ require("packer").startup(function(use)
     -- WhichKey
     use({
         "folke/which-key.nvim",
+        event = "VimEnter",
         config = "require('plugins.configs.which-key')",
     })
 
@@ -215,8 +231,11 @@ require("packer").startup(function(use)
     -- Markdown Preview
     use({
         "iamcco/markdown-preview.nvim",
-        run = "cd app && yarn install",
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
         cmd = "MarkdownPreview",
+        ft = "markdown",
         config = vim.cmd([[ source ~/.config/nvim/configs/markdown-preview.vim ]]),
     })
     use({ "tpope/vim-markdown", ft = "markdown" })
@@ -224,6 +243,7 @@ require("packer").startup(function(use)
     -- Colorizer
     use({
         "norcalli/nvim-colorizer.lua",
+        cmd = "ColorizerToggle",
         config = "require('plugins.configs.colorizer')",
     })
 
@@ -231,7 +251,12 @@ require("packer").startup(function(use)
     use("christoomey/vim-tmux-navigator")
 
     -- Buffer navigation
-    use({ "ThePrimeagen/harpoon" })
+    use({
+        "ThePrimeagen/harpoon",
+        module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
+        wants = { "telescope.nvim" },
+        config = "require('plugins.configs.harpoon)",
+    })
 
     -- Tmux interaction from vim
     use({
@@ -249,15 +274,25 @@ require("packer").startup(function(use)
     })
 
     -- UI
-    use({ "stevearc/dressing.nvim", config = "require('plugins.configs.dressing')" })
+    use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
 
     -- Search
     use({
         "nvim-telescope/telescope.nvim",
-        module = "telescope",
+        opt = true,
+        module = { "telescope", "telescope.builtin" },
         as = "telescope",
+        cmd = { "Telescope" },
         requires = {
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        },
+        wants = {
+            "plenary.nvim",
+            "popup.nvim",
+            "telescope-fzf-native.nvim",
+            "trouble.nvim",
         },
         config = "require('plugins.configs.telescope')",
     })
@@ -268,8 +303,10 @@ require("packer").startup(function(use)
     -- Bars
     use({
         "nvim-lualine/lualine.nvim",
+        event = "VimEnter",
         after = "nvim-treesitter",
         config = "require('plugins.configs.lualine')",
+        wants = "nvim-web-devicons",
     })
     use({
         "akinsho/bufferline.nvim",
@@ -292,11 +329,18 @@ require("packer").startup(function(use)
     })
     use({
         "neovim/nvim-lspconfig",
-        as = "nvim-lspconfig",
-        after = "nvim-treesitter",
-        -- event = "BufRead",
+        event = "VimEnter",
         opt = true,
+        wants = {
+            "cmp-nvim-lsp",
+            "null-ls.nvim",
+            "typescript.nvim",
+        },
         config = "require('lsp')",
+        requires = {
+            "jose-elias-alvarez/null-ls.nvim",
+            "jose-elias-alvarez/typescript.nvim",
+        },
     })
     use({
         "simrat39/symbols-outline.nvim",
@@ -325,9 +369,21 @@ require("packer").startup(function(use)
         opt = true,
         requires = {
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-vsnip",
+            "hrsh7th/cmp-cmdline",
+            "saadparwaiz1/cmp_luasnip",
+            {
+                "L3MON4D3/LuaSnip",
+                wants = { "friendly-snippets", "vim-snippets" },
+                config = function()
+                    require("snip").setup()
+                end,
+            },
+            "rafamadriz/friendly-snippets",
+            "honza/vim-snippets",
         },
         config = "require('plugins.configs.nvim-cmp')",
     })
