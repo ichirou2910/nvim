@@ -112,6 +112,7 @@ local n_mappings = {
         a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },
         b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
+        n = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
         s = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "Files" },
         w = {
