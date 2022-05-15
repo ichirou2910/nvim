@@ -172,8 +172,6 @@ local n_mappings = {
             "Diagnostics",
         },
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
-        n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic" },
-        p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev diagnostic" },
         q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },

@@ -52,12 +52,12 @@ function M.lsp_highlight(client, bufnr)
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspDocumentHighligh,
             callback = vim.lsp.buf.document_highlight,
-            pattern = "*",
+            buffer = bufnr,
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             group = lspDocumentHighligh,
             callback = vim.lsp.buf.clear_references,
-            pattern = "*",
+            buffer = bufnr,
         })
     end
 end
@@ -72,6 +72,16 @@ function M.lsp_config(client, bufnr)
     vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>", opts)
     vim.keymap.set("n", "gp", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>", opts)
 
+    _G.LspPeekDefinition = function()
+        local params = vim.lsp.util.make_position_params()
+        return vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
+            if result == nil or vim.tbl_isempty(result) then
+                return nil
+            end
+            vim.lsp.util.preview_location(result[1], { border = "rounded" })
+        end)
+    end
+
     -- Set some keybinds conditional on server capabilities
     if client.supports_method("textDocument/formatting") then
         vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -79,6 +89,9 @@ function M.lsp_config(client, bufnr)
     if client.supports_method("textDocument/rangeFormatting") then
         vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
+    -- if client.supports_method("locationLink") then
+    vim.keymap.set("n", "<space>lp", "<cmd>lua _G.LspPeekDefinition()<CR>", opts)
+    -- end
 
     -- Formatting
     if client.supports_method("textDocument/formatting") then

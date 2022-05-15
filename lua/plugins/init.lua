@@ -20,7 +20,7 @@ end
 local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 vim.api.nvim_create_autocmd(
     "BufWritePost",
-    { command = "source <afile> | PackerCompile", group = packer_group, pattern = "init.lua" }
+    { command = "source <afile> | PackerCompile", group = packer_group, pattern = "lua/plugins/init.lua" }
 )
 
 pcall(require, "impatient")
@@ -367,6 +367,7 @@ require("packer").startup(function(use)
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         opt = true,
+        wants = { "LuaSnip" },
         requires = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
