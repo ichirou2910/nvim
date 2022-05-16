@@ -9,7 +9,7 @@ local highlight = require("core.utils").highlight
 -- highlight("TODO", nil, "#282c34", "bold", nil)
 -- highlight("CursorLine", nil, "none", nil, nil)
 -- highlight("CursorLineNR", "#ffffff", "none", "bold", nil)
-highlight("VertSplit", "#24283b", "none", nil, nil)
+highlight("VertSplit", "#3b4261", "none", nil, nil)
 
 -- blankline
 -- highlight("IndentBlanklineChar", "#2a2e36", nil, nil, nil)
