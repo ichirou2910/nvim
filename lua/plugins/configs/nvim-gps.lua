@@ -1,5 +1,6 @@
 require("nvim-gps").setup({
-    separator = "  ",
+    -- separator = "  ",
+    separator = "  ",
     -- separator = "  ",
     -- separator = " > ",
     icons = {
