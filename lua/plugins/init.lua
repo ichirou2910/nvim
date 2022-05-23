@@ -142,7 +142,7 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.pairs')",
     })
     use({
-        "SmiteshP/nvim-gps",
+        "ChristianChiarulli/nvim-gps",
         module = "nvim-gps",
         requires = "nvim-treesitter/nvim-treesitter",
         wants = "nvim-treesitter",

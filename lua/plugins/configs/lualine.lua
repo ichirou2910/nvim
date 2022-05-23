@@ -2,7 +2,7 @@ local ok, lualine = pcall(require, "lualine")
 if not ok then
     return
 end
-local gps = require("nvim-gps")
+local icons = require("core.ui.icons")
 
 -- Extensions
 local notes = {
@@ -50,13 +50,15 @@ lualine.setup({
     options = {
         theme = "tokyonight",
         globalstatus = true,
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        component_separators = { left = icons.ui.SeperatorLeft, right = icons.ui.SeperatorRight },
+        section_separators = { left = icons.ui.SeperatorLeftFill, right = icons.ui.SeperatorRightFill },
     },
     sections = {
         lualine_a = { { cwd_name } },
         lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { { "filename", path = 1 }, { gps.get_location, cond = gps.is_available } },
+        lualine_c = {
+            { "filename", path = 1 },
+        },
         lualine_x = { { obsession_status }, "encoding", "fileformat", "filetype" },
     },
     extensions = {

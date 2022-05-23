@@ -1,6 +1,8 @@
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 
+local icons = require("core.ui.icons")
+
 local WIDTH = 40
 
 cmp.setup({
@@ -49,43 +51,17 @@ cmp.setup({
     },
 
     formatting = {
-        format = lspkind.cmp_format({
-            -- menu = {
-            --     buffer = "[Buf]",
-            --     nvim_lsp = "[LSP]",
-            --     vsnip = "[Snip]",
-            --     path = "[Path]",
-            -- },
-            mode = "symbol_text",
-            preset = "codicons",
-            symbol_map = {
-                Text = " ",
-                Method = " ",
-                Function = " ",
-                Constructor = " ",
-                Field = " ",
-                Variable = " ",
-                Class = " ",
-                Interface = " ",
-                Module = " ",
-                Property = " ",
-                Unit = " ",
-                Value = " ",
-                Enum = " ",
-                Keyword = " ",
-                Snippet = " ",
-                Color = " ",
-                File = " ",
-                Reference = " ",
-                Folder = " ",
-                EnumMember = " ",
-                Constant = " ",
-                Struct = " ",
-                Event = " ",
-                Operator = " ",
-                TypeParameter = " ",
-            },
-        }),
+        format = function(entry, vim_item)
+            -- Kind icons
+            vim_item.kind = string.format("%s", icons.kind[vim_item.kind])
+            vim_item.menu = ({
+                nvim_lsp = "LSP",
+                vsnip = "Snippet",
+                buffer = "Buffer",
+                path = "Path",
+            })[entry.source.name]
+            return vim_item
+        end,
         -- format = function(entry, vim_item)
         -- -- Menu width
         -- vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
