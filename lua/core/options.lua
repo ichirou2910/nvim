@@ -50,13 +50,6 @@ vim.opt.cul = true -- cursor line
 
 vim.opt.timeoutlen = 500
 
-_G.gps_location = function()
-    local status, gps = pcall(require, "nvim-gps")
-    if not status then
-        return
-    end
-    return gps.is_available() and gps.get_location() or ""
-end
 vim.opt.winbar = "%{%v:lua.gps_location()%}"
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
