@@ -84,7 +84,7 @@ function M.lsp_config(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     if client.supports_method("textDocument/formatting") then
-        vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     end
     if client.supports_method("textDocument/rangeFormatting") then
         vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
@@ -98,9 +98,9 @@ function M.lsp_config(client, bufnr)
         local formatGroup = vim.api.nvim_create_augroup("Format", { clear = true })
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
-                vim.lsp.buf.format()
+                vim.lsp.buf.format({async = true})
             end,
-            buffer = bufnr,
+            pattern = "*",
             group = formatGroup,
         })
     end
