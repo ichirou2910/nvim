@@ -142,7 +142,7 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.pairs')",
     })
     use({
-        "ChristianChiarulli/nvim-gps",
+        "SmiteshP/nvim-gps",
         module = "nvim-gps",
         requires = "nvim-treesitter/nvim-treesitter",
         wants = "nvim-treesitter",
@@ -248,28 +248,7 @@ require("packer").startup(function(use)
     })
 
     -- Seamless navigation with tmux
-    use({
-        "aserowy/tmux.nvim",
-        config = function()
-            require("tmux").setup({
-                -- overwrite default configuration
-                -- here, e.g. to enable default bindings
-                copy_sync = {
-                    -- enables copy sync and overwrites all register actions to
-                    -- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
-                    enable = true,
-                },
-                navigation = {
-                    -- enables default keybindings (C-hjkl) for normal mode
-                    enable_default_keybindings = true,
-                },
-                resize = {
-                    -- enables default keybindings (A-hjkl) for normal mode
-                    enable_default_keybindings = true,
-                },
-            })
-        end,
-    })
+    use("christoomey/vim-tmux-navigator")
 
     -- Buffer navigation
     use({
