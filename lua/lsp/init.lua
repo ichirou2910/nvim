@@ -40,6 +40,9 @@ local function setup_servers()
             flags = { debounce_text_changes = 150 },
             settings = {
                 Lua = {
+                    format = {
+                        enable = false,
+                    },
                     diagnostics = { globals = { "vim" } },
                     runtime = { version = "LuaJIT", path = runtime_path },
                     workspace = {
@@ -84,13 +87,32 @@ local function setup_servers()
             cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
             -- root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
         }
-        require("lspconfig").omnisharp.setup(vim.tbl_extend("keep", common_config, config))
+        lspconfig.omnisharp.setup(vim.tbl_extend("keep", common_config, config))
+    end
+
+    -- pyright
+    local function lsp_pyright()
+        local config = {
+            on_attach = lsp_utils.lsp_attach,
+            capabilities = lsp_utils.get_capabilities(),
+            settings = {
+                {
+                    python = {
+                        analysis = {
+                            typeCheckingMode = "off",
+                        },
+                    },
+                },
+            },
+        }
+        lspconfig.pyright.setup(vim.tbl_extend("keep", common_config, config))
     end
 
     lsp_tsserver()
     lsp_sumneko_lua()
     lsp_ccls()
     lsp_omnisharp()
+    lsp_pyright()
 
     -- null-ls
     require("plugins.configs.null-ls").setup()

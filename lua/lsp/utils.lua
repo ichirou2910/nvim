@@ -98,7 +98,7 @@ function M.lsp_config(client, bufnr)
         local formatGroup = vim.api.nvim_create_augroup("Format", { clear = true })
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
-                vim.lsp.buf.format({async = true})
+                vim.lsp.buf.format()
             end,
             pattern = "*",
             group = formatGroup,
