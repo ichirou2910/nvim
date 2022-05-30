@@ -45,27 +45,27 @@ M.gps = function()
     if not status_gps_ok then
         return
     end
-    local status_ok, gps_location = pcall(gps.get_location, {})
+    local status_ok, gps_data = pcall(gps.get_location, {})
     if not status_ok then
         return
     end
 
     local icons = require("core.ui.icons")
 
+    local location = ""
+
     if not gps.is_available() then
-        return
+        location = ""
+    else
+        location = gps_data
     end
 
-    local retval = M.filename()
+    local filename = M.filename()
 
-    if gps_location == "error" then
-        return ""
+    if not isempty(location) then
+        return filename .. " " .. icons.ui.ChevronRight .. " " .. location
     else
-        if not isempty(gps_location) then
-            return retval .. " " .. icons.ui.ChevronRight .. " " .. gps_location
-        else
-            return retval
-        end
+        return filename
     end
 end
 
