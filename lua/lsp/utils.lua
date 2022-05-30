@@ -3,10 +3,25 @@ local utils = require("core.utils")
 local M = {}
 
 function M.lsp_diagnostics()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics,
-        { virtual_text = false, signs = true, underline = true }
-    )
+    vim.diagnostic.config({
+        virtual_text = {
+            source = "always",
+            prefix = "■",
+            -- Only show virtual text matching the given severity
+            severity = {
+                -- Specify a range of severities
+                min = vim.diagnostic.severity.ERROR,
+            },
+        },
+        float = {
+            source = "always",
+            border = "rounded",
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+    })
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 

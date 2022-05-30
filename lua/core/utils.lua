@@ -90,4 +90,8 @@ M.toString = function(src)
     end
 end
 
+M.isEmpty = function(src)
+    return src == nil or s == ""
+end
+
 return M
