@@ -52,6 +52,8 @@ vim.opt.timeoutlen = 500
 
 vim.opt.winbar = "%{%v:lua.gps_location()%}"
 
+vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 vim.opt.fillchars = { eob = " " }
 

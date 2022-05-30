@@ -3,6 +3,7 @@ if not ok then
     return
 end
 local icons = require("core.ui.icons")
+local isEmpty = require("core.utils").isEmpty
 
 -- Extensions
 local notes = {
@@ -34,8 +35,12 @@ local gitcommit = {
     filetypes = { "gitcommit" },
 }
 
-local function obsession_status()
-    return vim.fn.ObsessionStatus(" ", "")
+local function session_status()
+    local name = require("auto-session-library").current_session_name()
+    if not isEmpty(name) then
+        return " " .. name
+    end
+    return ""
 end
 
 local function cwd_name()
@@ -59,7 +64,7 @@ lualine.setup({
         lualine_c = {
             { "filename", path = 1 },
         },
-        lualine_x = { { obsession_status }, "encoding", "fileformat", "filetype" },
+        lualine_x = { { session_status }, "encoding", "fileformat", "filetype" },
     },
     extensions = {
         "fugitive",
