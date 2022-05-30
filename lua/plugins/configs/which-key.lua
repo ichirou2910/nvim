@@ -47,21 +47,6 @@ local opts = {
     nowait = false, -- use `nowait` when creating keymaps
 }
 
--- Session
-vim.g.session_dir = "~/.vim/sessions"
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>SS",
-    ":Obsession " .. vim.g.session_dir .. "/*.vim<C-D><BS><BS><BS><BS><BS>",
-    { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>SL",
-    ":source " .. vim.g.session_dir .. "/*.vim<C-D><BS><BS><BS><BS><BS>",
-    { noremap = true, silent = true }
-)
-
 local n_mappings = {
     [";"] = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
     ["="] = { "<C-W>=", "Balance windows" },
@@ -162,8 +147,8 @@ local n_mappings = {
             "<cmd>lua vim.lsp.buf.code_action()<cr>",
             "Code Action",
         },
-        -- d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Definition" },
-        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Definition" },
+        -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         f = "Format",
         i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Implementation" },
@@ -200,11 +185,9 @@ local n_mappings = {
 
     S = {
         name = "Session",
-        f = { "<cmd>Obsession!<CR>", "Stop record" },
-        s = { "<cmd>Obsession<CR>", "Start record" },
-        S = "Start custom record",
-        l = { "<cmd>source ./Session.vim<CR>", "Load record" },
-        L = "Load custom record",
+        s = { "<cmd>SaveSession<CR>", "Start record" },
+        l = { "<cmd>RestoreSession<CR>", "Load record" },
+        x = { "<cmd>DeleteSession<CR>", "Stop record" },
     },
 
     t = {
