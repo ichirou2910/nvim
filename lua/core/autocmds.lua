@@ -1,4 +1,4 @@
-local noAutoComment = vim.api.nvim_create_augroup("NoAutoComment")
+local noAutoComment = vim.api.nvim_create_augroup("NoAutoComment", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     group = noAutoComment,
     command = "setlocal formatoptions-=cro",
@@ -34,7 +34,7 @@ vim.cmd([[
 ]])
 
 -- Hide cursorline on inactive split
-local bgHighlight = vim.api.nvim_create_augroup("BgHighlight")
+local bgHighlight = vim.api.nvim_create_augroup("BgHighlight", { clear = true })
 vim.api.nvim_create_autocmd("WinEnter", {
     group = bgHighlight,
     command = "set cul",
@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("WinLeave", {
 })
 
 -- Quickfix
-local quickfixForceBottom = vim.api.nvim_create_augroup("QuickfixForceBottom")
+local quickfixForceBottom = vim.api.nvim_create_augroup("QuickfixForceBottom", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     group = quickfixForceBottom,
     command = "wincmd J",
@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Highlight yank
-local highlightYank = vim.api.nvim_create_augroup("HighlightYank")
+local highlightYank = vim.api.nvim_create_augroup("HighlightYank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = highlightYank,
     command = "silent! lua vim.highlight.on_yank{higroup='IncSearch', timeout=700}",
@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Project notes
-local projectNotes = vim.api.nvim_create_augroup("ProjectNotes")
+local projectNotes = vim.api.nvim_create_augroup("ProjectNotes", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     group = projectNotes,
     command = "set filetype=notes | set syntax=markdown",

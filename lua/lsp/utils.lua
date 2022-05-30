@@ -23,7 +23,7 @@ function M.lsp_diagnostics()
         end
     end
 
-    local lspHoverDiagnostic = vim.api.nvim_create_augroup("LspHoverDiagnostic")
+    local lspHoverDiagnostic = vim.api.nvim_create_augroup("LspHoverDiagnostic", { clear = true })
     vim.api.nvim_create_autocmd("CursorHold", {
         group = lspHoverDiagnostic,
         callback = function()
@@ -50,7 +50,7 @@ function M.lsp_highlight(client, bufnr)
             false
         )
 
-        local lspDocumentHighligh = vim.api.nvim_create_augroup("LspDocumentHighlight")
+        local lspDocumentHighligh = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspDocumentHighligh,
             callback = vim.lsp.buf.document_highlight,
