@@ -172,6 +172,7 @@ local n_mappings = {
             "Diagnostics",
         },
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
+        p = "Peek definition",
         q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },

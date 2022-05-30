@@ -1,3 +1,5 @@
+local utils = require("core.utils")
+
 local M = {}
 
 function M.lsp_diagnostics()
@@ -21,7 +23,7 @@ function M.lsp_diagnostics()
         end
     end
 
-    local lspHoverDiagnostic = vim.api.nvim_create_augroup("LspHoverDiagnostic", { clear = true })
+    local lspHoverDiagnostic = vim.api.nvim_create_augroup("LspHoverDiagnostic")
     vim.api.nvim_create_autocmd("CursorHold", {
         group = lspHoverDiagnostic,
         callback = function()
@@ -48,7 +50,7 @@ function M.lsp_highlight(client, bufnr)
             false
         )
 
-        local lspDocumentHighligh = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+        local lspDocumentHighligh = vim.api.nvim_create_augroup("LspDocumentHighlight")
         vim.api.nvim_create_autocmd("CursorHold", {
             group = lspDocumentHighligh,
             callback = vim.lsp.buf.document_highlight,
@@ -78,6 +80,8 @@ function M.lsp_config(client, bufnr)
             if result == nil or vim.tbl_isempty(result) then
                 return nil
             end
+
+            print(utils.toString(result[1]))
             vim.lsp.util.preview_location(result[1], { border = "rounded" })
         end)
     end
@@ -89,18 +93,16 @@ function M.lsp_config(client, bufnr)
     if client.supports_method("textDocument/rangeFormatting") then
         vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
-    -- if client.supports_method("locationLink") then
     vim.keymap.set("n", "<space>lp", "<cmd>lua _G.LspPeekDefinition()<CR>", opts)
-    -- end
 
     -- Formatting
     if client.supports_method("textDocument/formatting") then
-        local formatGroup = vim.api.nvim_create_augroup("Format", { clear = true })
+        local formatGroup = vim.api.nvim_create_augroup("Format", { clear = false })
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 vim.lsp.buf.format()
             end,
-            pattern = "*",
+            buffer = bufnr,
             group = formatGroup,
         })
     end
