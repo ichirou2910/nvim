@@ -1,7 +1,7 @@
 require("notify").setup({
     -- Animation style
     -- fade_in_slide_out, slide, static, fade
-    stages = "static",
+    stages = "slide",
 
     -- Function called when a new window is opened, use for changing win settings/config
     on_open = nil,
