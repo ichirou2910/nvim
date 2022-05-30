@@ -17,12 +17,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd(
-    "BufWritePost",
-    { command = "source <afile> | PackerCompile", group = packer_group, pattern = "lua/plugins/init.lua" }
-)
-
 pcall(require, "impatient")
 pcall(require, "packer_compiled")
 
