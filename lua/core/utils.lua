@@ -74,4 +74,20 @@ M.highlight = function(group, guifg, guibg, attr, guisp)
     vim.api.nvim_command("highlight " .. table.concat(parts, " "))
 end
 
+-- Convert target to string
+M.toString = function(src)
+    if type(src) == "table" then
+        local s = "{ "
+        for k, v in pairs(src) do
+            if type(k) ~= "number" then
+                k = '"' .. k .. '"'
+            end
+            s = s .. "[" .. k .. "] = " .. M.toString(v) .. ","
+        end
+        return s .. "} "
+    else
+        return tostring(src)
+    end
+end
+
 return M
