@@ -9,7 +9,7 @@ local function setup_servers()
     }
 
     -- servers with default config
-    local servers = { "html", "cssls", "vimls" }
+    local servers = { "html", "cssls" }
 
     for _, s in pairs(servers) do
         lspconfig[s].setup(common_config)

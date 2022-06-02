@@ -96,7 +96,8 @@ require("packer").startup(function(use)
     -- Files
     use("tpope/vim-eunuch")
     use({
-        "ichirou2910/nnn.vim",
+        -- "ichirou2910/nnn.vim",
+        "mcchrish/nnn.vim",
         config = vim.cmd([[ source ~/.config/nvim/configs/nnn.vim]]),
     })
     use({
