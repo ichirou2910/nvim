@@ -48,10 +48,17 @@ let g:sidebars = {
   \     'open': 'SymbolsOutlineOpen',
   \     'close': 'SymbolsOutlineClose'
   \ },
+  \ 'database': {
+  \     'position': 'left',
+  \     'check_win': {nr -> bufname(winbufnr(nr)) =~ 'dbui'},
+  \     'open': 'DBUIToggle',
+  \     'close': 'DBUIToggle'
+  \ },
   \ }
 
 noremap <silent> <leader>sc :call sidebar#close_all()<CR>
 
+noremap <silent> <leader>sd :call sidebar#toggle('database')<CR>
 noremap <silent> <leader>se :call sidebar#toggle('files')<CR>
 noremap <silent> <leader>sg :call sidebar#toggle('git')<CR>
 noremap <silent> <leader>sn :call sidebar#toggle('notes')<CR>

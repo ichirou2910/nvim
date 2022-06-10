@@ -92,6 +92,11 @@ local n_mappings = {
         z = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
     },
 
+    D = {
+        name = "Database",
+        z = { "<cmd>DBUIToggle<cr>", "Toggle UI" },
+    },
+
     f = {
         name = "Find",
         a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },

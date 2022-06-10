@@ -6,6 +6,17 @@ local icons = require("core.ui.icons")
 local isEmpty = require("core.utils").isEmpty
 
 -- Extensions
+local dadbod = {
+    sections = {
+        lualine_a = {
+            function()
+                return [[Database]]
+            end,
+        },
+    },
+    filetypes = { "dbui" },
+}
+
 local notes = {
     sections = {
         lualine_a = {
@@ -71,6 +82,7 @@ lualine.setup({
         "nvim-tree",
         "symbols-outline",
         "quickfix",
+        dadbod,
         notes,
         gitcommit,
     },

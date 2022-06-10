@@ -72,6 +72,10 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.comment')",
     })
 
+    -- Database
+    use({ "tpope/vim-dadbod", config = vim.cmd([[ source ~/.config/nvim/configs/dadbod.vim ]]) })
+    use({ "kristijanhusak/vim-dadbod-ui" })
+
     -- Repeat stuff
     use("tpope/vim-repeat")
 
@@ -406,6 +410,7 @@ require("packer").startup(function(use)
             },
             "rafamadriz/friendly-snippets",
             "honza/vim-snippets",
+            "kristijanhusak/vim-dadbod-completion",
         },
         config = "require('plugins.configs.nvim-cmp')",
     })
