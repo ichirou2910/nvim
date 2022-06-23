@@ -59,13 +59,13 @@ local function cwd_name()
     for str in string.gmatch(vim.fn.getcwd(), "([^" .. "/" .. "]+)") do
         table.insert(t, str)
     end
-    return " " .. t[#t]
+    return " " .. t[#t]
 end
 
 lualine.setup({
     options = {
         theme = "tokyonight",
-        globalstatus = true,
+        globalstatus = false,
         component_separators = { left = icons.ui.SeperatorLeft, right = icons.ui.SeperatorRight },
         section_separators = { left = icons.ui.SeperatorLeftFill, right = icons.ui.SeperatorRightFill },
     },
