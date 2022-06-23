@@ -147,6 +147,12 @@ require("packer").startup(function(use)
         wants = "nvim-treesitter",
         config = "require('plugins.configs.nvim-gps')",
     })
+    -- use({
+    --     "SmiteshP/nvim-navic",
+    --     module = "nvim-navic",
+    --     requires = "neovim/nvim-lspconfig",
+    --     config = "require('plugins.configs.navic')",
+    -- })
     use({
         "windwp/nvim-ts-autotag",
         wants = "nvim-treesitter",
@@ -247,7 +253,6 @@ require("packer").startup(function(use)
     })
 
     -- Seamless navigation with tmux
-    -- use("christoomey/vim-tmux-navigator")
     use({
         "aserowy/tmux.nvim",
         config = function()
@@ -275,8 +280,8 @@ require("packer").startup(function(use)
     use({
         "ThePrimeagen/harpoon",
         module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
-        wants = { "telescope.nvim" },
-        config = "require('plugins.configs.harpoon)",
+        wants = { "telescope" },
+        config = "require('plugins.configs.harpoon')",
     })
 
     -- Tmux interaction from vim
@@ -286,7 +291,6 @@ require("packer").startup(function(use)
     })
 
     -- Sessions
-    -- use("tpope/vim-obsession")
     use({
         "rmagatti/auto-session",
         config = "require('plugins.configs.session')",
