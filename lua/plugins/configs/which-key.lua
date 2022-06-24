@@ -148,10 +148,8 @@ local n_mappings = {
 
     l = {
         name = "LSP",
-        a = {
-            "<cmd>lua vim.lsp.buf.code_action()<cr>",
-            "Code Action",
-        },
+        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Code Lens" },
         -- d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Definition" },
         d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
@@ -162,6 +160,7 @@ local n_mappings = {
             "Diagnostics",
         },
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
+        o = { "<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document Symbol" },
         p = "Peek definition",
         q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -182,16 +181,16 @@ local n_mappings = {
     s = {
         name = "Sidebar",
         c = "Close sidebar",
-        e = "Toggle NVIM Tree",
+        d = "Database",
+        e = "NVIM Tree",
         g = "Git",
         n = "Notes",
-        s = "Symbols",
     },
 
     S = {
         name = "Session",
-        s = { "<cmd>SaveSession<CR>", "Start record" },
         l = { "<cmd>RestoreSession<CR>", "Load record" },
+        s = { "<cmd>SaveSession<CR>", "Start record" },
         x = { "<cmd>DeleteSession<CR>", "Stop record" },
     },
 
@@ -203,7 +202,10 @@ local n_mappings = {
         t = { "<cmd>ToggleTerm<CR>", "Toggle terminal" },
     },
 
-    u = { name = "UI", s = "Toggle shade" },
+    u = {
+        name = "UI",
+        s = "Toggle shade",
+    },
 }
 
 local v_mappings = {

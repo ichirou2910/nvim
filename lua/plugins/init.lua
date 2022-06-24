@@ -381,6 +381,19 @@ require("packer").startup(function(use)
         "ray-x/lsp_signature.nvim",
         config = "require('plugins.configs.signature')",
     })
+    -- use({
+    --     "ray-x/navigator.lua",
+    --     requires = {
+    --         { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+    --         { "neovim/nvim-lspconfig" },
+    --     },
+    --     config = "require('plugins.configs.navigator')",
+    -- })
+    use({
+        "RishabhRD/nvim-lsputils",
+        requires = { "RishabhRD/popfix" },
+        after = { "nvim-lspconfig" },
+    })
 
     -- Shade
     -- use({ "sunjon/Shade.nvim", config = "require('plugins.configs.shade')" })

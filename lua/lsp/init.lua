@@ -88,7 +88,7 @@ local function lsp_omnisharp()
         cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
         -- root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
     }
-    lspconfig.omnisharp.setup(vim.tbl_extend("keep", common_config, config))
+    lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
 end
 
 -- pyright

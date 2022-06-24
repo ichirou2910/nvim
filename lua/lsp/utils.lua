@@ -24,6 +24,14 @@ function M.lsp_diagnostics()
     })
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
+    vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
+    vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
+    vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
+    vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
+    vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
+    vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
+    vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 
     -- Show diagnostics in a pop-up window on hover
     _G.LspDiagnosticsPopupHandler = function()
@@ -44,6 +52,12 @@ function M.lsp_diagnostics()
         callback = function()
             _G.LspDiagnosticsPopupHandler()
         end,
+        pattern = "*",
+    })
+
+    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+        group = vim.api.nvim_create_augroup("LspCodeLens", { clear = true }),
+        callback = vim.lsp.codelens.refresh,
         pattern = "*",
     })
 end
