@@ -54,12 +54,6 @@ function M.lsp_diagnostics()
         end,
         pattern = "*",
     })
-
-    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-        group = vim.api.nvim_create_augroup("LspCodeLens", { clear = true }),
-        callback = vim.lsp.codelens.refresh,
-        pattern = "*",
-    })
 end
 
 function M.lsp_highlight(client, bufnr)
@@ -103,16 +97,58 @@ function M.lsp_config(client, bufnr)
     vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>", opts)
     vim.keymap.set("n", "gp", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>", opts)
 
-    _G.LspPeekDefinition = function()
-        local params = vim.lsp.util.make_position_params()
-        return vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
-            if result == nil or vim.tbl_isempty(result) then
-                return nil
-            end
+    local function peek_preview(location, offset_top, offset_bot)
+        -- print(utils.toString(result))
+        location["range"]["start"]["line"] = location["range"]["start"]["line"] - offset_top
+        location["range"]["end"]["line"] = location["range"]["end"]["line"] + offset_bot
 
-            print(utils.toString(result[1]))
-            vim.lsp.util.preview_location(result[1], { border = "rounded" })
-        end)
+        vim.lsp.util.preview_location(location, {
+            border = { "─", "─", "─", " ", "─", "─", "─", " " },
+            width = vim.api.nvim_win_get_width(0),
+            height = offset_top + offset_bot,
+        })
+    end
+
+    if client.supports_method("textDocument/definition/linkSupport") then
+        _G.LspPeekDefinition = function()
+            local params = vim.lsp.util.make_position_params()
+            return vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
+                if result == nil or vim.tbl_isempty(result) then
+                    return nil
+                end
+
+                peek_preview(result, 1, 4)
+            end)
+        end
+        vim.keymap.set("n", "<space>lpd", "<cmd>lua _G.LspPeekDefinition()<CR>", opts)
+    end
+
+    if client.supports_method("textDocument/declaration/linkSupport") then
+        _G.LspPeekDeclaration = function()
+            local params = vim.lsp.util.make_position_params()
+            return vim.lsp.buf_request(0, "textDocument/declaration", params, function(_, result)
+                if result == nil or vim.tbl_isempty(result) then
+                    return nil
+                end
+
+                peek_preview(result, 1, 4)
+            end)
+        end
+        vim.keymap.set("n", "<space>lpD", "<cmd>lua _G.LspPeekDeclaration()<CR>", opts)
+    end
+
+    if client.supports_method("textDocument/implementation/linkSupport") then
+        _G.LspPeekImplementation = function()
+            local params = vim.lsp.util.make_position_params()
+            return vim.lsp.buf_request(0, "textDocument/implementation", params, function(_, result)
+                if result == nil or vim.tbl_isempty(result) then
+                    return nil
+                end
+
+                peek_preview(result, 1, 9)
+            end)
+        end
+        vim.keymap.set("n", "<space>lpi", "<cmd>lua _G.LspPeekImplementation()<CR>", opts)
     end
 
     -- Set some keybinds conditional on server capabilities
@@ -122,7 +158,6 @@ function M.lsp_config(client, bufnr)
     if client.supports_method("textDocument/rangeFormatting") then
         vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
-    vim.keymap.set("n", "<space>lp", "<cmd>lua _G.LspPeekDefinition()<CR>", opts)
 
     -- Formatting
     if client.supports_method("textDocument/formatting") then
@@ -133,6 +168,16 @@ function M.lsp_config(client, bufnr)
             end,
             buffer = bufnr,
             group = formatGroup,
+        })
+    end
+
+    -- Codelens
+    if client.supports_method("textDocument/codeLens") then
+        local codelensGroup = vim.api.nvim_create_augroup("LspCodeLens", { clear = true })
+        vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+            group = codelensGroup,
+            callback = vim.lsp.codelens.refresh,
+            buffer = bufnr,
         })
     end
 end

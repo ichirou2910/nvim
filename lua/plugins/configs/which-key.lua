@@ -161,7 +161,12 @@ local n_mappings = {
         },
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
         o = { "<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document Symbol" },
-        p = "Peek definition",
+        p = {
+            name = "Peek",
+            d = "Definition",
+            D = "Declaration",
+            i = "Implementation",
+        },
         q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>Trouble lsp_references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
