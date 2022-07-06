@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local lsp_utils = require("lsp.utils")
-local util = require("lspconfig/util")
-local path = util.path
+local lsp_path = lspconfig.util.path
 
 local common_config = {
     capabilities = lsp_utils.get_capabilities(),
@@ -86,7 +85,7 @@ local function lsp_omnisharp()
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
         cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
-        -- root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
+        root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
     }
     lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
 end
@@ -96,14 +95,14 @@ local function lsp_pyright()
     local function get_python_path(workspace)
         -- Use activated virtualenv.
         if vim.env.VIRTUAL_ENV then
-            return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+            return lsp_path.join(vim.env.VIRTUAL_ENV, "bin", "python")
         end
 
         -- Find and use virtualenv from pipenv in workspace directory.
-        local match = vim.fn.glob(path.join(workspace, "Pipfile"))
+        local match = vim.fn.glob(lsp_path.join(workspace, "Pipfile"))
         if match ~= "" then
             local venv = vim.fn.trim(vim.fn.system("PIPENV_PIPFILE=" .. match .. " pipenv --venv"))
-            return path.join(venv, "bin", "python")
+            return lsp_path.join(venv, "bin", "python")
         end
 
         -- Fallback to system Python.
