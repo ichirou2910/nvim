@@ -215,10 +215,10 @@ local n_mappings = {
 
 local v_mappings = {
     f = {
+        name = "Find",
         r = {
             "<cmd>lua require('spectre').open_visual()<cr>",
             "Replace",
-            mode = "v",
         },
     },
     h = {
@@ -228,15 +228,16 @@ local v_mappings = {
     },
 
     l = {
+        name = "LSP",
         a = {
             "<cmd>lua vim.lsp.buf.range_code_action()<cr>",
             "Code Action",
         },
+        f = "Format",
     },
 }
 
 local wk = require("which-key")
 
 wk.register(n_mappings, vim.tbl_extend("error", opts, { mode = "n" }))
-
 wk.register(v_mappings, vim.tbl_extend("error", opts, { mode = "v" }))

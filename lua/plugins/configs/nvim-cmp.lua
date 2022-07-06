@@ -5,6 +5,19 @@ local icons = require("core.ui.icons")
 
 local WIDTH = 40
 
+local function border(hl_name)
+    return {
+        { "╭", hl_name },
+        { "─", hl_name },
+        { "╮", hl_name },
+        { "│", hl_name },
+        { "╯", hl_name },
+        { "─", hl_name },
+        { "╰", hl_name },
+        { "│", hl_name },
+    }
+end
+
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -13,9 +26,12 @@ cmp.setup({
     },
 
     window = {
-        completion = cmp.config.window.bordered(),
+        completion = {
+            border = border("CmpBorder"),
+            winhighlight = "Normal:None,CursorLine:PmenuSel,Search:None",
+        },
         documentation = {
-            border = "rounded",
+            border = border("CmpBorder"),
             winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
             maxwidth = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
             maxheight = math.floor(WIDTH * (WIDTH / vim.o.lines)),

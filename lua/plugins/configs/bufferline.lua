@@ -25,7 +25,7 @@ require("bufferline").setup({
             { filetype = "notes", text = "Notes", text_align = "center" },
             { filetype = "Outline", text = "Outline", text_align = "center" },
         },
-        separator_style = "slant",
+        -- separator_style = "slant",
     },
     highlights = {
         buffer_selected = {
