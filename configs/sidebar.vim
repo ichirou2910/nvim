@@ -42,12 +42,6 @@ let g:sidebars = {
   \     'open': 'NvimTreeFindFile',
   \     'close': 'NvimTreeClose'
   \ },
-  \ 'symbols': {
-  \     'position': 'left',
-  \     'check_win': {nr -> bufname(winbufnr(nr)) =~ 'OUTLINE'},
-  \     'open': 'SymbolsOutlineOpen',
-  \     'close': 'SymbolsOutlineClose'
-  \ },
   \ 'database': {
   \     'position': 'left',
   \     'check_win': {nr -> bufname(winbufnr(nr)) =~ 'dbui'},
@@ -62,4 +56,3 @@ noremap <silent> <leader>sd :call sidebar#toggle('database')<CR>
 noremap <silent> <leader>se :call sidebar#toggle('files')<CR>
 noremap <silent> <leader>sg :call sidebar#toggle('git')<CR>
 noremap <silent> <leader>sn :call sidebar#toggle('notes')<CR>
-noremap <silent> <leader>ss :call sidebar#toggle('symbols')<CR>

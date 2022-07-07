@@ -9,30 +9,28 @@ if vim.fn.has("termguicolors") == 1 then
 end
 
 -- Available themes
--- onedark, github, eighties, flat, oceanic, seti, night
 g.nv_theme = "radium"
 
 local theme = require("themes." .. g.nv_theme).base_16
 local colors = require("themes." .. g.nv_theme).base_30
 
 highlight("BufferLineBackground", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineIndicatorVisible", colors.black2, colors.black2, nil, nil)
-highlight("BufferlineBufferSelected", colors.white, colors.black, nil, nil)
-highlight("BufferlineBufferVisible", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineError", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineErrorDiagnostic", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineWarning", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineWarningDiagnostic", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineWarningDiagnosticNC", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineInfo", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineInfoDiagnostic", colors.light_grey, colors.black2, nil, nil)
-highlight("BufferlineHint", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineBufferSelected", colors.white, colors.black, nil, nil)
+highlight("BufferLineBufferVisible", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineError", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineErrorDiagnostic", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineWarning", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineWarningDiagnostic", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineInfo", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineInfoDiagnostic", colors.light_grey, colors.black2, nil, nil)
+highlight("BufferLineHint", colors.light_grey, colors.black2, nil, nil)
 highlight("BufferlineHintDiagnostic", colors.light_grey, colors.black2, nil, nil)
 highlight("BufferLineCloseButton", colors.light_grey, colors.black2, nil, nil)
 highlight("BufferLineCloseButtonVisible", colors.light_grey, colors.black2, nil, nil)
 highlight("BufferLineCloseButtonSelected", colors.red, colors.black, nil, nil)
 highlight("BufferLineFill", colors.grey_fg, colors.black2, nil, nil)
-highlight("BufferlineIndicatorSelected", colors.black, colors.black, nil, nil)
+highlight("BufferLineIndicatorVisible", colors.black2, colors.black2, nil, nil)
+highlight("BufferLineIndicatorSelected", colors.black, colors.black, nil, nil)
 highlight("BufferLineModified", colors.red, colors.black2, nil, nil)
 highlight("BufferLineModifiedVisible", colors.red, colors.black2, nil, nil)
 highlight("BufferLineModifiedSelected", colors.green, colors.black, nil, nil)
@@ -50,33 +48,6 @@ highlight("BufferLineDuplicateVisible", colors.blue, colors.black2, nil, nil)
 highlight("BufferLineRightCustomAreaText1", colors.white, colors.bg, nil, nil)
 highlight("BufferLineRightCustomAreaText2", colors.red, colors.bg, nil, nil)
 
--- -- Neovim terminal colours
--- if vim.fn.has("nvim") then
---     vim.g.terminal_color_0 = theme.base00
---     vim.g.terminal_color_1 = theme.base08
---     vim.g.terminal_color_2 = theme.base0B
---     vim.g.terminal_color_3 = theme.base0A
---     vim.g.terminal_color_4 = theme.base0D
---     vim.g.terminal_color_5 = theme.base0E
---     vim.g.terminal_color_6 = theme.base0C
---     vim.g.terminal_color_7 = theme.base05
---     vim.g.terminal_color_8 = theme.base03
---     vim.g.terminal_color_9 = theme.base08
---     vim.g.terminal_color_10 = theme.base0B
---     vim.g.terminal_color_11 = theme.base0A
---     vim.g.terminal_color_12 = theme.base0D
---     vim.g.terminal_color_13 = theme.base0E
---     vim.g.terminal_color_14 = theme.base0C
---     vim.g.terminal_color_15 = theme.base07
---     if vim.o.background == "light" then
---         vim.g.terminal_color_background = theme.base05
---         vim.g.terminal_color_foreground = theme.base0B
---     else
---         vim.g.terminal_color_background = theme.base00
---         vim.g.terminal_color_foreground = theme.base0E
---     end
--- end
---
 -- Vim editor colors
 -- highlight("MatchWord", colors.white, colors.grey, nil, nil)
 highlight("Pmenu", nil, colors.one_bg, nil, nil)

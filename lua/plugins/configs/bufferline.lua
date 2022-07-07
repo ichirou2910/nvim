@@ -24,6 +24,7 @@ require("bufferline").setup({
             { filetype = "fugitive", text = "Git", text_align = "center" },
             { filetype = "notes", text = "Notes", text_align = "center" },
             { filetype = "Outline", text = "Outline", text_align = "center" },
+            { filetype = "dbui", text = "Database", text_align = "center" },
         },
         -- separator_style = "slant",
     },

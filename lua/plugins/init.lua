@@ -163,7 +163,7 @@ require("packer").startup(function(use)
     })
 
     -- Theme
-    use("folke/tokyonight.nvim")
+    -- use("folke/tokyonight.nvim")
 
     -- Cmake
     use({
