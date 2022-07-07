@@ -160,7 +160,7 @@ local n_mappings = {
             "Diagnostics",
         },
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
-        o = { "<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document Symbol" },
+        o = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document Symbols" },
         p = {
             name = "Peek",
             d = "Definition",
