@@ -15,11 +15,6 @@ g.nv_theme = "radium"
 local theme = require("themes." .. g.nv_theme).base_16
 local colors = require("themes." .. g.nv_theme).base_30
 
-highlight("IndentBlankLineChar", colors.line, nil, nil, nil)
-highlight("IndentBlankLineSpaceChar", colors.line, nil, nil, nil)
-highlight("IndentBlankLineContextChar", colors.grey, nil, nil, nil)
-highlight("IndentBlankLineContextStart", colors.one_bg2, nil, nil, nil)
-
 highlight("BufferLineBackground", colors.light_grey, colors.black2, nil, nil)
 highlight("BufferlineIndicatorVisible", colors.black2, colors.black2, nil, nil)
 highlight("BufferlineBufferSelected", colors.white, colors.black, nil, nil)
