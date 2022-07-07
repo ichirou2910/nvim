@@ -83,7 +83,7 @@ highlight("BufferLineRightCustomAreaText2", colors.red, colors.bg, nil, nil)
 -- end
 --
 -- Vim editor colors
-highlight("MatchWord", colors.white, colors.grey, nil, nil)
+-- highlight("MatchWord", colors.white, colors.grey, nil, nil)
 highlight("Pmenu", nil, colors.one_bg, nil, nil)
 highlight("PmenuSbar", nil, colors.one_bg, nil, nil)
 highlight("PmenuSel", colors.black, colors.pmenu_bg, nil, nil)
@@ -130,8 +130,8 @@ highlight("QuickFixLine", nil, theme.base01, "none", nil)
 highlight("TabLine", theme.base03, theme.base01, "none", nil)
 highlight("TabLineFill", theme.base03, theme.base01, "none", nil)
 highlight("TabLineSel", theme.base0B, theme.base01, "none", nil)
-highlight("FloatBorder", colors.blue, nil, "none", nil)
-highlight("NormalFloat", nil, colors.darker_black, "none", nil)
+highlight("FloatBorder", colors.statusline_bg, colors.statusline_bg, "none", nil)
+highlight("NormalFloat", nil, colors.statusline_bg, "none", nil)
 highlight("NvimInternalError", colors.red, nil, "none", nil)
 --
 -- -- Standard syntax highlighting
@@ -165,12 +165,12 @@ highlight("Type", theme.base0A, nil, "none", nil)
 highlight("Typedef", theme.base0A, nil, nil, nil)
 
 -- Git
-highlight("GitSignsAdd", colors.blue, "NONE", nil, nil)
-highlight("GitSignsChange", colors.light_grey, "NONE", nil, nil)
+highlight("GitSignsAdd", colors.green, "NONE", nil, nil)
+highlight("GitSignsChange", colors.blue, "NONE", nil, nil)
 highlight("GitSignsDelete", colors.red, "NONE", nil, nil)
 highlight("GitSignsChangeDelete", colors.purple, "NONE", nil, nil)
-highlight("DiffAdd", colors.blue, nil, nil, nil)
-highlight("DiffChange", colors.light_grey, nil, nil, nil)
+highlight("DiffAdd", colors.green, nil, nil, nil)
+highlight("DiffChange", colors.blue, nil, nil, nil)
 highlight("DiffDelete", colors.red, nil, nil, nil)
 highlight("DiffText", colors.purple, nil, nil, nil)
 
@@ -183,171 +183,27 @@ highlight("LspReferenceText", colors.darker_black, colors.white, nil, nil)
 highlight("LspReferenceRead", colors.darker_black, colors.white, nil, nil)
 highlight("LspReferenceWrite", colors.darker_black, colors.white, nil, nil)
 
--- -- Additional Tree-sitter highlighting
--- highlight("TSNote", theme.base0D, nil, nil, nil)
--- highlight("TSWarning", theme.base0A, nil, nil, nil)
--- highlight("TSDanger", theme.base08, nil, nil, nil)
--- highlight("TSConstructor", theme.base08, nil, nil, nil)
--- highlight("TSConstant", theme.base09, nil, nil, nil)
--- highlight("TSField", theme.base05, nil, nil, nil)
--- highlight("TSInclude", theme.base0E, nil, nil, nil)
--- highlight("TSKeyword", theme.base09, nil, nil, nil)
--- highlight("TSLabel", theme.base0A, nil, nil, nil)
--- highlight("TSNamespace", theme.base05, nil, nil, nil)
--- highlight("TSOperator", theme.base05, nil, nil, nil)
--- highlight("TSParameter", theme.base08, nil, nil, nil)
--- highlight("TSProperty", theme.base0C, nil, nil, nil)
--- highlight("TSPunctDelimiter", theme.base05, nil, nil, nil)
--- highlight("TSPunctBracket", theme.base05, nil, nil, nil)
--- highlight("TSPunctSpecial", theme.base05, nil, nil, nil)
--- highlight("TSStringRegex", theme.base08, nil, nil, nil)
--- highlight("TSStringEscape", theme.base0F, nil, nil, nil)
--- highlight("TSType", theme.base0E, nil, nil, nil)
--- highlight("TSVariable", theme.base08, nil, nil, nil)
--- highlight("TSTag", theme.base0A, nil, nil, nil)
--- highlight("TSVariableBuiltin", theme.base0A, nil, nil, nil)
---
--- ---
--- -- Extra definitions
--- ---
---
--- -- C highlighting
--- highlight("cOperator", theme.base0C, nil, nil, nil)
--- highlight("cPreCondit", theme.base0E, nil, nil, nil)
---
--- -- C# highlighting
--- highlight("csClass", theme.base0A, nil, nil, nil)
--- highlight("csAttribute", theme.base0A, nil, nil, nil)
--- highlight("csModifier", theme.base0E, nil, nil, nil)
--- highlight("csType", theme.base08, nil, nil, nil)
--- highlight("csUnspecifiedStatement", theme.base0D, nil, nil, nil)
--- highlight("csContextualStatement", theme.base0E, nil, nil, nil)
--- highlight("csNewDecleration", theme.base08, nil, nil, nil)
---
--- -- CSS highlighting
--- highlight("cssBraces", theme.base05, nil, nil, nil)
--- highlight("cssClassName", theme.base0E, nil, nil, nil)
--- highlight("cssColor", theme.base0C, nil, nil, nil)
---
--- -- Diff highlighting
--- highlight("DiffAdd", theme.base0B, theme.base01, nil, nil)
--- highlight("DiffChange", theme.base03, theme.base01, nil, nil)
--- highlight("DiffDelete", theme.base08, theme.base01, nil, nil)
--- highlight("DiffText", theme.base0D, theme.base01, nil, nil)
--- highlight("DiffAdded", theme.base0B, theme.base00, nil, nil)
--- highlight("DiffFile", theme.base08, theme.base00, nil, nil)
--- highlight("DiffNewFile", theme.base0B, theme.base00, nil, nil)
--- highlight("DiffLine", theme.base0D, theme.base00, nil, nil)
--- highlight("DiffRemoved", theme.base08, theme.base00, nil, nil)
---
--- -- Git highlighting
--- highlight("gitcommitOverflow", theme.base08, nil, nil, nil)
--- highlight("gitcommitSummary", theme.base0B, nil, nil, nil)
--- highlight("gitcommitComment", theme.base03, nil, nil, nil)
--- highlight("gitcommitUntracked", theme.base03, nil, nil, nil)
--- highlight("gitcommitDiscarded", theme.base03, nil, nil, nil)
--- highlight("gitcommitSelected", theme.base03, nil, nil, nil)
--- highlight("gitcommitHeader", theme.base0E, nil, nil, nil)
--- highlight("gitcommitSelectedType", theme.base0D, nil, nil, nil)
--- highlight("gitcommitUnmergedType", theme.base0D, nil, nil, nil)
--- highlight("gitcommitDiscardedType", theme.base0D, nil, nil, nil)
--- highlight("gitcommitBranch", theme.base09, nil, "bold", nil)
--- highlight("gitcommitUntrackedFile", theme.base0A, nil, nil, nil)
--- highlight("gitcommitUnmergedFile", theme.base08, nil, "bold", nil)
--- highlight("gitcommitDiscardedFile", theme.base08, nil, "bold", nil)
--- highlight("gitcommitSelectedFile", theme.base0B, nil, "bold", nil)
---
--- -- HTML highlighting
--- highlight("htmlBold", theme.base0A, nil, nil, nil)
--- highlight("htmlItalic", theme.base0E, nil, nil, nil)
--- highlight("htmlEndTag", theme.base05, nil, nil, nil)
--- highlight("htmlTag", theme.base05, nil, nil, nil)
---
--- -- JavaScript highlighting
--- highlight("javaScript", theme.base05, nil, nil, nil)
--- highlight("javaScriptBraces", theme.base05, nil, nil, nil)
--- highlight("javaScriptNumber", theme.base09, nil, nil, nil)
--- -- pangloss/vim-javascript highlighting
--- highlight("jsOperator", theme.base0D, nil, nil, nil)
--- highlight("jsStatement", theme.base0E, nil, nil, nil)
--- highlight("jsReturn", theme.base0E, nil, nil, nil)
--- highlight("jsThis", theme.base08, nil, nil, nil)
--- highlight("jsClassDefinition", theme.base0A, nil, nil, nil)
--- highlight("jsFunction", theme.base0E, nil, nil, nil)
--- highlight("jsFuncName", theme.base0D, nil, nil, nil)
--- highlight("jsFuncCall", theme.base0D, nil, nil, nil)
--- highlight("jsClassFuncName", theme.base0D, nil, nil, nil)
--- highlight("jsClassMethodType", theme.base0E, nil, nil, nil)
--- highlight("jsRegexpString", theme.base0C, nil, nil, nil)
--- highlight("jsGlobalObjects", theme.base0A, nil, nil, nil)
--- highlight("jsGlobalNodeObjects", theme.base0A, nil, nil, nil)
--- highlight("jsExceptions", theme.base0A, nil, nil, nil)
--- highlight("jsBuiltins", theme.base0A, nil, nil, nil)
---
--- -- Mail highlighting
--- highlight("mailQuoted1", theme.base0A, nil, nil, nil)
--- highlight("mailQuoted2", theme.base0B, nil, nil, nil)
--- highlight("mailQuoted3", theme.base0E, nil, nil, nil)
--- highlight("mailQuoted4", theme.base0C, nil, nil, nil)
--- highlight("mailQuoted5", theme.base0D, nil, nil, nil)
--- highlight("mailQuoted6", theme.base0A, nil, nil, nil)
--- highlight("mailURL", theme.base0D, nil, nil, nil)
--- highlight("mailEmail", theme.base0D, nil, nil, nil)
---
--- -- Markdown highlighting
--- highlight("markdownCode", theme.base0B, nil, nil, nil)
--- highlight("markdownError", theme.base05, theme.base00, nil, nil)
--- highlight("markdownCodeBlock", theme.base0B, nil, nil, nil)
--- highlight("markdownHeadingDelimiter", theme.base0D, nil, nil, nil)
---
--- -- PHP highlighting
--- highlight("phpMemberSelector", theme.base05, nil, nil, nil)
--- highlight("phpComparison", theme.base05, nil, nil, nil)
--- highlight("phpParent", theme.base05, nil, nil, nil)
--- highlight("phpMethodsVar", theme.base0C, nil, nil, nil)
---
--- -- Python highlighting
--- highlight("pythonOperator", theme.base0E, nil, nil, nil)
--- highlight("pythonRepeat", theme.base0E, nil, nil, nil)
--- highlight("pythonInclude", theme.base0E, nil, nil, nil)
--- highlight("pythonStatement", theme.base0E, nil, nil, nil)
---
--- -- Ruby highlighting
--- highlight("rubyAttribute", theme.base0D, nil, nil, nil)
--- highlight("rubyConstant", theme.base0A, nil, nil, nil)
--- highlight("rubyInterpolationDelimiter", theme.base0F, nil, nil, nil)
--- highlight("rubyRegexp", theme.base0C, nil, nil, nil)
--- highlight("rubySymbol", theme.base0B, nil, nil, nil)
--- highlight("rubyStringDelimiter", theme.base0B, nil, nil, nil)
---
--- -- SASS highlighting
--- highlight("sassidChar", theme.base08, nil, nil, nil)
--- highlight("sassClassChar", theme.base09, nil, nil, nil)
--- highlight("sassInclude", theme.base0E, nil, nil, nil)
--- highlight("sassMixing", theme.base0E, nil, nil, nil)
--- highlight("sassMixinName", theme.base0D, nil, nil, nil)
---
--- -- Spelling highlighting
--- highlight("SpellBad", nil, nil, "undercurl", theme.base08)
--- highlight("SpellLocal", nil, nil, "undercurl", theme.base0C)
--- highlight("SpellCap", nil, nil, "undercurl", theme.base0D)
--- highlight("SpellRare", nil, nil, "undercurl", theme.base0E)
---
--- -- Java highlighting
--- highlight("javaOperator", theme.base0D, nil, nil, nil)
---
--- -- Telescope
--- highlight("TelescopeBorder", theme.base0D, nil, nil, nil)
--- highlight("TelescopePromptBorder", theme.base0D, nil, nil, nil)
--- highlight("TelescopeResultsBorder", theme.base0D, nil, nil, nil)
--- highlight("TelescopePreviewBorder", theme.base0D, nil, nil, nil)
---
+-- Telescope
+highlight("TelescopeBorder", theme.base0D, theme.base0D, nil, nil)
+highlight("TelescopeBorder", colors.darker_black, colors.darker_black, nil, nil)
+highlight("TelescopePromptBorder", colors.black2, colors.black2, nil, nil)
+highlight("TelescopePromptNormal", colors.white, colors.black2, nil, nil)
+highlight("TelescopePromptPrefix", colors.red, colors.black2, nil, nil)
+highlight("TelescopePreviewTitle", colors.black, colors.green, nil, nil)
+highlight("TelescopePromptTitle", colors.black, colors.red, nil, nil)
+highlight("TelescopeResultsTitle", colors.darker_black, colors.darker_black, nil, nil)
+highlight("TelescopeSelection", colors.white, colors.black2, nil, nil)
+highlight("TelescopeNormal", nil, colors.darker_black, nil, nil)
+highlight("TelescopeResultsDiffAdd", colors.green, nil, nil, nil)
+highlight("TelescopeResultsDiffChange", colors.blue, nil, nil, nil)
+highlight("TelescopeResultsDiffDelete", colors.red, nil, nil, nil)
+
 -- nvim-cmp
 highlight("CmpItemAbbr", colors.white, nil, nil, nil)
 highlight("CmpItemAbbrMatch", colors.blue, nil, "bold", nil)
-highlight("CmpBorder", colors.grey, nil, nil, nil)
-highlight("CmpDocBorder", colors.darker_black, colors.darker_black, nil, nil)
-highlight("CmpPmenu", nil, colors.darker_black, nil, nil)
+highlight("CmpBorder", colors.statusline_bg, colors.statusline_bg, nil, nil)
+highlight("CmpDocBorder", colors.statusline_bg, colors.statusline_bg, nil, nil)
+highlight("CmpPmenu", nil, colors.statusline_bg, nil, nil)
 highlight("CmpItemAbbrMatchFuzzy", theme.base0C, nil, nil, nil)
 highlight("CmpItemKindConstant", theme.base09, nil, nil, nil)
 highlight("CmpItemKindFunction", theme.base0D, nil, nil, nil)
@@ -371,9 +227,6 @@ highlight("CmpItemKindReference", theme.base05, nil, nil, nil)
 highlight("CmpItemKindStruct", theme.base0E, nil, nil, nil)
 highlight("CmpItemKindOperator", theme.base05, nil, nil, nil)
 highlight("CmpItemKindTypeParameter", theme.base08, nil, nil, nil)
---
--- Fixed color highlighting
--- require("core.highlights")
 
 highlight("TSAnnotation", theme.base0F, nil, nil, nil)
 highlight("TSAttribute", theme.base0A, nil, nil, nil)
@@ -433,3 +286,28 @@ highlight("NvimTreeOpenedFolderName", colors.folder_bg, nil, nil, nil)
 highlight("NvimTreeGitIgnored", colors.light_grey, nil, nil, nil)
 highlight("NvimTreeNormal", nil, colors.darker_black, nil, nil)
 highlight("NvimTreeNormalNC", nil, colors.darker_black, nil, nil)
+
+highlight("FloatTitle", colors.black, colors.green, nil, nil)
+
+-- Fixed highlighting
+highlight("CursorLine", nil, colors.black2, nil, nil)
+
+highlight("NotifyERRORTitle", "#f7768e", "none", nil, nil)
+highlight("NotifyERRORBorder", "#f7768e", "none", nil, nil)
+highlight("NotifyERRORIcon", "#f7768e", "none", nil, nil)
+
+highlight("NotifyWARNTitle", "#e0af68", "none", nil, nil)
+highlight("NotifyWARNBorder", "#e0af68", "none", nil, nil)
+highlight("NotifyWARNIcon", "#e0af68", "none", nil, nil)
+
+highlight("NotifyINFOTitle", "#7dcfff", "none", nil, nil)
+highlight("NotifyINFOBorder", "#7dcfff", "none", nil, nil)
+highlight("NotifyINFOIcon", "#7dcfff", "none", nil, nil)
+
+highlight("NotifyDEBUGTitle", "#8B8B8B", "none", nil, nil)
+highlight("NotifyDEBUGBorder", "#8B8B8B", "none", nil, nil)
+highlight("NotifyDEBUGIcon", "#8B8B8B", "none", nil, nil)
+
+highlight("NotifyTRACETitle", "#D484FF", "none", nil, nil)
+highlight("NotifyTRACEBorder", "#4F3552", "none", nil, nil)
+highlight("NotifyTRACEIcon", "#D484FF", "none", nil, nil)

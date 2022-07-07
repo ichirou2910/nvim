@@ -1,5 +1,10 @@
 require("dressing").setup({
-    input = { relative = "editor" },
+    input = {
+        relative = "cursor",
+        winblend = 0,
+        insert_only = false,
+        border = "solid",
+    },
     select = {
         backend = { "telescope", "fzf", "builtin" },
     },

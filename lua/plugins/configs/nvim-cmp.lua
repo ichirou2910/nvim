@@ -28,11 +28,11 @@ cmp.setup({
     window = {
         completion = {
             border = border("CmpBorder"),
-            winhighlight = "Normal:None,CursorLine:PmenuSel,Search:None",
+            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
         },
         documentation = {
             border = border("CmpBorder"),
-            winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+            winhighlight = "NormalFloat:CmpPmenu,FloatBorder:CompeDocumentationBorder",
             maxwidth = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
             maxheight = math.floor(WIDTH * (WIDTH / vim.o.lines)),
             max_height = math.floor(vim.o.lines * 0.3),

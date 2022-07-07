@@ -5,6 +5,8 @@ end
 local icons = require("core.ui.icons")
 local isEmpty = require("core.utils").isEmpty
 
+local theme_colors = require("themes." .. vim.g.nv_theme).base_30
+
 -- Extensions
 local dadbod = {
     sections = {
@@ -62,9 +64,41 @@ local function cwd_name()
     return " " .. t[#t]
 end
 
+local radium_theme = {
+    normal = {
+        a = { bg = theme_colors.blue, fg = theme_colors.black },
+        b = { bg = theme_colors.one_bg, fg = theme_colors.blue },
+        c = { bg = theme_colors.statusline_bg, fg = theme_colors.white },
+    },
+
+    insert = {
+        a = { bg = theme_colors.green, fg = theme_colors.black },
+        b = { bg = theme_colors.one_bg, fg = theme_colors.green },
+    },
+
+    command = {
+        a = { bg = theme_colors.yellow, fg = theme_colors.black },
+        b = { bg = theme_colors.one_bg, fg = theme_colors.yellow },
+    },
+
+    visual = {
+        a = { bg = theme_colors.purple, fg = theme_colors.black },
+        b = { bg = theme_colors.one_bg, fg = theme_colors.purple },
+    },
+    replace = {
+        a = { bg = theme_colors.red, fg = theme_colors.black },
+        b = { bg = theme_colors.one_bg, fg = theme_colors.red },
+    },
+    inactive = {
+        a = { bg = theme_colors.statusline_bg, fg = theme_colors.blue },
+        b = { bg = theme_colors.statusline_bg, fg = theme_colors.one_bg, gui = "bold" },
+        c = { bg = theme_colors.statusline_bg, fg = theme_colors.one_bg },
+    },
+}
+
 lualine.setup({
     options = {
-        theme = "tokyonight",
+        theme = radium_theme,
         globalstatus = false,
         component_separators = { left = icons.ui.SeperatorLeft, right = icons.ui.SeperatorRight },
         section_separators = { left = icons.ui.SeperatorLeftFill, right = icons.ui.SeperatorRightFill },
