@@ -1,4 +1,5 @@
 local utils = require("core.utils")
+local navic = require("nvim-navic")
 
 local M = {}
 
@@ -225,6 +226,7 @@ function M.lsp_attach(client, bufnr)
     M.lsp_config(client, bufnr)
     M.lsp_highlight(client, bufnr)
     M.lsp_diagnostics()
+    navic.attach(client, bufnr)
 end
 
 return M

@@ -141,18 +141,11 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.pairs')",
     })
     use({
-        "SmiteshP/nvim-gps",
-        module = "nvim-gps",
-        requires = "nvim-treesitter/nvim-treesitter",
-        wants = "nvim-treesitter",
-        config = "require('plugins.configs.nvim-gps')",
+        "SmiteshP/nvim-navic",
+        module = "nvim-navic",
+        requires = "neovim/nvim-lspconfig",
+        config = "require('plugins.configs.navic')",
     })
-    -- use({
-    --     "SmiteshP/nvim-navic",
-    --     module = "nvim-navic",
-    --     requires = "neovim/nvim-lspconfig",
-    --     config = "require('plugins.configs.navic')",
-    -- })
     use({
         "windwp/nvim-ts-autotag",
         wants = "nvim-treesitter",
