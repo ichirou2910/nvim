@@ -25,3 +25,5 @@ require("notify").setup({
 
 -- default notification provider
 vim.notify = require("notify")
+
+require("core.utils").highlight_group("notify")

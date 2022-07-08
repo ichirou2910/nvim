@@ -56,7 +56,7 @@ M.map = function(mode, keys, cmd, opt)
     map_wrapper(mode, keys, cmd, options)
 end
 
-M.highlight = function(group, guifg, guibg, attr, guisp)
+M.highlight_bk = function(group, guifg, guibg, attr, guisp)
     local parts = { group }
     if guifg then
         table.insert(parts, "guifg=" .. guifg)
@@ -72,6 +72,20 @@ M.highlight = function(group, guifg, guibg, attr, guisp)
     end
 
     vim.api.nvim_command("highlight " .. table.concat(parts, " "))
+end
+
+M.highlight = function(group, hl_table)
+    vim.api.nvim_set_hl(0, group, hl_table)
+end
+
+M.highlight_group = function(group)
+    if type(group) == "string" then
+        group = require("core.highlights." .. group)
+    end
+
+    for hl, col in pairs(group) do
+        vim.api.nvim_set_hl(0, hl, col)
+    end
 end
 
 -- Convert target to string

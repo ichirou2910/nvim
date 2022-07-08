@@ -120,3 +120,5 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("notify")
+
+require("core.utils").highlight_group("telescope")

@@ -48,3 +48,5 @@ require("nvim-treesitter.configs").setup({
         },
     },
 })
+
+require("core.utils").highlight_group("treesitter")

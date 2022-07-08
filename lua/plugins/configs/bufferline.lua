@@ -61,3 +61,5 @@ require("bufferline").setup({
         },
     },
 })
+
+require("core.utils").highlight_group("bufferline")

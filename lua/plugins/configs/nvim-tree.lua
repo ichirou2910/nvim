@@ -23,3 +23,5 @@ nvim_tree.setup({
         },
     },
 })
+
+require("core.utils").highlight_group("nvim-tree")

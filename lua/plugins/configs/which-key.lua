@@ -241,3 +241,5 @@ local wk = require("which-key")
 
 wk.register(n_mappings, vim.tbl_extend("error", opts, { mode = "n" }))
 wk.register(v_mappings, vim.tbl_extend("error", opts, { mode = "v" }))
+
+require("core.utils").highlight_group("which-key")

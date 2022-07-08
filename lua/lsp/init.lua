@@ -147,3 +147,5 @@ lsp_pyright()
 
 -- null-ls
 require("plugins.configs.null-ls").setup()
+
+require("core.utils").highlight_group("lsp")

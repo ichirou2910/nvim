@@ -58,3 +58,5 @@ require("gitsigns").setup({
         enable = false,
     },
 })
+
+require("core.utils").highlight_group("git")
