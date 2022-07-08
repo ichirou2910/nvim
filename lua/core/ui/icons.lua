@@ -4,7 +4,7 @@ return {
         Method = " ",
         Function = " ",
         Constructor = " ",
-        Field = " ",
+        Field = " ",
         Variable = " ",
         Class = " ",
         Interface = " ",
@@ -23,9 +23,10 @@ return {
         Constant = " ",
         Struct = " ",
         Event = " ",
-        Operator = " ",
+        Operator = " ",
         TypeParameter = " ",
         Misc = " ",
+        Namespace = " ",
     },
     type = {
         Array = " ",
@@ -33,6 +34,7 @@ return {
         String = " ",
         Boolean = " ",
         Object = " ",
+        Package = " ",
     },
     documents = {
         File = " ",
