@@ -29,5 +29,5 @@ return {
     NavicIconsOperator = { fg = theme.base05 },
     NavicIconsTypeParameter = { fg = theme.base08 },
     NavicText = { fg = colors.white },
-    NavicSeparator = { fg = colors.line },
+    NavicSeparator = { fg = colors.white },
 }
