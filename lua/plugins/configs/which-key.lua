@@ -163,9 +163,8 @@ local n_mappings = {
         o = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document Symbols" },
         p = {
             name = "Peek",
-            d = "Definition",
-            D = "Declaration",
-            i = "Implementation",
+            d = { "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", "Definition" },
+            i = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Implementation" },
         },
         q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>Trouble lsp_references<cr>", "References" },

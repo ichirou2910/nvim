@@ -41,6 +41,9 @@ require("packer").startup(function(use)
     use("nvim-lua/popup.nvim")
     use({ "nvim-lua/plenary.nvim", module = "plenary" })
 
+    -- Optimize
+    use({ "antoinemadec/FixCursorHold.nvim", config = vim.cmd([[let g:cursorhold_updatetime = 100]]) })
+
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",
@@ -367,10 +370,11 @@ require("packer").startup(function(use)
         },
     })
     use({
-        "simrat39/symbols-outline.nvim",
-        config = "require('plugins.configs.symbols')",
-        event = "VimEnter",
-        disable = true,
+        "rmagatti/goto-preview",
+        config = function()
+            require("goto-preview").setup({})
+        end,
+        after = { "nvim-lspconfig" },
     })
     use({
         "ray-x/lsp_signature.nvim",
