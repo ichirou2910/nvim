@@ -50,7 +50,7 @@ vim.opt.cul = true -- cursor line
 
 vim.opt.timeoutlen = 500
 
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+vim.o.winbar = "%{%v:lua.navic_location()%}"
 
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
