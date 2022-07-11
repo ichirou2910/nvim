@@ -8,7 +8,7 @@ signature.setup({
     bind = true,
     handler_opts = { border = "rounded" },
     max_width = 120,
-    hint_enable = true,
+    hint_enable = false,
     hint_prefix = " ",
     hint_scheme = "String",
     always_trigger = false,
