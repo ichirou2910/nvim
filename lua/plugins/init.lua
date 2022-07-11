@@ -127,6 +127,8 @@ require("packer").startup(function(use)
                 "nvim-treesitter/playground",
                 cmd = "TSHighlightCapturesUnderCursor",
             },
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
+            { "p00f/nvim-ts-rainbow" },
             {
                 "akinsho/flutter-tools.nvim",
                 ft = "dart",
