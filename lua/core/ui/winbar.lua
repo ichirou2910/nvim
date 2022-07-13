@@ -2,6 +2,18 @@ local isEmpty = require("core.utils").isEmpty
 
 local M = {}
 
+M.winbar_filetype_exclude = {
+    "help",
+    "dbui",
+    "packer",
+    "fugitive",
+    "NvimTree",
+    "Trouble",
+    "spectre_panel",
+    "toggleterm",
+    "",
+}
+
 M.filename = function()
     local filename = vim.fn.expand("%:t")
     local extension = ""
@@ -49,6 +61,9 @@ M.get = function()
     if navic.is_available() then
         return filename .. " " .. icons.ui.ChevronRight .. " " .. navic_data
     else
+        if not vim.tbl_contains(M.winbar_filetype_exclude, vim.bo.filetype) then
+            return filename
+        end
         return navic_data
     end
 end
