@@ -15,7 +15,7 @@ vim.fn.sign_define("DapBreakpoint", {
 vim.fn.sign_define("DapStopped", {
     text = "",
     texthl = "DiagnosticWarn",
-    linehl = "",
+    linehl = "DapStopped",
     numhl = "",
 })
 vim.fn.sign_define("DapBreakpointRejected", {
@@ -62,53 +62,47 @@ dap.configurations.cpp = {
         runInTerminal = false,
     },
 }
-dap.configurations.cs = {
-    {
-        type = "netcoredbg",
-        name = "launch - netcoredbg",
-        request = "launch",
-        preLaunchTask = "dotnet build",
-        cwd = function()
-            local cwd = vim.fn.getcwd()
-            local config_path = cwd .. "/.vim/dap.json"
-            local fd = vim.loop.fs_open(config_path, "r", 438)
-            if fd then
-                local stat = vim.loop.fs_fstat(fd)
-                if stat then
-                    local data = vim.loop.fs_read(fd, stat.size, 0)
-                    local workspace_path = vim.fn.json_decode(data)["cwd"]
-                    if workspace_path ~= nil then
-                        return cwd .. "/" .. workspace_path
-                    end
-                end
-            end
 
-            return cwd
-        end,
-        program = function()
-            local cwd = vim.fn.getcwd()
-            local config_path = cwd .. "/.vim/dap.json"
-            local fd = vim.loop.fs_open(config_path, "r", 438)
-            if fd then
-                local stat = vim.loop.fs_fstat(fd)
-                if stat then
-                    local data = vim.loop.fs_read(fd, stat.size, 0)
-                    local program_path = vim.fn.json_decode(data)["program"]
-                    if program_path ~= nil then
-                        return vim.fn.input("Path to dll: ", cwd .. "/" .. program_path, "file")
-                    end
-                end
-            end
-
-            local d = vim.fn.fnamemodify(cwd, ":t")
-            return vim.fn.input("Path to dll: ", cwd .. "/bin/Debug/netcoreapp3.1/" .. d .. ".dll", "file")
-            -- return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-        end,
-        env = {
-            ASPNETCORE_ENVIRONMENT = "Development",
-        },
-    },
-    {
+-- C# configuration
+dap.configurations.cs = function()
+    local fd = vim.loop.fs_open(vim.fn.getcwd() .. "/.vim/dap.json", "r", 438)
+    local dap_config = {}
+    if fd then
+        local stat = vim.loop.fs_fstat(fd)
+        local config_string = vim.loop.fs_read(fd, stat.size, 0)
+        local dap_data = vim.fn.json_decode(config_string)["config"]
+        local cwd = vim.fn.getcwd()
+        for _, data in pairs(dap_data) do
+            local config = {
+                type = "netcoredbg",
+                name = data["name"],
+                request = "launch",
+                preLaunchTask = "dotnet build",
+                cwd = cwd .. "/" .. data["cwd"],
+                program = cwd .. "/" .. data["program"],
+                env = {
+                    ASPNETCORE_ENVIRONMENT = "Development",
+                },
+            }
+            table.insert(dap_config, config)
+        end
+    else
+        table.insert(dap_config, {
+            type = "netcoredbg",
+            name = "launch - netcoredbg",
+            request = "launch",
+            cwd = vim.fn.getcwd(),
+            program = function()
+                return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+            end,
+            processId = function()
+                local pid = require("dap.utils").pick_process()
+                vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
+                return pid
+            end,
+        })
+    end
+    table.insert(dap_config, {
         type = "netcoredbg",
         name = "attach - netcoredbg",
         request = "attach",
@@ -117,7 +111,10 @@ dap.configurations.cs = {
             vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
             return pid
         end,
-    },
-}
+    })
+    return dap_config
+end
 
 dap.configurations.c = dap.configurations.cpp
+
+require("core.utils").highlight_group("dap")
