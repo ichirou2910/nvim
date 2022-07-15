@@ -1,5 +1,7 @@
 local filter_bufname = {
-    ["project-notes.notes"] = true,
+    "project-notes.notes",
+    "[dap-repl]",
+    ".git/index",
 }
 
 vim.cmd("source ~/.config/nvim/configs/bbye.vim")
@@ -10,10 +12,7 @@ require("bufferline").setup({
             return tostring(count)
         end,
         custom_filter = function(bufnr)
-            if vim.fn.bufname(bufnr):match(".git/index$") then
-                return false
-            end
-            if filter_bufname[vim.fn.bufname(bufnr)] == true then
+            if vim.tbl_contains(filter_bufname, vim.fn.bufname(bufnr)) then
                 return false
             end
             return true
