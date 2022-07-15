@@ -64,7 +64,7 @@ dap.configurations.cpp = {
 }
 
 -- C# configuration
-local function cs_config()
+dap.configurations.cs = (function()
     local fd = vim.loop.fs_open(vim.fn.getcwd() .. "/.vim/dap.json", "r", 438)
     local dap_config = {}
     if fd then
@@ -113,8 +113,7 @@ local function cs_config()
         end,
     })
     return dap_config
-end
-dap.configurations.cs = cs_config()
+end)()
 
 dap.configurations.c = dap.configurations.cpp
 
