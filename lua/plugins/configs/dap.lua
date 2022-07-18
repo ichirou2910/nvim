@@ -34,7 +34,7 @@ vim.fn.sign_define("DapLogPoint", {
 -- Config
 -- # Adapters
 -- .NET Core
-dap.adapters.netcoredbg = function(cb, config)
+dap.adapters.coreclr = function(cb, config)
     if config.preLaunchTask then
         -- vim.api.nvim_command('call VimuxRunCommand("' .. config.preLaunchTask .. '")')
         vim.fn.system(config.preLaunchTask)
@@ -74,7 +74,7 @@ dap.configurations.cs = (function()
         local cwd = vim.fn.getcwd()
         for _, data in pairs(dap_data) do
             local config = {
-                type = "netcoredbg",
+                type = "coreclr",
                 name = data["name"],
                 request = "launch",
                 preLaunchTask = "dotnet build",
@@ -86,25 +86,10 @@ dap.configurations.cs = (function()
             }
             table.insert(dap_config, config)
         end
-    else
-        table.insert(dap_config, {
-            type = "netcoredbg",
-            name = "launch - netcoredbg",
-            request = "launch",
-            cwd = vim.fn.getcwd(),
-            program = function()
-                return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-            end,
-            processId = function()
-                local pid = require("dap.utils").pick_process()
-                vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
-                return pid
-            end,
-        })
     end
     table.insert(dap_config, {
-        type = "netcoredbg",
-        name = "attach - netcoredbg",
+        type = "coreclr",
+        name = "Attach",
         request = "attach",
         processId = function()
             local pid = require("dap.utils").pick_process()
@@ -116,5 +101,8 @@ dap.configurations.cs = (function()
 end)()
 
 dap.configurations.c = dap.configurations.cpp
+
+-- Load VSCode's launch.json file
+require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" }, coreclr = { "cs" } })
 
 require("core.utils").highlight_group("dap")
