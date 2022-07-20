@@ -63,29 +63,6 @@ function M.lsp_highlight(client, bufnr)
     vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticWarn" })
     vim.fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticInfo" })
     vim.fn.sign_define("DiagnosticSignHint", { text = "", numhl = "DiagnosticHint" })
-
-    if client.supports_method("textDocument/documentHighlight") then
-        vim.cmd(
-            [[
-        hi LspReferenceRead cterm=bold ctermbg=red guibg=#282f45
-        hi LspReferenceText cterm=bold ctermbg=red guibg=#282f45
-        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#282f45
-        ]],
-            false
-        )
-
-        local lspDocumentHighligh = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
-        vim.api.nvim_create_autocmd("CursorHold", {
-            group = lspDocumentHighligh,
-            callback = vim.lsp.buf.document_highlight,
-            buffer = bufnr,
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-            group = lspDocumentHighligh,
-            callback = vim.lsp.buf.clear_references,
-            buffer = bufnr,
-        })
-    end
 end
 
 function M.lsp_config(client, bufnr)
