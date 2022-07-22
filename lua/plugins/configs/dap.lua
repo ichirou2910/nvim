@@ -38,13 +38,17 @@ dap.adapters.coreclr = function(cb, config)
     if config.preLaunchTask then
         -- vim.api.nvim_command('call VimuxRunCommand("' .. config.preLaunchTask .. '")')
         vim.fn.system(config.preLaunchTask)
+        -- Doesn't fire debugger if preLaunchTask failed
+        if vim.v.shell_error ~= 0 then
+            vim.notify("Pre-launch Task failed.")
+            return
+        end
     end
-    local adapter = {
+    cb({
         type = "executable",
         command = "/usr/bin/netcoredbg",
         args = { "--interpreter=vscode" },
-    }
-    cb(adapter)
+    })
 end
 
 -- # Configuration
