@@ -39,7 +39,7 @@ let g:sidebars = {
   \ 'files': {
   \     'position': 'left',
   \     'check_win': {nr -> bufname(winbufnr(nr)) =~ 'NvimTree'},
-  \     'open': 'NvimTreeFindFile',
+  \     'open': 'NvimTreeOpen',
   \     'close': 'NvimTreeClose'
   \ },
   \ 'database': {
