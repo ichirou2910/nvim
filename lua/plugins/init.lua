@@ -426,6 +426,18 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.vsnip')",
     })
 
+    -- Testing
+    use({
+        "nvim-neotest/neotest",
+        config = "require('plugins.configs.neotest')",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            { "nvim-neotest/neotest-vim-test", requires = "vim-test/vim-test" },
+        },
+    })
+
     -- Auto pairs for '(' '[' '{'
     if packer_bootstrap then
         print("Setting up... Restart required after installation!")

@@ -203,6 +203,12 @@ local n_mappings = {
         t = { "<cmd>ToggleTerm<CR>", "Toggle terminal" },
     },
 
+    T = {
+        name = "Tasks",
+        d = { "<cmd>require('neotest').run.run({strategy = 'dap'})<cr>", "Debug test" },
+        t = { "<cmd>require('neotest').run.run()<cr>", "Run test" },
+    },
+
     u = {
         name = "UI",
         s = "Toggle shade",
