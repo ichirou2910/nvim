@@ -85,7 +85,7 @@ local function lsp_omnisharp()
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
         cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
-        root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
+        -- root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj"),
     }
     lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
 end
