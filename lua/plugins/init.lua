@@ -406,28 +406,27 @@ require("packer").startup(function(use)
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         opt = true,
-        wants = { "LuaSnip" },
         requires = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-vsnip",
             "hrsh7th/cmp-cmdline",
             "kristijanhusak/vim-dadbod-completion",
-            "saadparwaiz1/cmp_luasnip",
-            {
-                "L3MON4D3/LuaSnip",
-                wants = { "friendly-snippets", "vim-snippets" },
-                config = function()
-                    require("snip").setup()
-                end,
-            },
             "rafamadriz/friendly-snippets",
             "honza/vim-snippets",
         },
         config = "require('plugins.configs.nvim-cmp')",
     })
 
+    use({
+        "hrsh7th/vim-vsnip",
+        requires = { { "hrsh7th/vim-vsnip-integ" } },
+        config = "require('plugins.configs.vsnip')",
+    })
+
+    -- Auto pairs for '(' '[' '{'
     if packer_bootstrap then
         print("Setting up... Restart required after installation!")
         require("packer").sync()
