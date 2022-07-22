@@ -8,5 +8,5 @@ return {
     DiffAdd = { bg = "#11291d" },
     DiffChange = { bg = "#0a3d62" },
     DiffDelete = { bg = "#36191c" },
-    DiffText = { bg = "#833471" },
+    DiffText = { bg = "#411a38" },
 }
