@@ -38,7 +38,7 @@ return {
     ColorColumn = { bg = theme.base01 },
     CursorColumn = { bg = theme.base01 },
     CursorLineNr = { fg = colors.white },
-    CursorLine = { bg = colors.black2 },
+    CursorLine = { bg = colors.black2, ctermfg = "white" },
     QuickFixLine = { bg = theme.base01 },
     TabLine = { fg = theme.base03, bg = theme.base01 },
     TabLineFill = { fg = theme.base03, bg = theme.base01 },
