@@ -84,7 +84,7 @@ local n_mappings = {
         q = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
         r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
         s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-        t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+        t = { "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", "Toggle Breakpoint" },
         u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
         z = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
     },

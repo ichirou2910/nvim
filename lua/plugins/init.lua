@@ -227,6 +227,17 @@ require("packer").startup(function(use)
     -- Debugging
     use({ "mfussenegger/nvim-dap", event = "BufWinEnter", as = "nvim-dap", config = "require('plugins.configs.dap')" })
     use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')", after = "nvim-dap" })
+    use({
+        "Weissle/persistent-breakpoints.nvim",
+        requires = "mfussenegger/nvim-dap",
+        config = function()
+            require("persistent-breakpoints").setup({})
+            vim.api.nvim_create_autocmd(
+                { "BufReadPost" },
+                { callback = require("persistent-breakpoints.api").load_breakpoints }
+            )
+        end,
+    })
 
     -- Smooth scroll
     use({ "psliwka/vim-smoothie", config = vim.cmd([[let g:smoothie_enabled = 1]]) })
