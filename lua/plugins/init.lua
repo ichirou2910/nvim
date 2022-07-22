@@ -103,7 +103,6 @@ require("packer").startup(function(use)
     -- Files
     use("tpope/vim-eunuch")
     use({
-        -- "ichirou2910/nnn.vim",
         "mcchrish/nnn.vim",
         config = vim.cmd([[ source ~/.config/nvim/configs/nnn.vim]]),
     })
@@ -124,7 +123,6 @@ require("packer").startup(function(use)
         requires = {
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
-            { "jose-elias-alvarez/typescript.nvim" },
             { "Hoffs/omnisharp-extended-lsp.nvim" },
             {
                 "nvim-treesitter/playground",
@@ -132,11 +130,6 @@ require("packer").startup(function(use)
             },
             { "nvim-treesitter/nvim-treesitter-textobjects" },
             { "p00f/nvim-ts-rainbow" },
-            {
-                "akinsho/flutter-tools.nvim",
-                ft = "dart",
-                config = "require('lsp.flutter')",
-            },
         },
     })
     use({
@@ -391,22 +384,16 @@ require("packer").startup(function(use)
         "ray-x/lsp_signature.nvim",
         config = "require('plugins.configs.signature')",
     })
-    -- use({
-    --     "ray-x/navigator.lua",
-    --     requires = {
-    --         { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
-    --         { "neovim/nvim-lspconfig" },
-    --     },
-    --     config = "require('plugins.configs.navigator')",
-    -- })
+    use({
+        "akinsho/flutter-tools.nvim",
+        ft = "dart",
+        config = "require('lsp.flutter')",
+    })
     use({
         "RishabhRD/nvim-lsputils",
         requires = { "RishabhRD/popfix" },
         after = { "nvim-lspconfig" },
     })
-
-    -- Shade
-    -- use({ "sunjon/Shade.nvim", config = "require('plugins.configs.shade')" })
 
     -- Auto complete + snippets
     use({
@@ -425,8 +412,8 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "hrsh7th/cmp-vsnip",
             "hrsh7th/cmp-cmdline",
+            "kristijanhusak/vim-dadbod-completion",
             "saadparwaiz1/cmp_luasnip",
             {
                 "L3MON4D3/LuaSnip",
@@ -437,18 +424,10 @@ require("packer").startup(function(use)
             },
             "rafamadriz/friendly-snippets",
             "honza/vim-snippets",
-            "kristijanhusak/vim-dadbod-completion",
         },
         config = "require('plugins.configs.nvim-cmp')",
     })
 
-    use({
-        "hrsh7th/vim-vsnip",
-        requires = { { "hrsh7th/vim-vsnip-integ" } },
-        config = "require('plugins.configs.vsnip')",
-    })
-
-    -- Auto pairs for '(' '[' '{'
     if packer_bootstrap then
         print("Setting up... Restart required after installation!")
         require("packer").sync()
