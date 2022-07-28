@@ -22,6 +22,20 @@ nvim_tree.setup({
             error = "",
         },
     },
+    renderer = {
+        indent_markers = {
+            enable = true,
+            icons = {
+                corner = "└",
+                edge = "│",
+                item = "│",
+                none = " ",
+            },
+        },
+        icons = {
+            git_placement = "after",
+        },
+    },
 })
 
 require("core.utils").highlight_group("nvim-tree")
