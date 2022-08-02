@@ -173,20 +173,7 @@ require("packer").startup(function(use)
     })
 
     -- Git
-    -- use({
-    --     "chipsenkbeil/distant.nvim",
-    --     config = function()
-    --         require("distant").setup({
-    --             -- Applies Chip's personal settings to every machine you connect to
-    --             --
-    --             -- 1. Ensures that distant servers terminate with no connections
-    --             -- 2. Provides navigation bindings for remote directories
-    --             -- 3. Provides keybinding to jump into a remote file's parent directory
-    --             ["*"] = require("distant.settings").chip_default(),
-    --         })
-    --     end,
-    -- })
-    use({ "tpope/vim-fugitive", cmd = "Git" })
+    use({ "tpope/vim-fugitive", cmd = { "G", "Git" } })
     use("junegunn/gv.vim")
     use({
         "lewis6991/gitsigns.nvim",
@@ -214,7 +201,7 @@ require("packer").startup(function(use)
     use({
         "mattn/emmet-vim",
         ft = { "html", "typescriptreact", "javascriptreact" },
-        config = "vim.g.user_emmet_leader_key = ','",
+        config = vim.cmd([[ let g:user_emmet_leader_key = ',' ]]),
     })
 
     -- Debugging
@@ -259,19 +246,13 @@ require("packer").startup(function(use)
         "aserowy/tmux.nvim",
         config = function()
             require("tmux").setup({
-                -- overwrite default configuration
-                -- here, e.g. to enable default bindings
                 copy_sync = {
-                    -- enables copy sync and overwrites all register actions to
-                    -- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
                     enable = true,
                 },
                 navigation = {
-                    -- enables default keybindings (C-hjkl) for normal mode
                     enable_default_keybindings = true,
                 },
                 resize = {
-                    -- enables default keybindings (A-hjkl) for normal mode
                     enable_default_keybindings = true,
                 },
             })
@@ -438,7 +419,6 @@ require("packer").startup(function(use)
         },
     })
 
-    -- Auto pairs for '(' '[' '{'
     if packer_bootstrap then
         print("Setting up... Restart required after installation!")
         require("packer").sync()
