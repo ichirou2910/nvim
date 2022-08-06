@@ -2,8 +2,8 @@
 
 function! s:sidebar_close_git()
   for l:bufnr in range(1, bufnr('$'))
-    if bufname(winbufnr(l:bufnr)) =~ '.git/index'
-      bdelete .git/index
+    if bufname(l:bufnr) =~? '^fugitive:///'
+      lua vim.api.nvim_buf_delete(vim.api.nvim_eval('l:bufnr'), {})
     endif
   endfor
 endfunction
@@ -11,7 +11,7 @@ endfunction
 function! s:sidebar_close_notes()
   for l:bufnr in range(1, bufnr('$'))
     if bufname(winbufnr(l:bufnr)) =~ 'project-notes.notes'
-      bdelete project-notes.notes
+      bdelete l:bufnr
     endif
   endfor
 endfunction
@@ -26,7 +26,7 @@ let g:sidebar_width = 55
 let g:sidebars = {
   \ 'git': {
   \     'position': 'left',
-  \     'check_win': {nr -> bufname(winbufnr(nr)) =~ '.git/index'},
+  \     'check_win': {nr -> bufname(winbufnr(nr)) =~? '^fugitive:///'},
   \     'open': 'topleft vert Git | vertical resize ' .. g:sidebar_width .. ' | set winfixwidth',
   \     'close': 'SidebarCloseGit'
   \ },

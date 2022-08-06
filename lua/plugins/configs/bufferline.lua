@@ -1,7 +1,6 @@
 local filter_bufname = {
     "project-notes.notes",
     "[dap-repl]",
-    ".git/index",
 }
 
 vim.cmd("source ~/.config/nvim/configs/bbye.vim")
@@ -15,12 +14,15 @@ require("bufferline").setup({
             if vim.tbl_contains(filter_bufname, vim.fn.bufname(bufnr)) then
                 return false
             end
+            if vim.regex("^fugitive:///"):match_str(vim.fn.bufname(bufnr)) then
+                return false
+            end
             return true
         end,
         diagnostics = "nvim_lsp",
         offsets = {
             { filetype = "NvimTree", text = "File Explorer", text_align = "center" },
-            { filetype = "fugitive", text = "Git", text_align = "center" },
+            -- { filetype = "fugitive", text = "Git", text_align = "center" },
             { filetype = "notes", text = "Notes", text_align = "center" },
             { filetype = "Outline", text = "Outline", text_align = "center" },
             { filetype = "dbui", text = "Database", text_align = "center" },
