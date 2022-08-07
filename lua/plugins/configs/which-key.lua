@@ -64,11 +64,16 @@ local n_mappings = {
         name = "Buffer",
         a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark" },
         b = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Mark menu" },
-        p = { ":BufferLineTogglePin<CR>", "Pin" },
-        w = { ":BufferLinePick<CR>", "Pick" },
+        p = { ":BufferPin<CR>", "Pin" },
+        w = { ":BufferPick<CR>", "Pick" },
         z = { "<cmd>lua require('telescope').extensions.harpoon.marks()<cr>", "List marks" },
-        N = { ":BufferLineMoveNext<CR>", "Move next" },
-        P = { ":BufferLineMovePrev<CR>", "Move previous" },
+        s = {
+            name = "Sort",
+            b = { "<cmd>BufferOrderByBufferNumber<cr>", "By Buffer Number" },
+            d = { "<cmd>BufferOrderByDirectory<cr>", "By Directory" },
+            l = { "<cmd>BufferOrderByLanguage<cr>", "By Language" },
+            w = { "<cmd>BufferOrderByWindowNumber<cr>", "By Window Number" },
+        },
     },
 
     d = {

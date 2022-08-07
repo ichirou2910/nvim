@@ -320,10 +320,16 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.lualine')",
         wants = "nvim-web-devicons",
     })
+    -- use({
+    --     "akinsho/bufferline.nvim",
+    --     tag = "*",
+    --     event = "BufReadPre",
+    --     config = "require('plugins.configs.bufferline')",
+    -- })
     use({
-        "akinsho/bufferline.nvim",
-        tag = "*",
+        "romgrk/barbar.nvim",
         event = "BufReadPre",
+        requires = { "kyazdani42/nvim-web-devicons" },
         config = "require('plugins.configs.bufferline')",
     })
 

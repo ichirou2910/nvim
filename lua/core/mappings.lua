@@ -17,18 +17,25 @@ map("v", "p", '"_dP')
 map("i", "<c-j>", '"\\<c-n>"', { expr = true })
 map("i", "<c-k>", '"\\<c-p>"', { expr = true })
 
--- Buffer nav
-map("n", "<Tab>", ":BufferLineCycleNext<CR>")
-map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
-map("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>")
-map("n", "<A-2>", ":BufferLineGoToBuffer 2<CR>")
-map("n", "<A-3>", ":BufferLineGoToBuffer 3<CR>")
-map("n", "<A-4>", ":BufferLineGoToBuffer 4<CR>")
-map("n", "<A-5>", ":BufferLineGoToBuffer 5<CR>")
-map("n", "<A-6>", ":BufferLineGoToBuffer 6<CR>")
-map("n", "<A-7>", ":BufferLineGoToBuffer 7<CR>")
-map("n", "<A-8>", ":BufferLineGoToBuffer 8<CR>")
-map("n", "<A-9>", ":BufferLineGoToBuffer 9<CR>")
+-- Buffer
+map("n", "<Tab>", ":BufferNext<CR>")
+map("n", "<S-Tab>", ":BufferPrevious<CR>")
+map("n", "<A-.>", ":BufferNext<CR>")
+map("n", "<A-,>", ":BufferPrevious<CR>")
+
+map("n", "<A-1>", ":BufferGoto 1<CR>")
+map("n", "<A-2>", ":BufferGoto 2<CR>")
+map("n", "<A-3>", ":BufferGoto 3<CR>")
+map("n", "<A-4>", ":BufferGoto 4<CR>")
+map("n", "<A-5>", ":BufferGoto 5<CR>")
+map("n", "<A-6>", ":BufferGoto 6<CR>")
+map("n", "<A-7>", ":BufferGoto 7<CR>")
+map("n", "<A-8>", ":BufferGoto 8<CR>")
+map("n", "<A-9>", ":BufferGoto 9<CR>")
+map("n", "<A-0>", ":BufferLast<CR>")
+
+map("n", "<A->>", ":BufferMoveNext<CR>")
+map("n", "<A-<>", ":BufferMovePrevious<CR>")
 
 -- Block movement
 map("v", "J", ":m '>+1<CR>gv=gv")
