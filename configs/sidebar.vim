@@ -10,8 +10,8 @@ endfunction
 
 function! s:sidebar_close_notes()
   for l:bufnr in range(1, bufnr('$'))
-    if bufname(winbufnr(l:bufnr)) =~ 'project-notes.notes'
-      bdelete l:bufnr
+    if bufname(l:bufnr) =~ 'project-notes.notes'
+      lua vim.api.nvim_buf_delete(vim.api.nvim_eval('l:bufnr'), {})
     endif
   endfor
 endfunction
