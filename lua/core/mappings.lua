@@ -14,8 +14,8 @@ map("v", ">", ">gv")
 map("v", "p", '"_dP')
 
 -- Better nav
-map("i", "<c-j>", '"\\<c-n>"', { expr = true })
-map("i", "<c-k>", '"\\<c-p>"', { expr = true })
+-- map("i", "<c-j>", '"\\<c-n>"', { expr = true })
+-- map("i", "<c-k>", '"\\<c-p>"', { expr = true })
 
 -- Buffer
 map("n", "<Tab>", ":BufferNext<CR>")

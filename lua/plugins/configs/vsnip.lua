@@ -1,3 +1,5 @@
+vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/lua/snippets/"
+
 vim.api.nvim_exec(
     [[
         imap <expr> <C-j> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
@@ -7,10 +9,3 @@ vim.api.nvim_exec(
     ]],
     false
 )
-
--- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
--- vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
--- vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})
