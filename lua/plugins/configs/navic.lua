@@ -40,4 +40,6 @@ navic.setup({
     depth_limit_indicator = "..",
 })
 
+vim.g.navic_silence = true
+
 require("core.utils").highlight_group("navic")
