@@ -18,8 +18,6 @@ map("v", "p", '"_dP')
 -- map("i", "<c-k>", '"\\<c-p>"', { expr = true })
 
 -- Buffer
-map("n", "<Tab>", ":BufferNext<CR>")
-map("n", "<S-Tab>", ":BufferPrevious<CR>")
 map("n", "<A-.>", ":BufferNext<CR>")
 map("n", "<A-,>", ":BufferPrevious<CR>")
 
