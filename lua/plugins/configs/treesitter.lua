@@ -13,6 +13,11 @@ require("nvim-treesitter.configs").setup({
     },
     rainbow = {
         enable = true,
+        colors = {
+            "#ffcb0c",
+            "#da70d6",
+            "#179bff",
+        },
     },
     textobjects = {
         select = {
