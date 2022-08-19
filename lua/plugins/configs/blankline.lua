@@ -12,6 +12,7 @@ vim.cmd([[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]])
 vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]])
 
 require("indent_blankline").setup({
+    viewport_buffer = 100,
     indentLine_enabled = 1,
     char = "▏", -- '│'
     context_char = "▏", -- '│'
@@ -27,36 +28,13 @@ require("indent_blankline").setup({
         "WhichKey",
         "",
     },
-    context_patterns = {
-        "class",
-        "function",
-        "func_literal",
-        "method",
-        "^if",
-        "while",
-        "for",
-        "with",
-        "try",
-        "except",
-        "argument_list",
-        "object",
-        "dictionary",
-        "element",
-    },
-    context_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
-    },
     space_char_blankline = " ",
-    use_treesitter = true,
+    use_treesitter_scope = true,
     show_current_context = true,
     show_trailing_blankline_indent = false,
     show_first_indent_level = false,
     show_foldtext = false,
     strict_tabs = true,
     max_indent_increase = 1,
+    disable_with_nolist = true,
 })
