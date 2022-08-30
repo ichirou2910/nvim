@@ -60,6 +60,12 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.blankline')",
     })
 
+    use({
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async",
+        config = "require('plugins.configs.ufo')",
+    })
+
     -- Working dir
     use({
         "notjedi/nvim-rooter.lua",

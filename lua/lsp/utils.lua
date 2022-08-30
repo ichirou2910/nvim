@@ -108,6 +108,11 @@ function M.get_capabilities()
     -- for nvim-cmp
     capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+
     capabilities.textDocument.codeAction = {
         dynamicRegistration = true,
         codeActionLiteralSupport = {
@@ -139,6 +144,8 @@ function M.get_capabilities()
             properties = { "documentation", "detail", "additionalTextEdits" },
         },
     }
+
+    return capabilities
 end
 
 function M.lsp_attach(client, bufnr)

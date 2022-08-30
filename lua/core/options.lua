@@ -41,9 +41,10 @@ vim.opt.clipboard = { "unnamedplus" } -- Copy paste between vim and everything e
 vim.opt.incsearch = true
 vim.opt.switchbuf = { "useopen", "usetab" }
 vim.opt.completeopt = { "menuone", "noselect" }
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 vim.opt.wrap = false
 
 vim.opt.title = true
@@ -55,8 +56,7 @@ vim.o.winbar = "%{%v:lua.navic_location()%}"
 
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
--- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-vim.opt.fillchars = { eob = " " }
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
