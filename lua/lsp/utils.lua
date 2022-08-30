@@ -158,12 +158,12 @@ function M.get_capabilities()
     -- for nvim-cmp
     capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-    capabilities.textDocument.foldingRange = {
+    vim.tbl_extend("force", capabilities.textDocument.foldingRange, {
         dynamicRegistration = false,
         lineFoldingOnly = true,
-    }
+    })
 
-    capabilities.textDocument.codeAction = {
+    vim.tbl_extend("force", capabilities.textDocument.codeAction, {
         dynamicRegistration = true,
         codeActionLiteralSupport = {
             codeActionKind = {
@@ -174,9 +174,9 @@ function M.get_capabilities()
                 end)(),
             },
         },
-    }
+    })
 
-    capabilities.textDocument.completion.completionItem = {
+    vim.tbl_extend("force", capabilities.textDocument.completion.completionItem, {
         documentationFormat = {
             "markdown",
             "plaintext",
@@ -193,7 +193,7 @@ function M.get_capabilities()
         resolveSupport = {
             properties = { "documentation", "detail", "additionalTextEdits" },
         },
-    }
+    })
 
     return capabilities
 end
