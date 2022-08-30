@@ -86,11 +86,9 @@ local function lsp_omnisharp()
         },
         cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
         -- Enables support for roslyn analyzers, code fixes and rulesets.
-        enable_roslyn_analyzers = true,
+        --[[ enable_roslyn_analyzers = true, ]]
         -- Specifies whether 'using' directives should be grouped and sorted during document formatting.
         organize_imports_on_format = true,
-        -- Enables support for showing unimported types and unimported extension methods in completion lists.
-        enable_import_completion = true,
     }
     lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
 end

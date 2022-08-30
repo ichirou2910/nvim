@@ -81,6 +81,9 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.comment')",
     })
 
+    -- Editorconfig
+    use({ "gpanders/editorconfig.nvim" })
+
     -- Database
     use({ "tpope/vim-dadbod", config = vim.cmd([[ source ~/.config/nvim/configs/dadbod.vim ]]) })
     use({ "kristijanhusak/vim-dadbod-ui" })

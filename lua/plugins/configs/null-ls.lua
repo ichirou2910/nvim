@@ -14,12 +14,16 @@ local sources = {
     builtins.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
     -- Format
-    builtins.formatting.prettierd.with({ filetypes = { "html", "json", "markdown", "scss", "css" } }),
+    builtins.formatting.prettierd.with({
+        filetypes = { "html", "json", "markdown", "scss", "css" },
+        prefer_local = "node_modules/.bin",
+    }),
     builtins.formatting.shfmt,
     builtins.formatting.stylua,
 
     -- Code actions
     builtins.code_actions.eslint_d,
+    builtins.code_actions.shellcheck,
 }
 
 local M = {}
