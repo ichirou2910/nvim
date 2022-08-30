@@ -90,9 +90,9 @@ local radium_theme = {
         b = { bg = theme_colors.one_bg, fg = theme_colors.red },
     },
     inactive = {
-        a = { bg = theme_colors.statusline_bg, fg = theme_colors.blue },
-        b = { bg = theme_colors.statusline_bg, fg = theme_colors.one_bg, gui = "bold" },
-        c = { bg = theme_colors.statusline_bg, fg = theme_colors.one_bg },
+        a = { bg = nil, fg = theme_colors.blue },
+        b = { bg = nil, fg = theme_colors.one_bg3, gui = "bold" },
+        c = { bg = nil, fg = theme_colors.one_bg3 },
     },
 }
 
