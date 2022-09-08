@@ -6,6 +6,7 @@ end
 
 neotest.setup({
     adapters = {
-        require("neotest-vim-test")({ allow_file_types = { "cs" } }),
+        require("neotest-dotnet"),
+        require("neotest-rust"),
     },
 })

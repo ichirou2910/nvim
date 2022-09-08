@@ -435,6 +435,8 @@ require("packer").startup(function(use)
             "nvim-treesitter/nvim-treesitter",
             "antoinemadec/FixCursorHold.nvim",
             { "nvim-neotest/neotest-vim-test", requires = "vim-test/vim-test" },
+            { "Issafalcon/neotest-dotnet" },
+            { "rouge8/neotest-rust" },
         },
     })
 
