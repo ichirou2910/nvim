@@ -385,6 +385,10 @@ require("packer").startup(function(use)
         ft = "dart",
         config = "require('lsp.flutter')",
     })
+    use({"simrat39/rust-tools.nvim",
+        config = "require('lsp.rust')",
+        after = { "nvim-lspconfig" },
+    })
     use({
         "RishabhRD/nvim-lsputils",
         requires = { "RishabhRD/popfix" },
