@@ -34,6 +34,53 @@ function M.lsp_diagnostics()
     vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
     vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 
+    -- LSP Progress notification
+    vim.lsp.handlers["$/progress"] = function(_, result, ctx)
+        local client_id = ctx.client_id
+        local client_name = vim.lsp.get_client_by_id(client_id).name
+
+        -- Suppress notification from null-ls
+        if client_name == "null-ls" then
+            return
+        end
+
+        local val = result.value
+
+        if not val.kind then
+            return
+        end
+
+        local notif_data = utils.notify.get_notif_data(client_id, result.token)
+
+        if val.kind == "begin" then
+            local message = utils.notify.format_message(val.message, val.percentage)
+
+            notif_data.notification = vim.notify(message, "info", {
+                title = utils.notify.format_title(val.title, client_name),
+                icon = utils.notify.spinner_frames[1],
+                timeout = false,
+                hide_from_history = false,
+            })
+
+            notif_data.spinner = 1
+            utils.notify.update_spinner(client_id, result.token)
+        elseif val.kind == "report" and notif_data then
+            notif_data.notification = vim.notify(utils.notify.format_message(val.message, val.percentage), "info", {
+                replace = notif_data.notification,
+                hide_from_history = false,
+            })
+        elseif val.kind == "end" and notif_data then
+            notif_data.notification =
+                vim.notify(val.message and utils.notify.format_message(val.message) or "Complete", "info", {
+                    icon = "",
+                    replace = notif_data.notification,
+                    timeout = 250,
+                })
+
+            notif_data.spinner = nil
+        end
+    end
+
     -- LSP Message notification
     local lspMsgSeverity = {
         "error",
