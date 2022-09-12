@@ -102,6 +102,17 @@ lualine.setup({
         globalstatus = true,
         component_separators = { left = icons.ui.SeperatorLeft, right = icons.ui.SeperatorRight },
         section_separators = { left = icons.ui.SeperatorLeftFill, right = icons.ui.SeperatorRightFill },
+        ignore_focus = {
+            "NvimTree",
+            "packer",
+            "toggleterm",
+            "dapui_scopes",
+            "dapui_stacks",
+            "dapui_breakpoints",
+            "dapui_watches",
+            "dap-repl",
+            "Trouble",
+        },
     },
     sections = {
         lualine_a = { { cwd_name } },
