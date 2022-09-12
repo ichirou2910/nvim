@@ -37,7 +37,7 @@ vim.opt.writebackup = false -- This is recommended by coc
 vim.opt.shortmess:append("csI") -- Don't pass messages to |ins-completion-menu|.
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.updatetime = 300 -- Faster completion
-vim.opt.clipboard = { "unnamedplus" } -- Copy paste between vim and everything else
+vim.opt.clipboard = { "unnamed", "unnamedplus" } -- Copy paste between vim and everything else
 vim.opt.incsearch = true
 vim.opt.switchbuf = { "useopen", "usetab" }
 vim.opt.completeopt = { "menuone", "noselect" }
