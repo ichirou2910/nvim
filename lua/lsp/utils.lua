@@ -211,6 +211,7 @@ function M.lsp_attach(client, bufnr)
     if client.supports_method("textDocument/documentSymbol") then
         navic.attach(client, bufnr)
     end
+    require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
 return M

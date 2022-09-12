@@ -363,6 +363,7 @@ require("packer").startup(function(use)
             "cmp-nvim-lsp",
             "null-ls.nvim",
             "typescript.nvim",
+            "lsp-inlayhints.nvim",
         },
         config = "require('lsp')",
         requires = {
@@ -397,6 +398,10 @@ require("packer").startup(function(use)
         "RishabhRD/nvim-lsputils",
         requires = { "RishabhRD/popfix" },
         after = { "nvim-lspconfig" },
+    })
+    use({
+        "lvimuser/lsp-inlayhints.nvim",
+        config = "require('plugins.configs.inlay-hints')",
     })
 
     -- Auto complete + snippets

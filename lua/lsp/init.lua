@@ -21,6 +21,15 @@ local function lsp_tsserver()
         server = {
             on_attach = lsp_utils.lsp_attach,
         },
+        inlayHints = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+        },
     })
 end
 
@@ -44,6 +53,15 @@ local function lsp_sumneko_lua()
                     enable = false,
                 },
                 diagnostics = { globals = { "vim" } },
+                hint = {
+                    enable = true,
+                    arrayIndex = "Disable", -- "Enable", "Auto", "Disable"
+                    await = true,
+                    paramName = "Disable", -- "All", "Literal", "Disable"
+                    paramType = false,
+                    semicolon = "Disable", -- "All", "SameLine", "Disable"
+                    setType = true,
+                },
                 runtime = { version = "LuaJIT", path = runtime_path },
                 workspace = {
                     library = {
