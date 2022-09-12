@@ -99,7 +99,7 @@ local radium_theme = {
 lualine.setup({
     options = {
         theme = radium_theme,
-        globalstatus = false,
+        globalstatus = true,
         component_separators = { left = icons.ui.SeperatorLeft, right = icons.ui.SeperatorRight },
         section_separators = { left = icons.ui.SeperatorLeftFill, right = icons.ui.SeperatorRightFill },
     },
