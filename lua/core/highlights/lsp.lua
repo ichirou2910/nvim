@@ -17,4 +17,5 @@ return {
     LspReferenceWrite = { fg = colors.darker_black, bg = colors.white },
     PreviewBorder = { fg = colors.statusline_bg, bg = colors.statusline_bg },
     PreviewFloat = { bg = colors.statusline_bg },
+    LspInlayHint = { fg = "#d8d8d8", bg = "#333942" },
 }
