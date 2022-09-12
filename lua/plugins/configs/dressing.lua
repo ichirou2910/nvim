@@ -1,9 +1,10 @@
 require("dressing").setup({
     input = {
         relative = "cursor",
-        winblend = 0,
+        winblend = 10,
         insert_only = false,
-        border = "solid",
+        border = "rounded",
+        winhighlight = "NormalFloat:PreviewFloat,FloatBorder:PreviewBorder",
     },
     select = {
         backend = { "telescope", "fzf", "builtin" },

@@ -15,4 +15,6 @@ return {
     LspReferenceText = { fg = colors.darker_black, bg = colors.white },
     LspReferenceRead = { fg = colors.darker_black, bg = colors.white },
     LspReferenceWrite = { fg = colors.darker_black, bg = colors.white },
+    PreviewBorder = { fg = colors.statusline_bg, bg = colors.statusline_bg },
+    PreviewFloat = { bg = colors.statusline_bg },
 }
