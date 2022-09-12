@@ -27,6 +27,7 @@ require("packer").init({
             return require("packer.util").float({ border = "rounded" })
         end,
     },
+    max_jobs = 9,
 })
 
 -- local use = require("packer").use
