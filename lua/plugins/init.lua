@@ -42,9 +42,6 @@ require("packer").startup(function(use)
     use("nvim-lua/popup.nvim")
     use({ "nvim-lua/plenary.nvim", module = "plenary" })
 
-    -- Optimize
-    use({ "antoinemadec/FixCursorHold.nvim", config = vim.cmd([[let g:cursorhold_updatetime = 100]]) })
-
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",
