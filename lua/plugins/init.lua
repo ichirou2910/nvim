@@ -417,19 +417,18 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "hrsh7th/cmp-vsnip",
+            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-cmdline",
             "kristijanhusak/vim-dadbod-completion",
             "rafamadriz/friendly-snippets",
             "honza/vim-snippets",
+            {
+                "L3MON4D3/LuaSnip",
+                wants = { "friendly-snippets", "vim-snippets" },
+                config = "require('plugins.configs.snips')",
+            },
         },
         config = "require('plugins.configs.nvim-cmp')",
-    })
-
-    use({
-        "hrsh7th/vim-vsnip",
-        requires = { { "hrsh7th/vim-vsnip-integ" } },
-        config = "require('plugins.configs.vsnip')",
     })
 
     -- Testing
