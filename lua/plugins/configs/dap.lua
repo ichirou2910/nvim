@@ -2,11 +2,6 @@ local dap = require("dap")
 local notify_utils = require("core.utils").notify
 
 -- Setup
-dap.adapters.lldb = {
-    type = "executable",
-    command = "/usr/bin/lldb-vscode", -- adjust as needed
-    name = "lldb",
-}
 vim.fn.sign_define("DapBreakpoint", {
     text = "",
     texthl = "DiagnosticError",
@@ -32,8 +27,7 @@ vim.fn.sign_define("DapLogPoint", {
     numhl = "",
 })
 
--- Config
--- # Adapters
+-- Adapters
 -- .NET Core
 dap.adapters.coreclr = function(cb, config)
     if config.preLaunchTask then
@@ -52,7 +46,15 @@ dap.adapters.coreclr = function(cb, config)
     })
 end
 
--- # Configuration
+-- C/C++/Rust
+dap.adapters.lldb = {
+    type = "executable",
+    command = "/usr/bin/lldb-vscode", -- adjust as needed
+    name = "lldb",
+}
+
+-- Configuration
+-- C/C++
 dap.configurations.cpp = {
     {
         name = "Launch",
@@ -67,8 +69,9 @@ dap.configurations.cpp = {
         runInTerminal = false,
     },
 }
+dap.configurations.c = dap.configurations.cpp
 
--- C# configuration
+-- C#
 dap.configurations.cs = (function()
     local fd = vim.loop.fs_open(vim.fn.getcwd() .. "/.vim/dap.json", "r", 438)
     local dap_config = {}
@@ -104,8 +107,6 @@ dap.configurations.cs = (function()
     })
     return dap_config
 end)()
-
-dap.configurations.c = dap.configurations.cpp
 
 -- Notification
 dap.listeners.before["event_progressStart"]["progress-notifications"] = function(session, body)
@@ -143,6 +144,6 @@ dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(s
 end
 
 -- Load VSCode's launch.json file
-require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" }, coreclr = { "cs" } })
+require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" } })
 
 require("core.utils").highlight_group("dap")
