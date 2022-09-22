@@ -20,7 +20,7 @@ require("bufferline").setup({
 
     -- Excludes buffers from the tabline
     exclude_ft = { "fugitive" },
-    exclude_name = { "[dap-repl]", "project-notes.notes" },
+    exclude_name = { "[dap-repl]", "project-notes.notes", "api.http" },
 
     -- Enable/disable icons
     -- if set to 'numbers', will show buffer index in the tabline

@@ -107,6 +107,13 @@ require("packer").startup(function(use)
     -- Surround
     use({ "tpope/vim-surround", event = "InsertEnter" })
 
+    -- Rest client
+    use({
+        "rest-nvim/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = "require('plugins.configs.rest')",
+    })
+
     -- Files
     use("tpope/vim-eunuch")
     use({
