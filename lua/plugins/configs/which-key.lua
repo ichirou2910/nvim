@@ -186,6 +186,7 @@ local n_mappings = {
     -- plugins/sidebar.vim
     s = {
         name = "Sidebar",
+        b = "Debug",
         c = "Close sidebar",
         d = "Database",
         e = "NVIM Tree",
