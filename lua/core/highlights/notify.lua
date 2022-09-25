@@ -1,3 +1,5 @@
+local colors = require("themes." .. vim.g.nv_theme).base_30
+
 return {
     NotifyERRORTitle = { fg = "#f7768e", bg = nil },
     NotifyERRORBorder = { fg = "#f7768e", bg = nil },
