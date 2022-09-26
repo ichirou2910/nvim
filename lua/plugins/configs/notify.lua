@@ -4,22 +4,33 @@ if not status_ok then
     return
 end
 
-local vim_api = vim.api
+local api = vim.api
 local notify_base = require("notify.render.base")
 local utils = require("core.utils")
+local stages_util = require("notify.stages.util")
+
+local padding = {
+    vert = 1,
+    hori = 1,
+}
 
 local function custom_render(bufnr, notif, highlights, config)
     local icon = notif.icon .. " "
     local messages = notif.message
-    for i = 1, #messages do
-        messages[i] = "   " .. messages[i] .. " "
-    end
     local title = notif.title[1]
 
     local namespace = notify_base.namespace()
 
-    vim_api.nvim_buf_set_lines(bufnr, 0, #notif.message, false, notif.message)
-    vim_api.nvim_buf_set_extmark(bufnr, namespace, 0, 0, {
+    for i = 1, #messages do
+        api.nvim_buf_set_lines(bufnr, i - 1, 0, false, { "   " .. messages[i] })
+        api.nvim_buf_set_extmark(bufnr, namespace, i - 1, 0, {
+            hl_group = highlights.body,
+            end_line = i - 1,
+            end_col = #messages[#messages],
+            priority = 50, -- Allow treesitter to override
+        })
+    end
+    api.nvim_buf_set_extmark(bufnr, namespace, 0, 0, {
         virt_text = {
             { " " },
             { icon, highlights.icon },
@@ -27,17 +38,11 @@ local function custom_render(bufnr, notif, highlights, config)
         virt_text_win_col = 0,
         priority = 10,
     })
-    vim_api.nvim_buf_set_extmark(bufnr, namespace, 0, 0, {
-        hl_group = highlights.body,
-        end_line = #notif.message - 1,
-        end_col = #notif.message[#notif.message],
-        priority = 10,
-    })
 
     if not utils.isEmpty(title) then
-        vim_api.nvim_buf_set_lines(bufnr, #notif.message + 1, -1, false, { "" })
+        api.nvim_buf_set_lines(bufnr, #messages, -1, false, { "" })
         -- title
-        vim_api.nvim_buf_set_extmark(bufnr, namespace, #notif.message, 0, {
+        api.nvim_buf_set_extmark(bufnr, namespace, #messages, 0, {
             virt_text = {
                 { " " },
                 { title, highlights.title },
@@ -49,27 +54,42 @@ local function custom_render(bufnr, notif, highlights, config)
     end
 end
 
+local function custom_stages()
+    return {
+        function(state)
+            local next_height = state.message.height + 2
+            local next_row = stages_util.available_slot(state.open_windows, next_height, stages_util.DIRECTION.TOP_DOWN)
+            if not next_row then
+                return nil
+            end
+            return {
+                relative = "editor",
+                anchor = "NE",
+                width = state.message.width,
+                height = state.message.height,
+                col = vim.opt.columns:get() - padding.vert,
+                row = next_row + padding.hori,
+                border = "none",
+                style = "minimal",
+            }
+        end,
+        function()
+            return {
+                col = { vim.opt.columns:get() - padding.vert },
+                time = true,
+            }
+        end,
+    }
+end
+
 notify.setup({
-    -- Animation style
-    -- fade_in_slide_out, slide, static, fade
-    stages = "static",
+    stages = custom_stages(),
     render = custom_render,
 
-    -- Function called when a new window is opened, use for changing win settings/config
-    --[[ on_open = function(win) ]]
-    --[[     vim.api.nvim_win_set_config(win, { ]]
-    --[[         border = { "╭", "─", "╮", "│", "╯", "", "╰", "│" }, ]]
-    --[[     }) ]]
-    --[[ end, ]]
-
-    -- Default timeout for notifications
     timeout = 4000,
 
-    -- For stages that change opacity this is treated as the highlight behind the window
-    -- Set this to either a highlight group or an RGB hex value e.g. "#000000"
     background_colour = "#15191e",
 
-    -- Icons for the different levels
     icons = {
         ERROR = "",
         WARN = "",
