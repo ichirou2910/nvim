@@ -60,13 +60,13 @@ let g:sidebars = {
   \ "git": {
   \     "position": "left",
   \     "check_win": {nr -> bufname(winbufnr(nr)) =~? "^fugitive:///"},
-  \     "open": "topleft vert Git | vertical resize " .. g:sidebar_width .. " | set winfixwidth",
+  \     "open": "topleft vert Git | vertical resize " .. g:sidebar_width .. " | setlocal winfixwidth nobuflisted",
   \     "close": "SidebarCloseGit"
   \ },
   \ "notes": {
   \     "position": "left",
   \     "check_win": {nr -> bufname(winbufnr(nr)) =~ "project-notes.notes"},
-  \     "open": "topleft " .. g:sidebar_width .. " vnew project-notes.notes" .. " | set winfixwidth",
+  \     "open": "topleft " .. g:sidebar_width .. " vnew project-notes.notes" .. " | setlocal cursorline noswapfile winfixwidth nobuflisted bufhidden=hide",
   \     "close": "SidebarCloseNotes"
   \ },
   \ }
