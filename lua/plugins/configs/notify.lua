@@ -22,7 +22,7 @@ local function custom_render(bufnr, notif, highlights, config)
     local namespace = notify_base.namespace()
 
     for i = 1, #messages do
-        api.nvim_buf_set_lines(bufnr, i - 1, 0, false, { "   " .. messages[i] })
+        api.nvim_buf_set_lines(bufnr, i - 1, i - 1, false, { "   " .. messages[i] })
         api.nvim_buf_set_extmark(bufnr, namespace, i - 1, 0, {
             hl_group = highlights.body,
             end_line = i - 1,
