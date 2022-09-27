@@ -56,6 +56,8 @@ vim.o.winbar = "%{%v:lua.navic_location()%}"
 
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
+vim.o.foldoptions = "nodigits"
+
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- disable some builtin vim plugins
