@@ -405,6 +405,7 @@ require("packer").startup(function(use)
     })
     use({
         "lvimuser/lsp-inlayhints.nvim",
+        branch = "anticonceal",
         config = "require('plugins.configs.inlay-hints')",
     })
 
