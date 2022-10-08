@@ -41,6 +41,7 @@ vim.opt.clipboard = { "unnamed", "unnamedplus" } -- Copy paste between vim and e
 vim.opt.incsearch = true
 vim.opt.switchbuf = { "useopen", "usetab" }
 vim.opt.completeopt = { "menuone", "noselect" }
+vim.o.splitkeep = "screen"
 vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
