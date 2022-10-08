@@ -1,4 +1,5 @@
 local status_ok, notify = pcall(require, "notify")
+local custom_border = require("core.utils").custom_border
 
 if not status_ok then
     return
@@ -69,7 +70,8 @@ local function custom_stages()
                 height = state.message.height,
                 col = vim.opt.columns:get() - padding.vert,
                 row = next_row + padding.hori,
-                border = "none",
+                border = custom_border("FloatBorder"),
+
                 style = "minimal",
             }
         end,

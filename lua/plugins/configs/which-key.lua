@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+local custom_border = require("core.utils").custom_border
+
 which_key.setup({
     plugins = {
         marks = false, -- shows a list of your marks on ' and `
@@ -24,7 +26,7 @@ which_key.setup({
         group = "+", -- symbol prepended to a group
     },
     window = {
-        border = "single", -- none, single, double, shadow
+        border = custom_border("WhichKeyBorder"),
         position = "bottom", -- bottom, top
         margin = { 1, 1, 1, 1 }, -- extra window margin [top, right, bottom, left]
         padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]

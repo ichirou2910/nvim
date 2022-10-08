@@ -1,5 +1,21 @@
 local M = {}
 
+M.custom_border = function(hl_name)
+    if M.isEmpty(hl_name) then
+        return { "", "", "", "", "", "", "", "" }
+    end
+    return {
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+        { "", hl_name },
+    }
+end
+
 M.map = function(mode, keys, cmd, opt)
     local options = { noremap = true, silent = true }
     if opt then
