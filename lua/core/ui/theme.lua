@@ -5,6 +5,6 @@ if vim.fn.has("termguicolors") == 1 then
 end
 
 -- Available themes
-vim.g.nv_theme = "radium"
+vim.g.nv_theme = "catppuccin"
 
 require("core.utils").highlight_group("general")
