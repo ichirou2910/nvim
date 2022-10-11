@@ -23,7 +23,7 @@ local function custom_render(bufnr, notif, highlights, config)
     local namespace = notify_base.namespace()
 
     for i = 1, #messages do
-        api.nvim_buf_set_lines(bufnr, i - 1, i - 1, false, { "   " .. messages[i] })
+        api.nvim_buf_set_lines(bufnr, i - 1, i - 1, false, { "  " .. messages[i] })
         api.nvim_buf_set_extmark(bufnr, namespace, i - 1, 0, {
             hl_group = highlights.body,
             end_line = i - 1,
@@ -33,7 +33,6 @@ local function custom_render(bufnr, notif, highlights, config)
     end
     api.nvim_buf_set_extmark(bufnr, namespace, 0, 0, {
         virt_text = {
-            { " " },
             { icon, highlights.icon },
         },
         virt_text_win_col = 0,
@@ -45,7 +44,6 @@ local function custom_render(bufnr, notif, highlights, config)
         -- title
         api.nvim_buf_set_extmark(bufnr, namespace, #messages, 0, {
             virt_text = {
-                { " " },
                 { title, highlights.title },
                 { " " },
             },
@@ -58,7 +56,7 @@ end
 local function custom_stages()
     return {
         function(state)
-            local next_height = state.message.height + 2
+            local next_height = state.message.height
             local next_row = stages_util.available_slot(state.open_windows, next_height, stages_util.DIRECTION.TOP_DOWN)
             if not next_row then
                 return nil
@@ -69,7 +67,7 @@ local function custom_stages()
                 width = state.message.width,
                 height = state.message.height,
                 col = vim.opt.columns:get() - padding.vert,
-                row = next_row + padding.hori,
+                row = next_row,
                 border = custom_border("FloatBorder"),
 
                 style = "minimal",
