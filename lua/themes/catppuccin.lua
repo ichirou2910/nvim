@@ -32,7 +32,7 @@ M.base_30 = {
     pmenu_bg = "#ABE9B3",
     folder_bg = "#89B4FA",
     lavender = "#c7d1ff",
-    float_bg = "#24292e",
+    float_bg = "#191828",
 }
 
 M.base_16 = {
