@@ -38,10 +38,6 @@ require("packer").startup(function(use)
 
     use({ "nathom/filetype.nvim" })
 
-    -- Necessary deps
-    use("nvim-lua/popup.nvim")
-    use({ "nvim-lua/plenary.nvim", module = "plenary" })
-
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",
@@ -225,11 +221,11 @@ require("packer").startup(function(use)
         "Weissle/persistent-breakpoints.nvim",
         requires = "mfussenegger/nvim-dap",
         config = function()
-            require("persistent-breakpoints").setup({})
-            vim.api.nvim_create_autocmd(
-                { "BufReadPost" },
-                { callback = require("persistent-breakpoints.api").load_breakpoints }
-            )
+            require("persistent-breakpoints").setup({
+                save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
+                load_breakpoints_event = { "BufReadPost" },
+                perf_record = false,
+            })
         end,
     })
 
@@ -262,9 +258,11 @@ require("packer").startup(function(use)
             require("tmux").setup({
                 copy_sync = {
                     enable = true,
+                    redirect_to_clipboard = true,
                 },
                 navigation = {
                     enable_default_keybindings = true,
+                    persist_zoom = true,
                 },
                 resize = {
                     enable_default_keybindings = true,
@@ -405,7 +403,7 @@ require("packer").startup(function(use)
     })
     use({
         "lvimuser/lsp-inlayhints.nvim",
-        branch = "anticonceal",
+        --[[ branch = "anticonceal", ]]
         config = "require('plugins.configs.inlay-hints')",
     })
 
@@ -446,7 +444,6 @@ require("packer").startup(function(use)
         requires = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
             { "nvim-neotest/neotest-vim-test", requires = "vim-test/vim-test" },
             { "Issafalcon/neotest-dotnet" },
             { "rouge8/neotest-rust" },
