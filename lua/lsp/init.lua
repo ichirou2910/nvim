@@ -102,10 +102,8 @@ local function lsp_omnisharp()
         handlers = {
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
-        cmd = { binary, "--languageserver", "--hostPID", tostring(pid) },
-        -- Enables support for roslyn analyzers, code fixes and rulesets.
-        --[[ enable_roslyn_analyzers = true, ]]
-        -- Specifies whether 'using' directives should be grouped and sorted during document formatting.
+        cmd = { binary, "--languageserver", "--hostPID", tostring(pid), "--loglevel", "information" },
+
         organize_imports_on_format = true,
     }
     lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
