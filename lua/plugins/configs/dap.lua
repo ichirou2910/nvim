@@ -32,6 +32,7 @@ vim.fn.sign_define("DapLogPoint", {
 dap.adapters.coreclr = function(cb, config)
     if config.preLaunchTask then
         -- vim.api.nvim_command('call VimuxRunCommand("' .. config.preLaunchTask .. '")')
+        vim.loop.chdir(config.cwd)
         vim.fn.system(config.preLaunchTask)
         -- Doesn't fire debugger if preLaunchTask failed
         if vim.v.shell_error ~= 0 then
