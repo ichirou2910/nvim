@@ -1,6 +1,3 @@
-local g = vim.g
-
--- GENERAL SETTINGS
 vim.opt.iskeyword:append("-") -- treat dash separated words as a word text object"
 vim.opt.sessionoptions:append("globals")
 
@@ -84,5 +81,5 @@ local disabled_built_ins = {
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
+    vim.g["loaded_" .. plugin] = 1
 end

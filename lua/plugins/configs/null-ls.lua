@@ -7,6 +7,7 @@ end
 local lsp_utils = require("lsp.utils")
 
 local builtins = null_ls.builtins
+local command_resolver = require("null-ls.helpers.command_resolver")
 
 local sources = {
     -- Diagnostics
@@ -16,7 +17,7 @@ local sources = {
     -- Format
     builtins.formatting.prettierd.with({
         filetypes = { "html", "json", "markdown", "scss", "css" },
-        prefer_local = "node_modules/.bin",
+        dynamic_command = command_resolver.from_node_modules(),
     }),
     builtins.formatting.shfmt,
     builtins.formatting.stylua,

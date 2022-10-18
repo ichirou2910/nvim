@@ -89,7 +89,7 @@ function M.lsp_diagnostics()
         "info", -- map both hint and info to info?
     }
     vim.lsp.handlers["window/showMessage"] = function(err, method, params, client_id)
-        vim.notify(method.message, lspMsgSeverity[params.type])
+        -- vim.notify("", lspMsgSeverity[params.type])
     end
 
     -- Show diagnostics in a pop-up window on hover
@@ -159,47 +159,45 @@ function M.lsp_config(client, bufnr)
 end
 
 function M.get_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
     -- for nvim-cmp
-    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-    }
+    --[[ capabilities.textDocument.foldingRange = { ]]
+    --[[     dynamicRegistration = false, ]]
+    --[[     lineFoldingOnly = true, ]]
+    --[[ } ]]
 
-    vim.tbl_extend("force", capabilities.textDocument.codeAction, {
-        dynamicRegistration = true,
-        codeActionLiteralSupport = {
-            codeActionKind = {
-                valueSet = (function()
-                    local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
-                    table.sort(res)
-                    return res
-                end)(),
-            },
-        },
-    })
-
-    vim.tbl_extend("force", capabilities.textDocument.completion.completionItem, {
-        documentationFormat = {
-            "markdown",
-            "plaintext",
-        },
-        snippetSupport = true,
-        preselectSupport = true,
-        insertReplaceSupport = true,
-        labelDetailsSupport = true,
-        deprecatedSupport = true,
-        commitCharactersSupport = true,
-        tagSupport = {
-            valueSet = { 1 },
-        },
-        resolveSupport = {
-            properties = { "documentation", "detail", "additionalTextEdits" },
-        },
-    })
+    --[[ vim.tbl_extend("force", capabilities.textDocument.codeAction, { ]]
+    --[[     dynamicRegistration = true, ]]
+    --[[     codeActionLiteralSupport = { ]]
+    --[[         codeActionKind = { ]]
+    --[[             valueSet = (function() ]]
+    --[[                 local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind) ]]
+    --[[                 table.sort(res) ]]
+    --[[                 return res ]]
+    --[[             end)(), ]]
+    --[[         }, ]]
+    --[[     }, ]]
+    --[[ }) ]]
+    --[[]]
+    --[[ vim.tbl_extend("force", capabilities.textDocument.completion.completionItem, { ]]
+    --[[     documentationFormat = { ]]
+    --[[         "markdown", ]]
+    --[[         "plaintext", ]]
+    --[[     }, ]]
+    --[[     snippetSupport = true, ]]
+    --[[     preselectSupport = true, ]]
+    --[[     insertReplaceSupport = true, ]]
+    --[[     labelDetailsSupport = true, ]]
+    --[[     deprecatedSupport = true, ]]
+    --[[     commitCharactersSupport = true, ]]
+    --[[     tagSupport = { ]]
+    --[[         valueSet = { 1 }, ]]
+    --[[     }, ]]
+    --[[     resolveSupport = { ]]
+    --[[         properties = { "documentation", "detail", "additionalTextEdits" }, ]]
+    --[[     }, ]]
+    --[[ }) ]]
 
     return capabilities
 end
