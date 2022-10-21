@@ -230,7 +230,12 @@ require("packer").startup(function(use)
     })
 
     -- Smooth scroll
-    use({ "psliwka/vim-smoothie", config = vim.cmd([[let g:smoothie_enabled = 1]]) })
+    use({
+        "karb94/neoscroll.nvim",
+        config = function()
+            require("neoscroll").setup()
+        end,
+    })
 
     -- Markdown Preview
     use({
