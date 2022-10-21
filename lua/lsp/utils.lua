@@ -5,15 +5,16 @@ local M = {}
 
 function M.lsp_diagnostics()
     vim.diagnostic.config({
-        virtual_text = {
-            source = "always",
-            prefix = "■",
-            -- Only show virtual text matching the given severity
-            severity = {
-                -- Specify a range of severities
-                min = vim.diagnostic.severity.ERROR,
-            },
-        },
+        virtual_text = false,
+        --[[ virtual_text = { ]]
+        --[[     source = "always", ]]
+        --[[     prefix = "■", ]]
+        --[[     -- Only show virtual text matching the given severity ]]
+        --[[     severity = { ]]
+        --[[         -- Specify a range of severities ]]
+        --[[         min = vim.diagnostic.severity.ERROR, ]]
+        --[[     }, ]]
+        --[[ }, ]]
         float = {
             source = "always",
             border = "rounded",
