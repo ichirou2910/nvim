@@ -4,9 +4,9 @@ local colors = require("themes." .. vim.g.nv_theme).base_30
 return {
     CmpItemAbbr = { fg = colors.white },
     CmpItemAbbrMatch = { fg = colors.blue, bold = true },
-    CmpBorder = { fg = colors.statusline_bg, bg = colors.statusline_bg },
-    CmpDocBorder = { fg = colors.statusline_bg, bg = colors.statusline_bg },
-    CmpPmenu = { fg = nil, bg = colors.statusline_bg },
+    CmpBorder = { fg = colors.float_bg, bg = theme.base00 },
+    CmpDocBorder = { fg = colors.float_bg, bg = theme.base00 },
+    CmpPmenu = { fg = nil, bg = colors.float_bg },
     CmpItemAbbrMatchFuzzy = { fg = theme.base0C },
     CmpItemKindClass = { fg = theme.base0E },
     CmpItemKindConstant = { fg = theme.base09 },

@@ -6,19 +6,6 @@ local icons = require("core.ui.icons")
 
 local WIDTH = 40
 
-local function border(hl_name)
-    return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
-    }
-end
-
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -34,12 +21,12 @@ cmp.setup({
 
     window = {
         completion = {
-            border = border("CmpBorder"),
-            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+            border = { "", "", "", "", "", "", "", "" },
+            winhighlight = "NormalFloat:CmpPmenu,CursorLine:PmenuSel,Search:None,FloatBorder:CmpBorder",
         },
         documentation = {
-            border = border("CmpBorder"),
-            winhighlight = "NormalFloat:CmpPmenu,FloatBorder:CompeDocumentationBorder",
+            border = { "", "", "", "", "", "", "", "" },
+            winhighlight = "NormalFloat:CmpPmenu,FloatBorder:CmpBorder",
             maxwidth = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
             maxheight = math.floor(WIDTH * (WIDTH / vim.o.lines)),
             max_height = math.floor(vim.o.lines * 0.3),
