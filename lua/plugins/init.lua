@@ -113,8 +113,8 @@ require("packer").startup(function(use)
     -- Files
     use("tpope/vim-eunuch")
     use({
-        "mcchrish/nnn.vim",
-        config = vim.cmd([[ source ~/.config/nvim/configs/nnn.vim]]),
+        "luukvbaal/nnn.nvim",
+        config = "require('plugins.configs.nnn')",
     })
     use({
         "kyazdani42/nvim-tree.lua",
