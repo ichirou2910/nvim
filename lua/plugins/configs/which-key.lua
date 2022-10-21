@@ -154,6 +154,8 @@ local n_mappings = {
         u = "Undo staged",
     },
 
+    --[[ n = {}, ]]
+
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -186,6 +188,12 @@ local n_mappings = {
             "<cmd>require('telescope').extensions.flutter.commands()<cr>",
             "Flutter",
         },
+    },
+
+    m = {
+        name = "Minimap",
+        f = { "<cmd>lua require('codewindow').toggle_focus()<cr>", "Toggle Focus" },
+        m = { "<cmd>lua require('codewindow').toggle_minimap()<cr>", "Toggle Map" },
     },
 
     -- plugins/sidebar.vim
@@ -222,6 +230,7 @@ local n_mappings = {
 
     u = {
         name = "UI",
+        l = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Toggle LSP Lines" },
         s = "Toggle shade",
     },
 }

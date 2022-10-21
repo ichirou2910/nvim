@@ -332,6 +332,17 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.lualine')",
         wants = "nvim-web-devicons",
     })
+
+    -- Minimap
+    use({
+        "gorbit99/codewindow.nvim",
+        config = function()
+            require("codewindow").setup({
+                auto_enable = false,
+            })
+        end,
+    })
+
     -- use({
     --     "akinsho/bufferline.nvim",
     --     tag = "*",
@@ -372,6 +383,13 @@ require("packer").startup(function(use)
             "jose-elias-alvarez/null-ls.nvim",
             "jose-elias-alvarez/typescript.nvim",
         },
+    })
+    use({
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        after = { "nvim-lspconfig" },
+        config = function()
+            require("lsp_lines").setup()
+        end,
     })
     use({
         "rmagatti/goto-preview",
