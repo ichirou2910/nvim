@@ -36,8 +36,6 @@ require("packer").startup(function(use)
 
     use({ "lewis6991/impatient.nvim" })
 
-    use({ "nathom/filetype.nvim" })
-
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",
