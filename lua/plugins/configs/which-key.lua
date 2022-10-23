@@ -105,6 +105,8 @@ local n_mappings = {
         name = "Find",
         a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },
         b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
+        c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits" },
+        C = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Buffer Commits" },
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
         n = {
             "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({}))<cr>",
