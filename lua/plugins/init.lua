@@ -216,6 +216,12 @@ require("packer").startup(function(use)
     use({ "mfussenegger/nvim-dap", event = "BufWinEnter", as = "nvim-dap", config = "require('plugins.configs.dap')" })
     use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')", after = "nvim-dap" })
     use({
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end,
+    })
+    use({
         "Weissle/persistent-breakpoints.nvim",
         requires = "mfussenegger/nvim-dap",
         config = function()
