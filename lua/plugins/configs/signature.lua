@@ -6,7 +6,7 @@ end
 
 signature.setup({
     bind = true,
-    handler_opts = { border = "rounded" },
+    handler_opts = { border = { "", "", "", "", "", "", "", "" } },
     max_width = 120,
     hint_enable = false,
     hint_prefix = " ",
