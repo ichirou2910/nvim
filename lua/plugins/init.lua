@@ -342,22 +342,6 @@ require("packer").startup(function(use)
         wants = "nvim-web-devicons",
     })
 
-    -- Minimap
-    use({
-        "gorbit99/codewindow.nvim",
-        config = function()
-            require("codewindow").setup({
-                auto_enable = false,
-            })
-        end,
-    })
-
-    -- use({
-    --     "akinsho/bufferline.nvim",
-    --     tag = "*",
-    --     event = "BufReadPre",
-    --     config = "require('plugins.configs.bufferline')",
-    -- })
     use({
         "romgrk/barbar.nvim",
         event = "BufReadPre",
