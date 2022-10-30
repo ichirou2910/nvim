@@ -137,7 +137,7 @@ require("packer").startup(function(use)
                 cmd = "TSHighlightCapturesUnderCursor",
             },
             { "nvim-treesitter/nvim-treesitter-textobjects" },
-            { "p00f/nvim-ts-rainbow" },
+            { "https://git.sr.ht/~p00f/nvim-ts-rainbow" },
         },
     })
     use({
