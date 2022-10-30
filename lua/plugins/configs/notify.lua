@@ -18,39 +18,32 @@ local padding = {
 local function custom_render(bufnr, notif, highlights, config)
     local icon = notif.icon .. " "
     local messages = notif.message
+
     local title = notif.title[1]
+    if utils.isEmpty(title) then
+        title = "Global"
+    end
 
     local namespace = notify_base.namespace()
 
-    for i = 1, #messages do
-        api.nvim_buf_set_lines(bufnr, i - 1, i - 1, false, { "  " .. messages[i] })
-        api.nvim_buf_set_extmark(bufnr, namespace, i - 1, 0, {
-            hl_group = highlights.body,
-            end_line = i - 1,
-            end_col = #messages[#messages],
-            priority = 50, -- Allow treesitter to override
-        })
-    end
+    api.nvim_buf_set_lines(bufnr, 0, #messages - 1, false, messages)
     api.nvim_buf_set_extmark(bufnr, namespace, 0, 0, {
-        virt_text = {
-            { icon, highlights.icon },
-        },
-        virt_text_win_col = 0,
-        priority = 10,
+        hl_group = highlights.body,
+        end_line = #messages - 1,
+        end_col = #messages[#messages],
+        priority = 50, -- Allow treesitter to override
     })
 
-    if not utils.isEmpty(title) then
-        api.nvim_buf_set_lines(bufnr, #messages, -1, false, { "" })
-        -- title
-        api.nvim_buf_set_extmark(bufnr, namespace, #messages, 0, {
-            virt_text = {
-                { title, highlights.title },
-                { " " },
-            },
-            virt_text_pos = "right_align",
-            priority = 10,
-        })
-    end
+    -- title
+    api.nvim_buf_set_lines(bufnr, #messages, -1, false, { "" })
+    api.nvim_buf_set_extmark(bufnr, namespace, #messages, 0, {
+        virt_text = {
+            { icon, highlights.icon },
+            { title, highlights.title },
+        },
+        virt_text_pos = "right_align",
+        priority = 10,
+    })
 end
 
 local function custom_stages()
@@ -84,6 +77,7 @@ end
 
 notify.setup({
     stages = custom_stages(),
+    --[[ render = "minimal", ]]
     render = custom_render,
 
     timeout = 4000,

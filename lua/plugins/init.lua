@@ -308,6 +308,14 @@ require("packer").startup(function(use)
 
     -- UI
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
+    use({
+        "folke/noice.nvim",
+        config = "require('configs.plugins.noice')",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+    })
 
     -- Search
     use({

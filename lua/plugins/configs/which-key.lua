@@ -37,7 +37,7 @@ which_key.setup({
         spacing = 5, -- spacing between columns
     },
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
+    show_help = false, -- show help message on the command line when the popup is visible
     triggers = { "<leader>" },
 })
 
@@ -109,7 +109,7 @@ local n_mappings = {
         C = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Buffer Commits" },
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
         n = {
-            "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({}))<cr>",
+            "<cmd>Noice telescope<CR>",
             "Notifications",
         },
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
