@@ -25,7 +25,8 @@ function M.lsp_diagnostics()
         severity_sort = true,
     })
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.lsp.handlers["textDocument/hover"] =
+        vim.lsp.with(vim.lsp.handlers.hover, { border = { "", "", "", "", "", "", "", "" } })
     vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
     vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
     vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
