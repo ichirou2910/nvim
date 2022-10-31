@@ -396,7 +396,7 @@ require("packer").startup(function(use)
         "rmagatti/goto-preview",
         config = function()
             require("goto-preview").setup({
-                border = "rounded",
+                border = { "", "", "", "", "", "", "", "" },
             })
         end,
         after = { "nvim-lspconfig" },
