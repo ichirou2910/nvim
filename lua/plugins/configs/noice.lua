@@ -4,8 +4,6 @@ if not ok then
     return
 end
 
-noice.setup({
-    views = {},
-})
+noice.setup({})
 
-require("core.utils").highlight_group("noice")
+--[[ require("core.utils").highlight_group("noice") ]]
