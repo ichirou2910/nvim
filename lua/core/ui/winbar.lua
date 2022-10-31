@@ -25,15 +25,8 @@ M.filename = function()
     if not isEmpty(filename) then
         extension = vim.fn.expand("%:e")
 
-        local default = false
-
-        if isEmpty(extension) then
-            extension = ""
-            default = true
-        end
-
         file_icon, file_icon_color =
-            require("nvim-web-devicons").get_icon_color(filename, extension, { default = default })
+            require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 
         local hl_group = "FileIconColor" .. extension
 

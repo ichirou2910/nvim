@@ -29,7 +29,7 @@ vim.fn.sign_define("DapLogPoint", {
 
 -- Adapters
 -- .NET Core
-dap.adapters.coreclr = function(cb, config)
+dap.adapters.netcoredbg = function(cb, config)
     if config.preLaunchTask then
         -- vim.api.nvim_command('call VimuxRunCommand("' .. config.preLaunchTask .. '")')
         vim.loop.chdir(config.cwd)
@@ -83,7 +83,7 @@ dap.configurations.cs = (function()
         local cwd = vim.fn.getcwd()
         for _, data in pairs(dap_data) do
             local config = {
-                type = "coreclr",
+                type = "netcoredbg",
                 name = data["name"],
                 request = "launch",
                 preLaunchTask = "dotnet build",
@@ -97,7 +97,7 @@ dap.configurations.cs = (function()
         end
     end
     table.insert(dap_config, {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "Attach",
         request = "attach",
         processId = function()

@@ -158,7 +158,7 @@ function M.lsp_config(client, bufnr)
 
     -- Codelens
     if client.supports_method("textDocument/codeLens") then
-        vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
             callback = vim.lsp.codelens.refresh,
             buffer = bufnr,
         })
@@ -168,6 +168,11 @@ end
 function M.get_capabilities()
     -- for nvim-cmp
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    capabilities.textDocument.completion.completionItem.documentationFormat = {
+        "markdown",
+        "plaintext",
+    }
 
     --[[ capabilities.textDocument.foldingRange = { ]]
     --[[     dynamicRegistration = false, ]]
