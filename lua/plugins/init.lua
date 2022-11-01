@@ -337,6 +337,12 @@ require("packer").startup(function(use)
         },
         config = "require('plugins.configs.telescope')",
     })
+    use({
+        "nacro90/numb.nvim",
+        config = function()
+            require("numb").setup()
+        end,
+    })
 
     -- Find and replace
     use({ "windwp/nvim-spectre", event = "VimEnter", config = "require('plugins.configs.spectre')" })
@@ -413,11 +419,6 @@ require("packer").startup(function(use)
     use({
         "simrat39/rust-tools.nvim",
         config = "require('lsp.rust')",
-        after = { "nvim-lspconfig" },
-    })
-    use({
-        "RishabhRD/nvim-lsputils",
-        requires = { "RishabhRD/popfix" },
         after = { "nvim-lspconfig" },
     })
     use({
