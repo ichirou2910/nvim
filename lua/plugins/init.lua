@@ -131,6 +131,22 @@ require("packer").startup(function(use)
         requires = {
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
+            {
+                "nvim-treesitter/nvim-treesitter-context",
+                config = function()
+                    require("treesitter-context").setup({
+                        patterns = {
+                            default = {
+                                "for",
+                                "while",
+                                "if",
+                                "switch",
+                                "case",
+                            },
+                        },
+                    })
+                end,
+            },
             { "Hoffs/omnisharp-extended-lsp.nvim" },
             {
                 "nvim-treesitter/playground",
