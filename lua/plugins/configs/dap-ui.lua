@@ -23,7 +23,7 @@ dapui.setup({
         {
             elements = {
                 "repl",
-                "console",
+                --[[ "console", ]]
             },
             size = 10,
             position = "bottom",
