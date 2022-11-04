@@ -54,7 +54,7 @@ local n_mappings = {
     ["="] = { "<C-W>=", "Balance windows" },
     ["e"] = { ":NnnPicker %:p:h<CR>", "Explorer" },
     ["E"] = { ":NnnPicker<CR>", "Explorer" },
-    ["n"] = { ":let @/=''<CR>", "No Highlight" },
+    ["n"] = { ":noh<CR>", "No Highlight" },
     ["q"] = { ":BufferClose<CR>", "Close buffer" },
     ["Q"] = { ":BufferWipeout<CR>", "Wipe buffer" },
     ["w"] = { "<cmd>lua require('nvim-window').pick()<CR>", "Pick window" },
