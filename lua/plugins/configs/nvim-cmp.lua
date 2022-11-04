@@ -19,6 +19,8 @@ cmp.setup({
         end,
     },
 
+    completion = { completeopt = "menu,menuone,noinsert" },
+
     window = {
         completion = {
             border = { "", "", "", "", "", "", "", "" },
@@ -54,17 +56,17 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        --[[ ["<Tab>"] = cmp.mapping.confirm({ ]]
-        --[[     behavior = cmp.ConfirmBehavior.Replace, ]]
-        --[[     select = true, ]]
-        --[[ }), ]]
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = true,
-                })
-            elseif luasnip.expand_or_locally_jumpable() then
+                local entry = cmp.get_selected_entry()
+                if entry then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                    })
+                    return
+                end
+            end
+            if luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
