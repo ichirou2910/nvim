@@ -16,7 +16,7 @@ M.custom_border = function(hl_name)
     }
 end
 
-M.map = function(mode, keys, cmd, opt)
+M.keymap = function(mode, keys, cmd, opt)
     local options = { noremap = true, silent = true }
     if opt then
         options = vim.tbl_extend("force", options, opt)
@@ -77,6 +77,10 @@ M.highlight = function(group, hl_table)
 end
 
 M.highlight_group = function(group)
+    if vim.g.nv_theme == "" then
+        return
+    end
+
     if type(group) == "string" then
         group = require("core.highlights." .. group)
     end

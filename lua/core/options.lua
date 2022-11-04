@@ -52,7 +52,7 @@ vim.opt.timeoutlen = 500
 
 vim.o.winbar = "%{%v:lua.navic_location()%}"
 
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 vim.o.foldoptions = "nodigits"
 
