@@ -462,11 +462,10 @@ require("packer").startup(function(use)
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-cmdline",
             "kristijanhusak/vim-dadbod-completion",
-            "rafamadriz/friendly-snippets",
             "honza/vim-snippets",
             {
                 "L3MON4D3/LuaSnip",
-                wants = { "friendly-snippets", "vim-snippets" },
+                wants = { "vim-snippets" },
                 config = "require('plugins.configs.snips')",
             },
         },
