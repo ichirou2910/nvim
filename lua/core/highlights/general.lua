@@ -57,7 +57,7 @@ return {
     Float = { fg = theme.base09 },
     Variable = { fg = theme.base05 },
     Function = { fg = theme.base0D },
-    Identifier = { fg = theme.base09 },
+    Identifier = { fg = theme.base08 },
     Include = { fg = theme.base0D },
     Keyword = { fg = theme.base0E },
     Label = { fg = theme.base0A },
