@@ -90,7 +90,12 @@ require("packer").startup(function(use)
     })
 
     -- Notification
-    use({ "rcarriga/nvim-notify", event = "VimEnter", config = "require('plugins.configs.notify')" })
+    use({
+        "rcarriga/nvim-notify",
+        branch = "feat/disable-animation",
+        event = "VimEnter",
+        config = "require('plugins.configs.notify')",
+    })
 
     -- Startup time
     use("tweekmonster/startuptime.vim")

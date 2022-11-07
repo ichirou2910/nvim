@@ -1,5 +1,4 @@
 local status_ok, notify = pcall(require, "notify")
-local custom_border = require("core.utils").custom_border
 
 if not status_ok then
     return
@@ -8,12 +7,6 @@ end
 local api = vim.api
 local notify_base = require("notify.render.base")
 local utils = require("core.utils")
-local stages_util = require("notify.stages.util")
-
-local padding = {
-    vert = 1,
-    hori = 1,
-}
 
 local function custom_render(bufnr, notif, highlights, config)
     local icon = notif.icon .. " "
@@ -46,41 +39,11 @@ local function custom_render(bufnr, notif, highlights, config)
     })
 end
 
-local function custom_stages()
-    return {
-        function(state)
-            local next_height = state.message.height
-            local next_row = stages_util.available_slot(state.open_windows, next_height, stages_util.DIRECTION.TOP_DOWN)
-            if not next_row then
-                return nil
-            end
-            return {
-                relative = "editor",
-                anchor = "NE",
-                width = state.message.width,
-                height = state.message.height,
-                col = vim.opt.columns:get() - padding.vert,
-                row = next_row,
-                border = custom_border("FloatBorder"),
-
-                style = "minimal",
-            }
-        end,
-        function()
-            return {
-                col = { vim.opt.columns:get() - padding.vert },
-                time = true,
-            }
-        end,
-    }
-end
-
 notify.setup({
-    stages = custom_stages(),
-    --[[ render = "minimal", ]]
     render = custom_render,
+    stages = "static",
 
-    timeout = 4000,
+    timeout = 3000,
 
     background_colour = "#15191e",
 
@@ -91,9 +54,15 @@ notify.setup({
         DEBUG = "",
         TRACE = "",
     },
+    on_open = function(win)
+        if vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_win_set_config(win, { border = { "", "", "", "", "", "", "", "" } })
+        end
+    end,
+    animate = false,
 })
 
 -- default notification provider
--- vim.notify = require("notify")
+--[[ vim.notify = require("notify") ]]
 
 require("core.utils").highlight_group("notify")
