@@ -92,7 +92,6 @@ require("packer").startup(function(use)
     -- Notification
     use({
         "rcarriga/nvim-notify",
-        branch = "feat/disable-animation",
         event = "VimEnter",
         config = "require('plugins.configs.notify')",
     })
