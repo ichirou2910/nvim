@@ -147,6 +147,9 @@ require("packer").startup(function(use)
                                 "switch",
                                 "case",
                             },
+                            typescriptreact = {
+                                "jsx_element",
+                            },
                         },
                     })
                 end,
