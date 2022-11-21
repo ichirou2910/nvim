@@ -274,7 +274,7 @@ require("packer").startup(function(use)
         ft = "markdown",
         config = vim.cmd([[ source ~/.config/nvim/configs/markdown-preview.vim ]]),
     })
-    use({ "tpope/vim-markdown", ft = "markdown" })
+    --[[ use({ "tpope/vim-markdown", ft = "markdown" }) ]]
 
     -- Colorizer
     use({
@@ -463,10 +463,10 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
             "kristijanhusak/vim-dadbod-completion",
-            "honza/vim-snippets",
+            "rafamadriz/friendly-snippets",
             {
                 "L3MON4D3/LuaSnip",
-                wants = { "vim-snippets" },
+                wants = { "friendly-snippets" },
                 config = "require('plugins.configs.snips')",
             },
         },

@@ -128,7 +128,7 @@ cmp.setup({
         { name = "luasnip", option = { use_show_condition = false } },
         { name = "nvim_lsp" },
         { name = "path" },
-        { name = "buffer", keyword_length = 5 },
+        { name = "buffer", keyword_length = 3 },
         { name = "vim-dadbod-completion" },
     },
 
