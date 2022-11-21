@@ -1,4 +1,3 @@
-local utils = require("core.utils")
 local navic = require("nvim-navic")
 
 local M = {}
@@ -6,15 +5,6 @@ local M = {}
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
-        --[[ virtual_text = { ]]
-        --[[     source = "always", ]]
-        --[[     prefix = "■", ]]
-        --[[     -- Only show virtual text matching the given severity ]]
-        --[[     severity = { ]]
-        --[[         -- Specify a range of severities ]]
-        --[[         min = vim.diagnostic.severity.ERROR, ]]
-        --[[     }, ]]
-        --[[ }, ]]
         float = {
             source = "always",
             border = "rounded",
@@ -25,71 +15,6 @@ function M.lsp_diagnostics()
         severity_sort = true,
     })
 
-    vim.lsp.handlers["textDocument/hover"] =
-        vim.lsp.with(vim.lsp.handlers.hover, { border = { "", "", "", "", "", "", "", "" } })
-
-    -- LSP Progress notification
-    --[[ vim.lsp.handlers["$/progress"] = function(_, result, ctx) ]]
-    --[[     local client_id = ctx.client_id ]]
-    --[[     local client_name = vim.lsp.get_client_by_id(client_id).name ]]
-    --[[]]
-    --[[     -- Suppress notification from null-ls ]]
-    --[[     if client_name == "null-ls" then ]]
-    --[[         return ]]
-    --[[     end ]]
-    --[[]]
-    --[[     local val = result.value ]]
-    --[[]]
-    --[[     if not val.kind then ]]
-    --[[         return ]]
-    --[[     end ]]
-    --[[]]
-    --[[     local notif_data = utils.notify.get_notif_data(client_id, result.token) ]]
-    --[[]]
-    --[[     if val.kind == "begin" then ]]
-    --[[         local message = utils.notify.format_message(val.message, val.percentage) ]]
-    --[[]]
-    --[[         notif_data.notification = vim.notify(message, vim.log.levels.INFO, { ]]
-    --[[             title = utils.notify.format_title(val.title, client_name), ]]
-    --[[             icon = utils.notify.spinner_frames[1], ]]
-    --[[             timeout = false, ]]
-    --[[             hide_from_history = false, ]]
-    --[[         }) ]]
-    --[[]]
-    --[[         notif_data.spinner = 1 ]]
-    --[[         utils.notify.update_spinner(client_id, result.token) ]]
-    --[[     elseif val.kind == "report" and notif_data then ]]
-    --[[         notif_data.notification = ]]
-    --[[             vim.notify(utils.notify.format_message(val.message, val.percentage), vim.log.levels.INFO, { ]]
-    --[[                 replace = notif_data.notification, ]]
-    --[[                 hide_from_history = false, ]]
-    --[[             }) ]]
-    --[[     elseif val.kind == "end" and notif_data then ]]
-    --[[         notif_data.notification = vim.notify( ]]
-    --[[             val.message and utils.notify.format_message(val.message) or "Complete", ]]
-    --[[             vim.log.levels.INFO, ]]
-    --[[             { ]]
-    --[[                 icon = "", ]]
-    --[[                 replace = notif_data.notification, ]]
-    --[[                 timeout = 250, ]]
-    --[[             } ]]
-    --[[         ) ]]
-    --[[]]
-    --[[         notif_data.spinner = nil ]]
-    --[[     end ]]
-    --[[ end ]]
-
-    -- LSP Message notification
-    --[[ local lspMsgSeverity = { ]]
-    --[[     "error", ]]
-    --[[     "warn", ]]
-    --[[     "info", ]]
-    --[[     "info", -- map both hint and info to info? ]]
-    --[[ } ]]
-    --[[ vim.lsp.handlers["window/showMessage"] = function(err, method, params, client_id) ]]
-    --[[     -- vim.notify("", lspMsgSeverity[params.type]) ]]
-    --[[ end ]]
-    --[[]]
     -- Show diagnostics in a pop-up window on hover
     _G.LspDiagnosticsPopupHandler = function()
         local current_cursor = vim.api.nvim_win_get_cursor(0)

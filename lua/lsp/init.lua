@@ -146,11 +146,6 @@ local function lsp_pyright()
     }
 
     require("lspconfig").pyright.setup({
-        on_attach = function()
-            require("lsp_signature").on_attach({
-                hint_enable = false,
-            })
-        end,
         on_init = function(client)
             client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
         end,

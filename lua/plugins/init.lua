@@ -431,10 +431,6 @@ require("packer").startup(function(use)
         after = { "nvim-lspconfig" },
     })
     use({
-        "ray-x/lsp_signature.nvim",
-        config = "require('plugins.configs.signature')",
-    })
-    use({
         "akinsho/flutter-tools.nvim",
         ft = "dart",
         config = "require('lsp.flutter')",
@@ -463,11 +459,9 @@ require("packer").startup(function(use)
         opt = true,
         requires = {
             "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-cmdline",
             "kristijanhusak/vim-dadbod-completion",
             "honza/vim-snippets",
             {
