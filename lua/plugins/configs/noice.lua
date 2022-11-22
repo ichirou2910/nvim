@@ -5,6 +5,7 @@ if not ok then
 end
 
 noice.setup({
+    debug = false,
     lsp = {
         hover = {
             enabled = true,
@@ -23,6 +24,11 @@ noice.setup({
         },
     },
     views = {
+        popup = {
+            win_options = {
+                winhighlight = { Comment = "Special" },
+            },
+        },
         hover = {
             border = {
                 style = { "", "", "", "", "", "", "", "" },
@@ -41,6 +47,15 @@ noice.setup({
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = true, -- enables an input dialog for inc-rename.nvim
+        cmdline_output_to_split = false,
+    },
+    commands = {
+        all = {
+            -- options for the message history that you get with `:Noice`
+            view = "split",
+            opts = { enter = true, format = "details" },
+            filter = {},
+        },
     },
     routes = {
         {

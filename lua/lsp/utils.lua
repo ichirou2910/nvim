@@ -94,44 +94,6 @@ function M.get_capabilities()
         "markdown",
         "plaintext",
     }
-
-    --[[ capabilities.textDocument.foldingRange = { ]]
-    --[[     dynamicRegistration = false, ]]
-    --[[     lineFoldingOnly = true, ]]
-    --[[ } ]]
-
-    --[[ vim.tbl_extend("force", capabilities.textDocument.codeAction, { ]]
-    --[[     dynamicRegistration = true, ]]
-    --[[     codeActionLiteralSupport = { ]]
-    --[[         codeActionKind = { ]]
-    --[[             valueSet = (function() ]]
-    --[[                 local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind) ]]
-    --[[                 table.sort(res) ]]
-    --[[                 return res ]]
-    --[[             end)(), ]]
-    --[[         }, ]]
-    --[[     }, ]]
-    --[[ }) ]]
-    --[[]]
-    --[[ vim.tbl_extend("force", capabilities.textDocument.completion.completionItem, { ]]
-    --[[     documentationFormat = { ]]
-    --[[         "markdown", ]]
-    --[[         "plaintext", ]]
-    --[[     }, ]]
-    --[[     snippetSupport = true, ]]
-    --[[     preselectSupport = true, ]]
-    --[[     insertReplaceSupport = true, ]]
-    --[[     labelDetailsSupport = true, ]]
-    --[[     deprecatedSupport = true, ]]
-    --[[     commitCharactersSupport = true, ]]
-    --[[     tagSupport = { ]]
-    --[[         valueSet = { 1 }, ]]
-    --[[     }, ]]
-    --[[     resolveSupport = { ]]
-    --[[         properties = { "documentation", "detail", "additionalTextEdits" }, ]]
-    --[[     }, ]]
-    --[[ }) ]]
-
     return capabilities
 end
 
@@ -142,7 +104,7 @@ function M.lsp_attach(client, bufnr)
     if client.supports_method("textDocument/documentSymbol") then
         navic.attach(client, bufnr)
     end
-    require("lsp-inlayhints").on_attach(client, bufnr)
+    require("lsp-inlayhints").on_attach(client, bufnr, false)
 end
 
 return M

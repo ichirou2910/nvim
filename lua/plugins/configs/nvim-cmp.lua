@@ -14,7 +14,6 @@ end
 cmp.setup({
     snippet = {
         expand = function(args)
-            --[[ vim.fn["vsnip#anonymous"](args.body) ]]
             require("luasnip").lsp_expand(args.body)
         end,
     },
@@ -125,10 +124,10 @@ cmp.setup({
     },
 
     sources = {
-        { name = "luasnip", option = { use_show_condition = false } },
         { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
         { name = "path" },
-        { name = "buffer", keyword_length = 3 },
         { name = "vim-dadbod-completion" },
     },
 
