@@ -36,6 +36,13 @@ require("packer").startup(function(use)
 
     use({ "lewis6991/impatient.nvim" })
 
+    use({
+        "folke/neodev.nvim",
+        config = function()
+            require("neodev").setup({})
+        end,
+    })
+
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",

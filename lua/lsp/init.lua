@@ -49,6 +49,9 @@ local function lsp_sumneko_lua()
         flags = { debounce_text_changes = 150 },
         settings = {
             Lua = {
+                completion = {
+                    callSnippet = "Replace",
+                },
                 format = {
                     enable = false,
                 },
