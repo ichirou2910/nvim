@@ -53,6 +53,9 @@ M.base_16 = {
     base0F = "#e87979",
 }
 
-vim.opt.bg = "dark"
+M.override = {
+    ["@punctuation.bracket"] = { fg = M.base_16.base07 },
+    ["@parenthesis"] = { link = "@punctuation.bracket" },
+}
 
 return M

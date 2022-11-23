@@ -24,20 +24,12 @@ noice.setup({
         },
     },
     views = {
-        popup = {
-            win_options = {
-                winhighlight = { Comment = "Special" },
-            },
-        },
         hover = {
             border = {
                 style = { "", "", "", "", "", "", "", "" },
                 padding = { 0, 0 },
             },
             position = { row = 1, col = 1 },
-            win_options = {
-                winhighlight = { Comment = "Special" },
-            },
         },
     },
     presets = {

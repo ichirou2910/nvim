@@ -85,6 +85,15 @@ M.highlight_group = function(group)
         group = require("core.highlights." .. group)
     end
 
+    local override_hl = require("themes." .. vim.g.nv_theme).override
+    if override_hl then
+        for key, value in pairs(override_hl) do
+            if group[key] then
+                group[key] = vim.tbl_deep_extend("force", group[key], value)
+            end
+        end
+    end
+
     for hl, col in pairs(group) do
         vim.api.nvim_set_hl(0, hl, col)
     end

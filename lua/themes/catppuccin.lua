@@ -16,7 +16,7 @@ M.base_30 = {
     baby_pink = "#ffa5c3",
     pink = "#F5C2E7",
     line = "#383747", -- for lines like vertsplit
-    green = "#ABE9B3",
+    green = "#37d99e",
     vibrant_green = "#b6f4be",
     nord_blue = "#8bc2f0",
     blue = "#89B4FA",
@@ -51,7 +51,14 @@ M.base_16 = {
     base0C = "#2ac3de",
     base0D = "#7AA2F7",
     base0E = "#9d7cd8",
-    base0F = "#C0CAF5",
+    base0F = "#F38BA8",
+}
+
+M.override = {
+    ["@variable"] = { fg = M.base_16.base08 },
+    ["@field"] = { fg = M.base_30.cyan },
+    ["@property"] = { fg = M.base_30.teal },
+    ["@variable.builtin"] = { fg = M.base_30.red },
 }
 
 return M
