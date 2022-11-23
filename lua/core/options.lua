@@ -56,7 +56,7 @@ vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,termin
 
 vim.o.foldoptions = "nodigits"
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
