@@ -1,2 +1,4 @@
 require("core.ui.theme")
-require("core.ui.winbar")
+if not vim.g.started_by_firenvim then
+    require("core.ui.winbar")
+end

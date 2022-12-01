@@ -64,5 +64,6 @@ end
 _G.navic_location = function()
     return require("core.ui.winbar").get()
 end
+vim.o.winbar = "%{%v:lua.navic_location()%}"
 
 return M

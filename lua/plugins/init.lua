@@ -3,8 +3,6 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local compile_path = fn.stdpath("config") .. "/lua/packer_compiled.lua"
 
-local packer_bootstrap = false
-
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({
         "git",
@@ -30,9 +28,29 @@ require("packer").init({
     max_jobs = 9,
 })
 
+-- check if firenvim is active
+local firenvim_not_active = function()
+    return not vim.g.started_by_firenvim
+end
+
 -- local use = require("packer").use
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
+
+    use({
+        "glacambre/firenvim",
+        run = function()
+            vim.fn["firenvim#install"](0)
+        end,
+        opt = true,
+        setup = [[vim.cmd('packadd firenvim')]],
+    })
+
+    -- Text Navigation
+    use({
+        "unblevable/quick-scope",
+        config = vim.cmd([[ source ~/.config/nvim/configs/quickscope.vim ]]),
+    })
 
     use({ "lewis6991/impatient.nvim" })
 
@@ -61,6 +79,7 @@ require("packer").startup(function(use)
 
     use({
         "kevinhwang91/nvim-ufo",
+        cond = firenvim_not_active,
         requires = "kevinhwang91/promise-async",
         config = "require('plugins.configs.ufo')",
     })
@@ -90,15 +109,10 @@ require("packer").startup(function(use)
     -- Repeat stuff
     use("tpope/vim-repeat")
 
-    -- Text Navigation
-    use({
-        "unblevable/quick-scope",
-        config = vim.cmd([[ source ~/.config/nvim/configs/quickscope.vim ]]),
-    })
-
     -- Notification
     use({
         "rcarriga/nvim-notify",
+        cond = firenvim_not_active,
         event = "VimEnter",
         config = "require('plugins.configs.notify')",
     })
@@ -111,13 +125,6 @@ require("packer").startup(function(use)
 
     -- Surround
     use({ "tpope/vim-surround", event = "InsertEnter" })
-
-    -- Rest client
-    use({
-        "rest-nvim/rest.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = "require('plugins.configs.rest')",
-    })
 
     -- Files
     use("tpope/vim-eunuch")
@@ -178,6 +185,7 @@ require("packer").startup(function(use)
     })
     use({
         "SmiteshP/nvim-navic",
+        cond = firenvim_not_active,
         module = "nvim-navic",
         requires = "neovim/nvim-lspconfig",
         config = "require('plugins.configs.navic')",
@@ -190,9 +198,6 @@ require("packer").startup(function(use)
             require("nvim-ts-autotag").setup({ enable = true })
         end,
     })
-
-    -- Theme
-    -- use("folke/tokyonight.nvim")
 
     -- Cmake
     use({
@@ -244,12 +249,17 @@ require("packer").startup(function(use)
     })
 
     -- Debugging
-    use({ "mfussenegger/nvim-dap", event = "BufWinEnter", as = "nvim-dap", config = "require('plugins.configs.dap')" })
+    use({
+        "mfussenegger/nvim-dap",
+        event = "BufWinEnter",
+        as = "nvim-dap",
+        config = "require('plugins.configs.dap')",
+    })
     use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')", after = "nvim-dap" })
     use({
         "theHamsta/nvim-dap-virtual-text",
         config = function()
-            require("nvim-dap-virtual-text").setup()
+            require("nvim-dap-virtual-text").setup({})
         end,
     })
     use({
@@ -282,7 +292,6 @@ require("packer").startup(function(use)
         ft = "markdown",
         config = vim.cmd([[ source ~/.config/nvim/configs/markdown-preview.vim ]]),
     })
-    --[[ use({ "tpope/vim-markdown", ft = "markdown" }) ]]
 
     -- Colorizer
     use({
@@ -341,6 +350,7 @@ require("packer").startup(function(use)
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
     use({
         "folke/noice.nvim",
+        cond = firenvim_not_active,
         config = "require('plugins.configs.noice')",
         requires = {
             "MunifTanjim/nui.nvim",
@@ -385,10 +395,12 @@ require("packer").startup(function(use)
         after = "nvim-treesitter",
         config = "require('plugins.configs.lualine')",
         wants = "nvim-web-devicons",
+        cond = firenvim_not_active,
     })
 
     use({
         "romgrk/barbar.nvim",
+        cond = firenvim_not_active,
         event = "BufReadPre",
         requires = { "kyazdani42/nvim-web-devicons" },
         config = "require('plugins.configs.bufferline')",
@@ -434,6 +446,7 @@ require("packer").startup(function(use)
         config = function()
             require("goto-preview").setup({
                 border = { "", "", "", "", "", "", "", "" },
+                height = 20,
             })
         end,
         after = { "nvim-lspconfig" },
@@ -493,9 +506,4 @@ require("packer").startup(function(use)
             { "rouge8/neotest-rust" },
         },
     })
-
-    if packer_bootstrap then
-        print("Setting up... Restart required after installation!")
-        require("packer").sync()
-    end
 end)
