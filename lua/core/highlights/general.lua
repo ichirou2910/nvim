@@ -49,7 +49,7 @@ return {
     NvimInternalError = { fg = colors.red },
     Boolean = { fg = theme.base09 },
     Character = { fg = theme.base08 },
-    Comment = { fg = colors.grey_fg2 },
+    Comment = { fg = colors.grey_fg },
     Conditional = { fg = theme.base0E },
     Constant = { fg = theme.base09 },
     Define = { fg = theme.base0E },

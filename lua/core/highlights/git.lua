@@ -9,4 +9,5 @@ return {
     DiffChange = { bg = "#0a3d62" },
     DiffDelete = { bg = "#36191c" },
     DiffText = { bg = "#411a38" },
+    GitSignsCurrentLineBlame = { fg = colors.grey_fg2 },
 }
