@@ -5,6 +5,7 @@ if not status then
 end
 
 auto_session.setup({
+    pre_save_cmds = { "SidebarCloseAll" },
     log_level = "info",
     auto_session_suppress_dirs = { "~/" },
     auto_session_enable_last_session = false,
