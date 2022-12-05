@@ -16,11 +16,12 @@ local sources = {
 
     -- Format
     builtins.formatting.prettierd.with({
-        filetypes = { "html", "json", "markdown", "scss", "css" },
+        filetypes = { "html", "json", "markdown", "scss", "css", "vimwiki" },
         dynamic_command = command_resolver.from_node_modules(),
     }),
     builtins.formatting.shfmt,
     builtins.formatting.stylua,
+    builtins.formatting.csharpier,
 
     -- Code actions
     builtins.code_actions.eslint_d,

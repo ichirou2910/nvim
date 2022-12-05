@@ -24,7 +24,7 @@ function M.lsp_diagnostics()
         -- but only once for the current cursor location (unless moved afterwards).
         if not (current_cursor[1] == last_popup_cursor[1] and current_cursor[2] == last_popup_cursor[2]) then
             vim.w.lsp_diagnostics_last_cursor = current_cursor
-            vim.diagnostic.open_float(0, { scope = "cursor", focusable = false, border = "rounded" }) -- for neovim 0.6.0+, replaces show_{line,position}_diagnostics
+            vim.diagnostic.open_float({ scope = "cursor", focusable = false, border = "rounded" }) -- for neovim 0.6.0+, replaces show_{line,position}_diagnostics
         end
     end
 
@@ -38,7 +38,7 @@ function M.lsp_diagnostics()
     })
 end
 
-function M.lsp_highlight(client, bufnr)
+function M.lsp_highlight()
     -- replace the default lsp diagnostic letters with prettier symbols
     vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticError" })
     vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticWarn" })
@@ -62,19 +62,30 @@ function M.lsp_config(client, bufnr)
     vim.keymap.set("n", "gp", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>", opts)
 
     -- Set some keybinds conditional on server capabilities
-    if client.supports_method("textDocument/formatting") then
+    if client.server_capabilities.documentFormattingProvider then
         vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     end
-    if client.supports_method("textDocument/rangeFormatting") then
+    if client.server_capabilities.documentRangeFormattingProvider then
         vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Formatting
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_command([[augroup Format]])
-        vim.api.nvim_command([[autocmd! * <buffer>]])
-        vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
-        vim.api.nvim_command([[augroup END]])
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({
+                    -- Use csharpier instead of built-in omnisharp
+                    filter = function(cl)
+                        return cl.name ~= "omnisharp"
+                    end,
+                    bufnr = bufnr,
+                })
+            end,
+        })
     end
 
     -- Codelens
@@ -99,7 +110,7 @@ end
 
 function M.lsp_attach(client, bufnr)
     M.lsp_config(client, bufnr)
-    M.lsp_highlight(client, bufnr)
+    M.lsp_highlight()
     M.lsp_diagnostics()
     if client.supports_method("textDocument/documentSymbol") then
         navic.attach(client, bufnr)
