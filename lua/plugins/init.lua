@@ -57,7 +57,15 @@ require("packer").startup(function(use)
     use({
         "folke/neodev.nvim",
         config = function()
-            require("neodev").setup({})
+            local runtime_path = vim.split(package.path, ";")
+            table.insert(runtime_path, "lua/?.lua")
+            table.insert(runtime_path, "lua/?/init.lua")
+
+            require("neodev").setup({
+                library = {
+                    runtime = runtime_path,
+                },
+            })
         end,
     })
 

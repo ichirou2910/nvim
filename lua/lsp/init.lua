@@ -35,27 +35,47 @@ end
 
 -- sumneko_lua
 local function lsp_sumneko_lua()
-    local root_path = "/usr/lib/lua-language-server"
-    local binary = "/usr/bin/lua-language-server"
-
-    local runtime_path = vim.split(package.path, ";")
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
-
     lspconfig.sumneko_lua.setup({
-        cmd = { binary, "-E", root_path .. "/main.lua" },
         on_attach = lsp_utils.lsp_attach,
         capabilities = lsp_utils.get_capabilities(),
         flags = { debounce_text_changes = 150 },
+        single_file_support = true,
         settings = {
             Lua = {
+                workspace = {
+                    checkThirdParty = false,
+                },
                 completion = {
-                    callSnippet = "Replace",
+                    workspaceWord = true,
+                    callSnippet = "Both",
                 },
-                format = {
-                    enable = false,
+                misc = {
+                    parameters = {
+                        "--log-level=trace",
+                    },
                 },
-                diagnostics = { globals = { "vim" } },
+                diagnostics = {
+                    -- enable = false,
+                    groupSeverity = {
+                        strong = "Warning",
+                        strict = "Warning",
+                    },
+                    groupFileStatus = {
+                        ["ambiguity"] = "Opened",
+                        ["await"] = "Opened",
+                        ["codestyle"] = "None",
+                        ["duplicate"] = "Opened",
+                        ["global"] = "Opened",
+                        ["luadoc"] = "Opened",
+                        ["redefined"] = "Opened",
+                        ["strict"] = "Opened",
+                        ["strong"] = "Opened",
+                        ["type-check"] = "Opened",
+                        ["unbalanced"] = "Opened",
+                        ["unused"] = "Opened",
+                    },
+                    unusedLocalExclude = { "_*" },
+                },
                 hint = {
                     enable = true,
                     arrayIndex = "Disable", -- "Enable", "Auto", "Disable"
@@ -65,16 +85,9 @@ local function lsp_sumneko_lua()
                     semicolon = "Disable", -- "All", "SameLine", "Disable"
                     setType = true,
                 },
-                runtime = { version = "LuaJIT", path = runtime_path },
-                workspace = {
-                    library = {
-                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                    },
-                    maxPreload = 100000,
-                    preloadFileSize = 10000,
+                format = {
+                    enable = false,
                 },
-                telemetry = { enable = false },
             },
         },
     })
