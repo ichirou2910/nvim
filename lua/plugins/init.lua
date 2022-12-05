@@ -37,6 +37,8 @@ end
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
+    use({ "lewis6991/impatient.nvim" })
+
     use({
         "glacambre/firenvim",
         run = function()
@@ -52,12 +54,23 @@ require("packer").startup(function(use)
         config = vim.cmd([[ source ~/.config/nvim/configs/quickscope.vim ]]),
     })
 
-    use({ "lewis6991/impatient.nvim" })
-
     use({
         "folke/neodev.nvim",
         config = function()
             require("neodev").setup({})
+        end,
+    })
+
+    use({
+        "vimwiki/vimwiki",
+        config = function()
+            vim.g.vimwiki_list = {
+                {
+                    path = "~/Wiki/",
+                    syntax = "markdown",
+                    ext = ".md",
+                },
+            }
         end,
     })
 
