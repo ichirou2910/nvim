@@ -48,4 +48,15 @@ return {
     ["@property"] = { fg = theme.base08 },
     ["@include"] = { link = "Include" },
     ["@conditional"] = { link = "Conditional" },
+
+    ["@class"] = { link = "Structure" },
+    ["@struct"] = { link = "Structure" },
+    ["@enum"] = { link = "Type" },
+    ["@enumMember"] = { link = "Constant" },
+    ["@event"] = { link = "Identifier" },
+    ["@interface"] = { link = "Identifier" },
+    ["@modifier"] = { link = "Identifier" },
+    ["@regexp"] = { link = "SpecialChar" },
+    ["@typeParameter"] = { link = "Type" },
+    ["@decorator"] = { link = "Identifier" },
 }

@@ -65,9 +65,6 @@ function M.lsp_config(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
         vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     end
-    if client.server_capabilities.documentRangeFormattingProvider then
-        vim.keymap.set("v", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
 
     -- Formatting
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -89,7 +86,7 @@ function M.lsp_config(client, bufnr)
     end
 
     -- Codelens
-    if client.supports_method("textDocument/codeLens") then
+    if client.server_capabilities.codeLensProvider then
         vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
             callback = vim.lsp.codelens.refresh,
             buffer = bufnr,
@@ -112,10 +109,82 @@ function M.lsp_attach(client, bufnr)
     M.lsp_config(client, bufnr)
     M.lsp_highlight()
     M.lsp_diagnostics()
-    if client.supports_method("textDocument/documentSymbol") then
+    if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
     require("lsp-inlayhints").on_attach(client, bufnr, false)
+
+    -- Omnisharp's semantic tokens don't work nicely with neovim
+    if client.name == "omnisharp" then
+        client.server_capabilities.semanticTokensProvider.legend.tokenModifiers = { "staticSymbol" }
+        client.server_capabilities.semanticTokensProvider.legend.tokenTypes = {
+            "comment",
+            "excludedCode",
+            "identifier",
+            "keyword",
+            "keyword.control",
+            "number",
+            "operator",
+            "operator.overloaded",
+            "preprocessorKeyword",
+            "string",
+            "whitespace",
+            "text",
+            "staticSymbol",
+            "preprocessorText",
+            "punctuation",
+            "string.verbatim",
+            "string.escapeCharacter",
+            "class",
+            "delegate",
+            "enum",
+            "interface",
+            "module",
+            "struct",
+            "typeParameter",
+            "field",
+            "enumMember",
+            "constant",
+            "local",
+            "parameter",
+            "method",
+            "extensionMethod",
+            "property",
+            "event",
+            "namespace",
+            "label",
+            "xmlDocComment.attribute",
+            "xmlDocComment.attributeQuotes",
+            "xmlDocComment.attributeValue",
+            "xmlDocComment.cdataSection",
+            "xmlDocComment.comment",
+            "xmlDocComment.delimiter",
+            "xmlDocComment.entityReference",
+            "xmlDocComment.name",
+            "xmlDocComment.processingInstruction",
+            "xmlDocComment.text",
+            "xmlLiteral.attribute",
+            "xmlLiteral.attributeQuotes",
+            "xmlLiteral.attributeValue",
+            "xmlLiteral.cdataSection",
+            "xmlLiteral.comment",
+            "xmlLiteral.delimiter",
+            "xmlLiteral.embeddedExpression",
+            "xmlLiteral.entityReference",
+            "xmlLiteral.name",
+            "xmlLiteral.processingInstruction",
+            "xmlLiteral.text",
+            "regex.comment",
+            "regex.characterClass",
+            "regex.anchor",
+            "regex.quantifier",
+            "regex.grouping",
+            "regex.alternation",
+            "regex.text",
+            "regex.selfEscapedCharacter",
+            "regex.otherEscape",
+        }
+    end
 end
 
 return M
