@@ -11,7 +11,7 @@ return {
     TelescopeResultsTitle = { fg = colors.darker_black, bg = colors.darker_black },
     TelescopeSelection = { fg = colors.white, bg = colors.black2 },
     TelescopeNormal = { bg = colors.darker_black },
-    TelescopeResultsDiffAdd = { fg = colors.green },
-    TelescopeResultsDiffChange = { fg = colors.blue },
-    TelescopeResultsDiffDelete = { fg = colors.red },
+    TelescopeResultsDiffAdd = { bg = "#11291d" },
+    TelescopeResultsDiffChange = { bg = "#0a3d62" },
+    TelescopeResultsDiffDelete = { bg = "#36191c" },
 }
