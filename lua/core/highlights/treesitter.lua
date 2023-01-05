@@ -51,7 +51,7 @@ return {
     ["@text.uri"] = { fg = theme.base09 },
     ["@text.todo.unchecked"] = { fg = colors.blue }, -- For brackets and parens.
     ["@text.todo.checked"] = { fg = colors.green }, -- For brackets and parens.
-    ["@text.literal.markdown_inline"] = { bg = colors.lavender, fg = colors.blue },
+    ["@text.literal.markdown_inline"] = { bg = "#333942", fg = colors.blue },
     ["@text.literal.markdown"] = { link = "Normal" },
     ["@text.diff.add"] = { link = "DiffAdd" },
     ["@text.diff.delete"] = { link = "DiffDelete" },
