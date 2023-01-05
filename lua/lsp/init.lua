@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 local lsp_utils = require("lsp.utils")
 local lsp_path = lspconfig.util.path
 
@@ -9,33 +10,15 @@ local common_config = {
 }
 
 -- servers with default config
-local servers = { "html", "cssls" }
+local default_servers = { "html", "cssls" }
 
-for _, s in pairs(servers) do
+for _, s in pairs(default_servers) do
     lspconfig[s].setup(common_config)
 end
 
--- tsserver
-local function lsp_tsserver()
-    require("typescript").setup({
-        server = {
-            on_attach = lsp_utils.lsp_attach,
-        },
-        inlayHints = {
-            includeInlayEnumMemberValueHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayVariableTypeHints = true,
-        },
-    })
-end
-
--- sumneko_lua
-local function lsp_sumneko_lua()
-    lspconfig.sumneko_lua.setup({
+-- servers handled by mason
+local mason_servers = {
+    sumneko_lua = {
         on_attach = lsp_utils.lsp_attach,
         capabilities = lsp_utils.get_capabilities(),
         flags = { debounce_text_changes = 150 },
@@ -90,6 +73,52 @@ local function lsp_sumneko_lua()
                 },
             },
         },
+    },
+    omnisharp = {
+        on_attach = lsp_utils.lsp_attach,
+        capabilities = lsp_utils.get_capabilities(),
+        handlers = {
+            ["textDocument/definition"] = require("omnisharp_extended").handler,
+        },
+        cmd = {
+            "/usr/bin/omnisharp",
+            "--languageserver",
+            "--hostPID",
+            tostring(vim.fn.getpid()),
+            "--loglevel",
+            "information",
+        },
+
+        organize_imports_on_format = true,
+    },
+}
+
+mason_lspconfig.setup({
+    ensure_installed = vim.tbl_keys(mason_servers),
+})
+
+mason_lspconfig.setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup(vim.tbl_extend("force", common_config, mason_servers[server_name]))
+    end,
+})
+
+-- manually handled servers
+-- tsserver
+local function lsp_tsserver()
+    require("typescript").setup({
+        server = {
+            on_attach = lsp_utils.lsp_attach,
+        },
+        inlayHints = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+        },
     })
 end
 
@@ -108,21 +137,6 @@ local function lsp_ccls()
         },
     }
     lspconfig.ccls.setup(vim.tbl_extend("force", common_config, config))
-end
-
--- omnisharp
-local function lsp_omnisharp()
-    local pid = vim.fn.getpid()
-    local binary = "/usr/bin/omnisharp"
-    local config = {
-        handlers = {
-            ["textDocument/definition"] = require("omnisharp_extended").handler,
-        },
-        cmd = { binary, "--languageserver", "--hostPID", tostring(pid), "--loglevel", "information" },
-
-        organize_imports_on_format = true,
-    }
-    lspconfig.omnisharp.setup(vim.tbl_extend("force", common_config, config))
 end
 
 -- pyright
@@ -161,18 +175,11 @@ local function lsp_pyright()
         },
     }
 
-    require("lspconfig").pyright.setup({
-        on_init = function(client)
-            client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-        end,
-    })
     lspconfig.pyright.setup(vim.tbl_extend("keep", common_config, config))
 end
 
 lsp_tsserver()
-lsp_sumneko_lua()
 lsp_ccls()
-lsp_omnisharp()
 lsp_pyright()
 
 -- null-ls

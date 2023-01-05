@@ -131,7 +131,7 @@ require("packer").startup(function(use)
     -- Notification
     use({
         "rcarriga/nvim-notify",
-        cond = firenvim_not_active,
+        --[[ cond = firenvim_not_active, ]]
         event = "VimEnter",
         config = "require('plugins.configs.notify')",
     })
@@ -440,7 +440,6 @@ require("packer").startup(function(use)
     use({
         "neovim/nvim-lspconfig",
         event = "VimEnter",
-        opt = true,
         wants = {
             "cmp-nvim-lsp",
             "null-ls.nvim",
@@ -451,6 +450,14 @@ require("packer").startup(function(use)
         requires = {
             "jose-elias-alvarez/null-ls.nvim",
             "jose-elias-alvarez/typescript.nvim",
+            -- Automatically install LSPs to stdpath for neovim
+            {
+                "williamboman/mason.nvim",
+                config = function()
+                    require("mason").setup()
+                end,
+            },
+            "williamboman/mason-lspconfig.nvim",
         },
     })
     use({

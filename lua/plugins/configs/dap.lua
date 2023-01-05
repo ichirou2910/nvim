@@ -31,7 +31,6 @@ vim.fn.sign_define("DapLogPoint", {
 -- .NET Core
 dap.adapters.netcoredbg = function(cb, config)
     if config.preLaunchTask then
-        -- vim.api.nvim_command('call VimuxRunCommand("' .. config.preLaunchTask .. '")')
         vim.loop.chdir(config.cwd)
         vim.fn.system(config.preLaunchTask)
         -- Doesn't fire debugger if preLaunchTask failed
@@ -140,11 +139,11 @@ end
 dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(session, body)
     local notif_data = notify_utils.client_notifs["dap"][body.progressId]
     notif_data.notification =
-        vim.notify(body.message and notify_utils.format_message(body.message) or "Complete", "info", {
-            icon = "",
-            replace = notif_data.notification,
-            timeout = 3000,
-        })
+    vim.notify(body.message and notify_utils.format_message(body.message) or "Complete", "info", {
+        icon = "",
+        replace = notif_data.notification,
+        timeout = 3000,
+    })
     notif_data.spinner = nil
 end
 
