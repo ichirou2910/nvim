@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup({
     highlight = {
         enable = true, -- false will disable the whole extension
         use_languagetree = true,
+        additional_vim_regex_highlighting = false,
     },
     playground = {
         enable = true,
