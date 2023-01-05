@@ -71,12 +71,13 @@ require("packer").startup(function(use)
 
     use({
         "vimwiki/vimwiki",
+        ft = "vimwiki",
         config = function()
             vim.g.vimwiki_list = {
                 {
                     path = "~/Wiki/",
                     syntax = "markdown",
-                    ext = ".md",
+                    ext = ".wiki",
                 },
             }
         end,
@@ -119,9 +120,6 @@ require("packer").startup(function(use)
         keys = { "gc", "gcc", "gbc" },
         config = "require('plugins.configs.comment')",
     })
-
-    -- Editorconfig
-    use({ "gpanders/editorconfig.nvim" })
 
     -- Database
     use({ "tpope/vim-dadbod", config = vim.cmd([[ source ~/.config/nvim/configs/dadbod.vim ]]) })
