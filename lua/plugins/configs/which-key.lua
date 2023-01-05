@@ -83,10 +83,12 @@ local n_mappings = {
         name = "Debug",
         b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
         c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-        C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+        C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
         d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+        f = { "<cmd>lua require'dapui'.float_element()<cr>", "Elements" },
         g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
         i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+        k = { "<cmd>lua require'dapui'.eval()<cr>", "Eval" },
         o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
         p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
         q = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
@@ -195,6 +197,18 @@ local n_mappings = {
         name = "Minimap",
         f = { "<cmd>lua require('codewindow').toggle_focus()<cr>", "Toggle Focus" },
         m = { "<cmd>lua require('codewindow').toggle_minimap()<cr>", "Toggle Map" },
+    },
+
+    p = {
+        function()
+            local filename = os.date("%s") .. ".png"
+            vim.fn.system("xclip -selection clipboard -t image/png -o > assets/images/" .. filename)
+            local pos = vim.api.nvim_win_get_cursor(0)[2]
+            local line = vim.api.nvim_get_current_line()
+            local nline = line:sub(0, pos) .. "![](/assets/images/" .. filename .. ")" .. line:sub(pos + 1)
+            vim.api.nvim_set_current_line(nline)
+        end,
+        "Paste image",
     },
 
     -- plugins/sidebar.vim
