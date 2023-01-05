@@ -66,12 +66,21 @@ function M.lsp_config(client, bufnr)
         vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     end
 
+    -- Codelens
+    if client.server_capabilities.codeLensProvider then
+        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+            callback = vim.lsp.codelens.refresh,
+            buffer = bufnr,
+        })
+    end
+end
+
+function M.lsp_formatting(client, bufnr)
     -- Formatting
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        --[[ vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }) ]]
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
+            group = "LspFormatting",
             buffer = bufnr,
             callback = function()
                 vim.lsp.buf.format({
@@ -82,14 +91,6 @@ function M.lsp_config(client, bufnr)
                     bufnr = bufnr,
                 })
             end,
-        })
-    end
-
-    -- Codelens
-    if client.server_capabilities.codeLensProvider then
-        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-            callback = vim.lsp.codelens.refresh,
-            buffer = bufnr,
         })
     end
 end
@@ -106,9 +107,13 @@ function M.get_capabilities()
 end
 
 function M.lsp_attach(client, bufnr)
+    vim.api.nvim_create_augroup("LspFormatting", {})
+
     M.lsp_config(client, bufnr)
+    M.lsp_formatting(client, bufnr)
     M.lsp_highlight()
     M.lsp_diagnostics()
+
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
