@@ -82,6 +82,12 @@ dap.configurations.cs = (function()
         local dap_data = vim.fn.json_decode(config_string)["config"]
         local cwd = vim.fn.getcwd()
         for _, data in pairs(dap_data) do
+            local env = {
+                ASPNETCORE_ENVIRONMENT = "Development",
+            }
+            if data["env"] ~= nil then
+                env = vim.tbl_extend("force", env, data["env"])
+            end
             local config = {
                 type = "netcoredbg",
                 name = data["name"],
@@ -89,9 +95,7 @@ dap.configurations.cs = (function()
                 preLaunchTask = "dotnet build",
                 cwd = cwd .. "/" .. data["cwd"],
                 program = cwd .. "/" .. data["program"],
-                env = {
-                    ASPNETCORE_ENVIRONMENT = "Development",
-                },
+                env = env,
             }
             table.insert(dap_config, config)
         end
