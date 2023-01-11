@@ -8,7 +8,3 @@ if not vim.g.vscode then
         end
     end
 end
-
-if vim.g.started_by_firenvim then
-    require("firenvim_init")
-end
