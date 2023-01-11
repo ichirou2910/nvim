@@ -28,25 +28,11 @@ require("packer").init({
     max_jobs = 9,
 })
 
--- check if firenvim is active
-local firenvim_not_active = function()
-    return not vim.g.started_by_firenvim
-end
-
 -- local use = require("packer").use
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     use({ "lewis6991/impatient.nvim" })
-
-    use({
-        "glacambre/firenvim",
-        run = function()
-            vim.fn["firenvim#install"](0)
-        end,
-        opt = true,
-        setup = [[vim.cmd('packadd firenvim')]],
-    })
 
     -- Text Navigation
     use({
@@ -95,13 +81,12 @@ require("packer").startup(function(use)
     use("tpope/vim-sleuth")
     use({
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufReadPre",
+        event = "BufWinEnter",
         config = "require('plugins.configs.blankline')",
     })
 
     use({
         "kevinhwang91/nvim-ufo",
-        cond = firenvim_not_active,
         requires = "kevinhwang91/promise-async",
         config = "require('plugins.configs.ufo')",
     })
@@ -131,8 +116,6 @@ require("packer").startup(function(use)
     -- Notification
     use({
         "rcarriga/nvim-notify",
-        --[[ cond = firenvim_not_active, ]]
-        event = "VimEnter",
         config = "require('plugins.configs.notify')",
     })
 
@@ -187,7 +170,6 @@ require("packer").startup(function(use)
                     })
                 end,
             },
-            { "Hoffs/omnisharp-extended-lsp.nvim" },
             {
                 "nvim-treesitter/playground",
                 cmd = "TSHighlightCapturesUnderCursor",
@@ -204,7 +186,6 @@ require("packer").startup(function(use)
     })
     use({
         "SmiteshP/nvim-navic",
-        cond = firenvim_not_active,
         module = "nvim-navic",
         requires = "neovim/nvim-lspconfig",
         config = "require('plugins.configs.navic')",
@@ -256,7 +237,6 @@ require("packer").startup(function(use)
     -- WhichKey
     use({
         "folke/which-key.nvim",
-        event = "VimEnter",
         config = "require('plugins.configs.which-key')",
     })
 
@@ -283,7 +263,7 @@ require("packer").startup(function(use)
     })
     use({
         "Weissle/persistent-breakpoints.nvim",
-        requires = "mfussenegger/nvim-dap",
+        wants = "nvim-dap",
         config = function()
             require("persistent-breakpoints").setup({
                 save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
@@ -369,7 +349,6 @@ require("packer").startup(function(use)
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
     use({
         "folke/noice.nvim",
-        cond = firenvim_not_active,
         config = "require('plugins.configs.noice')",
         requires = {
             "MunifTanjim/nui.nvim",
@@ -388,6 +367,7 @@ require("packer").startup(function(use)
             "nvim-lua/popup.nvim",
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+            "nvim-telescope/telescope-file-browser.nvim",
         },
         wants = {
             "plenary.nvim",
@@ -405,21 +385,18 @@ require("packer").startup(function(use)
     })
 
     -- Find and replace
-    use({ "windwp/nvim-spectre", event = "VimEnter", config = "require('plugins.configs.spectre')" })
+    use({ "windwp/nvim-spectre", config = "require('plugins.configs.spectre')" })
 
     -- Bars
     use({
         "nvim-lualine/lualine.nvim",
-        event = "VimEnter",
         after = "nvim-treesitter",
         config = "require('plugins.configs.lualine')",
         wants = "nvim-web-devicons",
-        cond = firenvim_not_active,
     })
 
     use({
         "romgrk/barbar.nvim",
-        cond = firenvim_not_active,
         event = "BufReadPre",
         requires = { "kyazdani42/nvim-web-devicons" },
         config = "require('plugins.configs.bufferline')",
@@ -428,7 +405,6 @@ require("packer").startup(function(use)
     -- Diagnostics
     use({
         "folke/trouble.nvim",
-        event = "VimEnter",
         cmd = { "TroubleToggle", "Trouble" },
         config = "require('plugins.configs.trouble')",
     })
@@ -439,9 +415,8 @@ require("packer").startup(function(use)
     })
     use({
         "neovim/nvim-lspconfig",
-        event = "VimEnter",
         wants = {
-            "cmp-nvim-lsp",
+            "nvim-cmp",
             "null-ls.nvim",
             "typescript.nvim",
             "lsp-inlayhints.nvim",
@@ -450,7 +425,7 @@ require("packer").startup(function(use)
         requires = {
             "jose-elias-alvarez/null-ls.nvim",
             "jose-elias-alvarez/typescript.nvim",
-            -- Automatically install LSPs to stdpath for neovim
+            { "Hoffs/omnisharp-extended-lsp.nvim" },
             {
                 "williamboman/mason.nvim",
                 config = function()
@@ -458,6 +433,7 @@ require("packer").startup(function(use)
                 end,
             },
             "williamboman/mason-lspconfig.nvim",
+            { "jayp0521/mason-null-ls.nvim", commit = "ab5d99619de2263508abb7fb05ef3a0f24a8d73d" },
         },
     })
     use({

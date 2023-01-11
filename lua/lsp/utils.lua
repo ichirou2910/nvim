@@ -5,6 +5,7 @@ local M = {}
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
+        virtual_lines = { only_current_line = true },
         float = {
             source = "always",
             border = "rounded",
@@ -98,6 +99,7 @@ end
 function M.get_capabilities()
     -- for nvim-cmp
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    --[[ local capabilities = vim.lsp.protocol.make_client_capabilities() ]]
 
     capabilities.textDocument.completion.completionItem.documentationFormat = {
         "markdown",
@@ -107,7 +109,7 @@ function M.get_capabilities()
 end
 
 function M.lsp_attach(client, bufnr)
-    vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 
     M.lsp_config(client, bufnr)
     M.lsp_formatting(client, bufnr)

@@ -80,14 +80,6 @@ local mason_servers = {
         handlers = {
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
-        cmd = {
-            "/usr/bin/omnisharp",
-            "--languageserver",
-            "--hostPID",
-            tostring(vim.fn.getpid()),
-            "--loglevel",
-            "information",
-        },
 
         organize_imports_on_format = true,
     },

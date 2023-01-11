@@ -11,17 +11,20 @@ local command_resolver = require("null-ls.helpers.command_resolver")
 
 local sources = {
     -- Diagnostics
-    builtins.diagnostics.eslint_d,
+    builtins.diagnostics.eslint_d.with({
+        dynamic_command = command_resolver.from_node_modules(),
+    }),
     builtins.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
     -- Format
     builtins.formatting.prettierd.with({
-        filetypes = { "html", "json", "markdown", "scss", "css", "vimwiki" },
+        filetypes = { "html", "markdown", "scss", "css", "vimwiki" },
         dynamic_command = command_resolver.from_node_modules(),
     }),
     builtins.formatting.shfmt,
     builtins.formatting.stylua,
     builtins.formatting.csharpier,
+    builtins.formatting.jq,
 
     -- Code actions
     builtins.code_actions.eslint_d,
@@ -31,6 +34,12 @@ local sources = {
 local M = {}
 M.setup = function()
     null_ls.setup({ sources = sources, on_attach = lsp_utils.lsp_attach, debounce = 150 })
+
+    require("mason-null-ls").setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+        automatic_setup = false,
+    })
 end
 
 return M
