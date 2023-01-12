@@ -5,7 +5,6 @@ local M = {}
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
-        virtual_lines = { only_current_line = true },
         float = {
             source = "always",
             border = "rounded",
