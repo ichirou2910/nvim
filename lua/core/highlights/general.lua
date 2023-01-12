@@ -80,4 +80,5 @@ return {
     PmenuSel = { fg = colors.black, bg = colors.pmenu_bg },
     PmenuThumb = { fg = colors.black, bg = "#585870" },
     MatchParen = { fg = colors.white, bg = colors.grey },
+    GutterSep = { fg = colors.light_grey },
 }
