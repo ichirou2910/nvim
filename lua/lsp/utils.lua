@@ -7,6 +7,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
+        virtual_lines = { only_current_line = true },
         float = {
             source = "always",
             border = "rounded",
