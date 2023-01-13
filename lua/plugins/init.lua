@@ -77,20 +77,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    -- Indent
-    use("tpope/vim-sleuth")
-    use({
-        "lukas-reineke/indent-blankline.nvim",
-        event = "BufWinEnter",
-        config = "require('plugins.configs.blankline')",
-    })
-
-    use({
-        "kevinhwang91/nvim-ufo",
-        requires = "kevinhwang91/promise-async",
-        config = "require('plugins.configs.ufo')",
-    })
-
     -- Working dir
     use({
         "notjedi/nvim-rooter.lua",
@@ -199,6 +185,20 @@ require("packer").startup(function(use)
         end,
     })
 
+    -- Indent
+    use("tpope/vim-sleuth")
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufWinEnter",
+        config = "require('plugins.configs.blankline')",
+    })
+
+    use({
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async",
+        config = "require('plugins.configs.ufo')",
+    })
+
     -- Cmake
     use({
         "ilyachur/cmake4vim",
@@ -252,6 +252,7 @@ require("packer").startup(function(use)
         "mfussenegger/nvim-dap",
         event = "BufWinEnter",
         as = "nvim-dap",
+        module = "dap",
         config = "require('plugins.configs.dap')",
     })
     use({ "rcarriga/nvim-dap-ui", config = "require('plugins.configs.dap-ui')", after = "nvim-dap" })
@@ -349,6 +350,7 @@ require("packer").startup(function(use)
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
     use({
         "folke/noice.nvim",
+        --[[ disable = true, ]]
         config = "require('plugins.configs.noice')",
         requires = {
             "MunifTanjim/nui.nvim",
@@ -479,12 +481,7 @@ require("packer").startup(function(use)
     use({
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
-        opt = true,
         requires = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
             "kristijanhusak/vim-dadbod-completion",
             "rafamadriz/friendly-snippets",
             {
@@ -495,6 +492,10 @@ require("packer").startup(function(use)
         },
         config = "require('plugins.configs.nvim-cmp')",
     })
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("saadparwaiz1/cmp_luasnip")
 
     -- Testing
     use({
