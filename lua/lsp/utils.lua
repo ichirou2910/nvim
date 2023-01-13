@@ -2,6 +2,8 @@ local navic = require("nvim-navic")
 
 local M = {}
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
@@ -78,9 +80,9 @@ end
 function M.lsp_formatting(client, bufnr)
     -- Formatting
     if client.server_capabilities.documentFormattingProvider then
-        --[[ vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }) ]]
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = "LspFormatting",
+            group = augroup,
             buffer = bufnr,
             callback = function()
                 vim.lsp.buf.format({
@@ -108,8 +110,6 @@ function M.get_capabilities()
 end
 
 function M.lsp_attach(client, bufnr)
-    vim.api.nvim_create_augroup("LspFormatting", { clear = false })
-
     M.lsp_config(client, bufnr)
     M.lsp_formatting(client, bufnr)
     M.lsp_highlight()
