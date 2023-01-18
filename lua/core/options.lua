@@ -50,7 +50,7 @@ vim.opt.timeoutlen = 500
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 vim.o.statuscolumn =
-    '%=%{v:wrap?" ":v:relnum?v:relnum:v:lnum} %s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%* %#GutterSep#▏%*%T'
+    '%=%{v:wrap?" ":v:relnum?v:relnum:v:lnum} %s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%* %T'
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 
