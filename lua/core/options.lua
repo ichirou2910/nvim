@@ -23,6 +23,8 @@ vim.opt.expandtab = true -- Converts tabs to spaces
 vim.opt.smartindent = true -- Makes indenting smart
 vim.opt.autoindent = true -- Good auto indent
 vim.opt.laststatus = 3 -- Always display the status line
+vim.opt.rnu = true
+vim.opt.list = true
 vim.opt.number = true -- Line numbers
 vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.background = "dark" -- tell vim what the background color looks like
@@ -37,6 +39,7 @@ vim.opt.incsearch = true
 vim.opt.switchbuf = { "useopen", "usetab" }
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.o.splitkeep = "screen"
+vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -48,9 +51,6 @@ vim.opt.cul = true -- cursor line
 vim.opt.timeoutlen = 500
 
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-
-vim.o.statuscolumn =
-    '%=%{v:wrap?" ":v:relnum?v:relnum:v:lnum} %s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%* %T'
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 

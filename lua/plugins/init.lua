@@ -404,6 +404,11 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.bufferline')",
     })
 
+    use({
+        "luukvbaal/statuscol.nvim",
+        config = "require('plugins.configs.statuscol')",
+    })
+
     -- Diagnostics
     use({
         "folke/trouble.nvim",

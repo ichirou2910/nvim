@@ -9,7 +9,7 @@ return {
     Error = { fg = theme.base00, bg = colors.float_bg },
     ErrorMsg = { fg = theme.base08, bg = colors.float_bg },
     Exception = { fg = theme.base08 },
-    FoldColumn = { fg = colors.teal, bg = nil },
+    FoldColumn = { fg = colors.white, bg = nil },
     Folded = { fg = theme.base03, bg = "#352e51" },
     IncSearch = { fg = theme.base01, bg = theme.base09, ctermbg = "yellow" },
     Italic = { italic = true },
