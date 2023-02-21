@@ -99,9 +99,7 @@ function M.lsp_formatting(client, bufnr)
 end
 
 function M.get_capabilities()
-    -- for nvim-cmp
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    --[[ local capabilities = vim.lsp.protocol.make_client_capabilities() ]]
 
     capabilities.textDocument.completion.completionItem.documentationFormat = {
         "markdown",
@@ -119,7 +117,7 @@ function M.lsp_attach(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
-    require("lsp-inlayhints").on_attach(client, bufnr, false)
+    --[[ require("lsp-inlayhints").on_attach(client, bufnr, false) ]]
 
     -- Omnisharp's semantic tokens don't work nicely with neovim
     if client.name == "omnisharp" then

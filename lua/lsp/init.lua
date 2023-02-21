@@ -18,7 +18,7 @@ end
 
 -- servers handled by mason
 local mason_servers = {
-    sumneko_lua = {
+    lua_ls = {
         on_attach = lsp_utils.lsp_attach,
         capabilities = lsp_utils.get_capabilities(),
         flags = { debounce_text_changes = 150 },
@@ -80,8 +80,6 @@ local mason_servers = {
         handlers = {
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
-
-        organize_imports_on_format = true,
     },
 }
 
@@ -91,7 +89,7 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup(vim.tbl_extend("force", common_config, mason_servers[server_name]))
+        lspconfig[server_name].setup(mason_servers[server_name])
     end,
 })
 
@@ -102,14 +100,15 @@ local function lsp_tsserver()
         server = {
             on_attach = lsp_utils.lsp_attach,
         },
-        inlayHints = {
-            includeInlayEnumMemberValueHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayVariableTypeHints = true,
+        inlayHints = {},
+    })
+end
+
+local function lsp_clangd()
+    require("clangd_extensions").setup({
+        server = {
+            on_attach = lsp_utils.lsp_attach,
+            capabilities = lsp_utils.get_capabilities(),
         },
     })
 end
@@ -171,7 +170,8 @@ local function lsp_pyright()
 end
 
 lsp_tsserver()
-lsp_ccls()
+--[[ lsp_clangd() ]]
+--[[ lsp_ccls() ]]
 lsp_pyright()
 
 -- null-ls

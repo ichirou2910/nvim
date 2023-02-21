@@ -161,7 +161,7 @@ require("packer").startup(function(use)
                 cmd = "TSHighlightCapturesUnderCursor",
             },
             { "nvim-treesitter/nvim-treesitter-textobjects" },
-            { "https://git.sr.ht/~p00f/nvim-ts-rainbow" },
+            { "mrjones2014/nvim-ts-rainbow" },
         },
     })
     use({
@@ -436,6 +436,7 @@ require("packer").startup(function(use)
         requires = {
             "jose-elias-alvarez/null-ls.nvim",
             "jose-elias-alvarez/typescript.nvim",
+            "p00f/clangd_extensions.nvim",
             { "Hoffs/omnisharp-extended-lsp.nvim" },
             {
                 "williamboman/mason.nvim",

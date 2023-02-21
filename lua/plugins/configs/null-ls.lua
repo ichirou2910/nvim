@@ -11,14 +11,12 @@ local command_resolver = require("null-ls.helpers.command_resolver")
 
 local sources = {
     -- Diagnostics
-    builtins.diagnostics.eslint_d.with({
-        dynamic_command = command_resolver.from_node_modules(),
-    }),
+    builtins.diagnostics.eslint_d,
     builtins.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
     -- Format
     builtins.formatting.prettierd.with({
-        filetypes = { "html", "markdown", "scss", "css", "vimwiki" },
+        filetypes = { "html", "markdown", "scss", "css" },
         dynamic_command = command_resolver.from_node_modules(),
     }),
     builtins.formatting.shfmt,

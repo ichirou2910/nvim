@@ -6,7 +6,7 @@ return {
     Bold = { bold = true },
     Debug = { fg = theme.base08 },
     Directory = { fg = theme.base0D },
-    Error = { fg = theme.base00, bg = colors.float_bg },
+    Error = { fg = theme.base00, bg = colors.red },
     ErrorMsg = { fg = theme.base08, bg = colors.float_bg },
     Exception = { fg = theme.base08 },
     FoldColumn = { fg = colors.white, bg = nil },
