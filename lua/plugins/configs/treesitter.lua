@@ -14,11 +14,17 @@ require("nvim-treesitter.configs").setup({
     },
     rainbow = {
         enable = true,
-        extended_mode = false,
+        extended_mode = true,
         colors = {
-            "#ffcb0c",
-            "#da70d6",
-            "#179bff",
+            "#ed8796",
+            "#f5a97f",
+            "#eed49f",
+            "#a6da95",
+            "#7dc4e4",
+            "#c6a0f6",
+            --[[ "#ffcb0c", ]]
+            --[[ "#da70d6", ]]
+            --[[ "#179bff", ]]
         },
     },
     textobjects = {

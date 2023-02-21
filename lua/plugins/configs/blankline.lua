@@ -6,9 +6,12 @@ vim.cmd([[
 
 vim.cmd([[highlight IndentBlanklineContextChar guifg=#f38ba8 gui=nocombine]])
 vim.cmd([[highlight IndentBlanklineContextStart0 guisp=#f38ba8 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart1 guisp=#ffcb0c gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart2 guisp=#da70d6 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart3 guisp=#179bff gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart1 guisp=#ed8796 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart2 guisp=#f5a97f gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart3 guisp=#eed49f gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart4 guisp=#a6da95 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart5 guisp=#7dc4e4 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart6 guisp=#c6a0f6 gui=underline]])
 
 require("indent_blankline").setup({
     viewport_buffer = 100,
@@ -30,12 +33,18 @@ require("indent_blankline").setup({
         "rainbowcol1",
         "rainbowcol2",
         "rainbowcol3",
+        "rainbowcol4",
+        "rainbowcol5",
+        "rainbowcol6",
     },
     context_start_highlight_list = {
         --[[ "IndentBlanklineContextStart0", ]]
         "IndentBlanklineContextStart1",
         "IndentBlanklineContextStart2",
         "IndentBlanklineContextStart3",
+        "IndentBlanklineContextStart4",
+        "IndentBlanklineContextStart5",
+        "IndentBlanklineContextStart6",
     },
     space_char_blankline = " ",
     use_treesitter = true,
