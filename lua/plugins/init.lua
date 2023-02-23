@@ -351,6 +351,7 @@ require("packer").startup(function(use)
     })
 
     -- UI
+    use("folke/tokyonight.nvim")
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
     use({
         "folke/noice.nvim",
