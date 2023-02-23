@@ -426,6 +426,15 @@ require("packer").startup(function(use)
         "jose-elias-alvarez/null-ls.nvim",
     })
     use({
+        {
+            "williamboman/mason.nvim",
+            config = function()
+                require("mason").setup()
+            end,
+        },
+        "williamboman/mason-lspconfig.nvim",
+    })
+    use({
         "neovim/nvim-lspconfig",
         wants = {
             "nvim-cmp",
@@ -439,13 +448,6 @@ require("packer").startup(function(use)
             "jose-elias-alvarez/typescript.nvim",
             "p00f/clangd_extensions.nvim",
             { "Hoffs/omnisharp-extended-lsp.nvim" },
-            {
-                "williamboman/mason.nvim",
-                config = function()
-                    require("mason").setup()
-                end,
-            },
-            "williamboman/mason-lspconfig.nvim",
             { "jayp0521/mason-null-ls.nvim", commit = "ab5d99619de2263508abb7fb05ef3a0f24a8d73d" },
         },
     })
