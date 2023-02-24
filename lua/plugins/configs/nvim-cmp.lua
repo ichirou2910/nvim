@@ -24,13 +24,13 @@ cmp.setup({
         completion = {
             border = { "", "", "", "", "", "", "", "" },
             winhighlight = "NormalFloat:CmpPmenu,CursorLine:PmenuSel,Search:None,FloatBorder:CmpBorder",
+            max_width = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
         },
         documentation = {
             border = { "", "", "", "", "", "", "", "" },
             winhighlight = "NormalFloat:CmpPmenu,FloatBorder:CmpBorder",
-            maxwidth = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
-            maxheight = math.floor(WIDTH * (WIDTH / vim.o.lines)),
-            max_height = math.floor(vim.o.lines * 0.3),
+            max_width = math.floor((WIDTH * 2) * (vim.o.columns / (WIDTH * 2 * 16 / 9))),
+            max_height = math.floor(WIDTH * (WIDTH / vim.o.lines)),
             min_height = 1,
             zindex = 100,
         },
@@ -92,6 +92,7 @@ cmp.setup({
                 ["vim-dadbod-completion"] = "[DB]",
             },
             mode = "symbol_text",
+            maxwidth = math.floor(vim.o.columns * 0.3),
             preset = "codicons",
             symbol_map = {
                 Text = icons.kind.Text,
