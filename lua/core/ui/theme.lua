@@ -20,13 +20,10 @@ require("tokyonight").setup({
         floats = "dark", -- style for floating windows
     },
     on_highlights = function(hl, c)
-        hl.FloatBorder = {
-            fg = c.bg_float,
-            bg = c.bg,
-        }
-        hl.NormalFloat = {
-            bg = c.bg_float,
-        }
+        hl.FloatBorder = { fg = c.bg_float, bg = c.bg }
+        hl.NormalFloat = { bg = c.bg_float }
+        hl.CmpBorder = { link = "FloatBorder" }
+        hl.CmpPmenu = { link = "NormalFloat" }
         hl.NnnNormal = { bg = c.bg_float }
         hl.NnnBorder = { fg = c.bg_float, bg = c.bg }
         hl.NotifyERRORBorder = { fg = c.bg_float, bg = c.bg }
