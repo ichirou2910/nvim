@@ -53,6 +53,13 @@ dap.adapters.lldb = {
     name = "lldb",
 }
 
+-- Godot
+dap.adapters.godot = {
+    type = "server",
+    host = "127.0.0.1",
+    port = 6006,
+}
+
 -- Configuration
 -- C/C++
 dap.configurations.cpp = {
@@ -112,6 +119,18 @@ dap.configurations.cs = (function()
     return dap_config
 end)()
 
+-- Godot
+dap.configurations.gdscript = {
+    {
+        type = "godot",
+        request = "launch",
+        name = "Launch scene",
+        project = "${workspaceFolder}",
+        launch_scene = false,
+        launch_game_instance = true,
+    },
+}
+
 -- Notification
 dap.listeners.before["event_progressStart"]["progress-notifications"] = function(session, body)
     local notif_data = notify_utils.get_notif_data("dap", body.progressId)
@@ -139,11 +158,11 @@ end
 dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(session, body)
     local notif_data = notify_utils.client_notifs["dap"][body.progressId]
     notif_data.notification =
-    vim.notify(body.message and notify_utils.format_message(body.message) or "Complete", "info", {
-        icon = "",
-        replace = notif_data.notification,
-        timeout = 3000,
-    })
+        vim.notify(body.message and notify_utils.format_message(body.message) or "Complete", "info", {
+            icon = "",
+            replace = notif_data.notification,
+            timeout = 3000,
+        })
     notif_data.spinner = nil
 end
 

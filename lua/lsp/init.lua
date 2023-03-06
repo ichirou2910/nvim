@@ -169,10 +169,18 @@ local function lsp_pyright()
     lspconfig.pyright.setup(vim.tbl_extend("keep", common_config, config))
 end
 
+local function lsp_godot()
+    local config = {
+        --[[ cmd = vim.lsp.rpc.connect("127.0.0.1", port), ]]
+    }
+    lspconfig.gdscript.setup(vim.tbl_extend("force", common_config, config))
+end
+
 lsp_tsserver()
 --[[ lsp_clangd() ]]
 --[[ lsp_ccls() ]]
 lsp_pyright()
+lsp_godot()
 
 -- null-ls
 require("plugins.configs.null-ls").setup()
