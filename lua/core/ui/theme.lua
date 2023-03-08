@@ -37,6 +37,7 @@ require("tokyonight").setup({
         hl.NotifyDEBUGBody = { bg = c.bg_float }
         hl.NotifyTRACEBody = { bg = c.bg_float }
         hl.FoldColumn = { fg = c.fg, bg = nil }
+        hl.DapStopped = { bg = "#533d12" }
 
         -- Telescope borderless
         local prompt = "#292e42"
