@@ -2,6 +2,8 @@ local navic = require("nvim-navic")
 
 local M = {}
 
+local border = require("core.utils").custom_border
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 function M.lsp_diagnostics()
@@ -10,7 +12,7 @@ function M.lsp_diagnostics()
         virtual_lines = { only_current_line = true },
         float = {
             source = "always",
-            border = "rounded",
+            border = border()
         },
         signs = true,
         underline = true,
@@ -27,7 +29,11 @@ function M.lsp_diagnostics()
         -- but only once for the current cursor location (unless moved afterwards).
         if not (current_cursor[1] == last_popup_cursor[1] and current_cursor[2] == last_popup_cursor[2]) then
             vim.w.lsp_diagnostics_last_cursor = current_cursor
-            vim.diagnostic.open_float({ scope = "cursor", focusable = false, border = "rounded" }) -- for neovim 0.6.0+, replaces show_{line,position}_diagnostics
+            vim.diagnostic.open_float({
+                scope = "cursor",
+                focusable = false,
+                border = border()
+            })
         end
     end
 
@@ -39,10 +45,22 @@ function M.lsp_diagnostics()
         end,
         pattern = "*",
     })
+
+    vim.keymap.set(
+        "n",
+        "gn",
+        "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>",
+        { noremap = true, silent = true }
+    )
+    vim.keymap.set(
+        "n",
+        "gp",
+        "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>",
+        { noremap = true, silent = true }
+    )
 end
 
 function M.lsp_highlight()
-    -- replace the default lsp diagnostic letters with prettier symbols
     vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticError" })
     vim.fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticWarn" })
     vim.fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticInfo" })
@@ -52,22 +70,12 @@ end
 function M.lsp_config(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Mappings.
-    local opts = { noremap = true, silent = true }
-
     vim.keymap.set("n", "K", function()
         local winid = require("ufo").peekFoldedLinesUnderCursor()
         if not winid then
             vim.lsp.buf.hover()
         end
-    end, opts)
-    vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>", opts)
-    vim.keymap.set("n", "gp", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>", opts)
-
-    -- Set some keybinds conditional on server capabilities
-    if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-    end
+    end, { noremap = true, silent = true })
 
     -- Codelens
     if client.server_capabilities.codeLensProvider then
@@ -81,6 +89,8 @@ end
 function M.lsp_formatting(client, bufnr)
     -- Formatting
     if client.server_capabilities.documentFormattingProvider then
+        vim.keymap.set("n", "<space>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
+
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
