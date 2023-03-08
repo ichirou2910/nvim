@@ -6,37 +6,37 @@ end
 
 local builtin = require("statuscol.builtin")
 local cfg = {
-    separator = " ", -- separator between line number and buffer text ("│" or extra " " padding)
-    -- Builtin line number string options for ScLn() segment
-    thousands = false, -- or line number thousands separator string ("." / ",")
-    relculright = true, -- whether to right-align the cursor line number with 'relativenumber' set
-    -- Custom line number string options for ScLn() segment
-    lnumfunc = nil, -- custom function called by ScLn(), should return a string
-    reeval = true, -- whether or not the string returned by lnumfunc should be reevaluated
-    -- Custom fold column string options for ScFc() segment
-    foldfunc = "builtin", -- nil for "%C" segment, "builtin" for builtin function, or custom function called by ScFc(), should return a string
     -- Builtin 'statuscolumn' options
     setopt = true, -- whether to set the 'statuscolumn', providing builtin click actions
-    -- order of the fold (F), sign (S), line number (N) and separator segments (s)
-    order = "NsSFs",
     ft_ignore = nil, -- lua table with filetypes for which 'statuscolumn' will be unset
-    -- Click actions
-    Lnum = builtin.lnum_click,
-    FoldClose = builtin.foldclose_click,
-    FoldOpen = builtin.foldopen_click,
-    FoldOther = builtin.foldother_click,
-    DapBreakpointRejected = builtin.toggle_breakpoint,
-    DapBreakpoint = builtin.toggle_breakpoint,
-    DapBreakpointCondition = builtin.toggle_breakpoint,
-    DiagnosticSignError = builtin.diagnostic_click,
-    DiagnosticSignHint = builtin.diagnostic_click,
-    DiagnosticSignInfo = builtin.diagnostic_click,
-    DiagnosticSignWarn = builtin.diagnostic_click,
-    GitSignsTopdelete = builtin.gitsigns_click,
-    GitSignsUntracked = builtin.gitsigns_click,
-    GitSignsAdd = builtin.gitsigns_click,
-    GitSignsChangedelete = builtin.gitsigns_click,
-    GitSignsDelete = builtin.gitsigns_click,
+    -- Default segments (fold -> sign -> line number + separator)
+    segments = {
+        {
+            text = { builtin.lnumfunc, " " },
+            condition = { true, builtin.not_empty },
+            click = "v:lua.ScLa",
+        },
+        { text = { "%s" }, click = "v:lua.ScSa" },
+        { text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+    },
+    clickhandlers = {
+        Lnum = builtin.lnum_click,
+        FoldClose = builtin.foldclose_click,
+        FoldOpen = builtin.foldopen_click,
+        FoldOther = builtin.foldother_click,
+        DapBreakpointRejected = builtin.toggle_breakpoint,
+        DapBreakpoint = builtin.toggle_breakpoint,
+        DapBreakpointCondition = builtin.toggle_breakpoint,
+        DiagnosticSignError = builtin.diagnostic_click,
+        DiagnosticSignHint = builtin.diagnostic_click,
+        DiagnosticSignInfo = builtin.diagnostic_click,
+        DiagnosticSignWarn = builtin.diagnostic_click,
+        GitSignsTopdelete = builtin.gitsigns_click,
+        GitSignsUntracked = builtin.gitsigns_click,
+        GitSignsAdd = builtin.gitsigns_click,
+        GitSignsChangedelete = builtin.gitsigns_click,
+        GitSignsDelete = builtin.gitsigns_click,
+    },
 }
 
 statuscol.setup(cfg)
