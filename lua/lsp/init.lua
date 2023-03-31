@@ -83,9 +83,7 @@ local mason_servers = {
     },
 }
 
-mason_lspconfig.setup({
-    ensure_installed = vim.tbl_keys(mason_servers),
-})
+mason_lspconfig.setup()
 
 mason_lspconfig.setup_handlers({
     function(server_name)
@@ -177,8 +175,6 @@ local function lsp_godot()
 end
 
 lsp_tsserver()
---[[ lsp_clangd() ]]
---[[ lsp_ccls() ]]
 lsp_pyright()
 lsp_godot()
 

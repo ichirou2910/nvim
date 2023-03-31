@@ -28,7 +28,6 @@ require("packer").init({
     max_jobs = 9,
 })
 
--- local use = require("packer").use
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
@@ -50,6 +49,8 @@ require("packer").startup(function(use)
             require("neodev").setup({
                 library = {
                     runtime = runtime_path,
+                    plugins = { "nvim-dap-ui" },
+                    types = true,
                 },
             })
         end,
@@ -299,7 +300,7 @@ require("packer").startup(function(use)
 
     -- Colorizer
     use({
-        "norcalli/nvim-colorizer.lua",
+        "NvChad/nvim-colorizer.lua",
         cmd = "ColorizerToggle",
         config = "require('plugins.configs.colorizer')",
     })
@@ -428,9 +429,6 @@ require("packer").startup(function(use)
 
     -- Nvim LSP
     use({
-        "jose-elias-alvarez/null-ls.nvim",
-    })
-    use({
         {
             "williamboman/mason.nvim",
             config = function()
@@ -498,7 +496,6 @@ require("packer").startup(function(use)
     })
     use({
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
         requires = {
             "kristijanhusak/vim-dadbod-completion",
             "rafamadriz/friendly-snippets",
