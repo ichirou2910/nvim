@@ -65,6 +65,10 @@ local function cwd_name()
     return " " .. t[#t]
 end
 
+local function navic_location()
+    return require("core.ui.winbar").get()
+end
+
 --[[ local radium_theme = { ]]
 --[[     normal = { ]]
 --[[         a = { bg = theme_colors.blue, fg = theme_colors.black }, ]]
@@ -115,6 +119,7 @@ lualine.setup({
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {
             { "filename", path = 1 },
+            { navic_location },
         },
         lualine_x = {
             {

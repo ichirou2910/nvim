@@ -414,6 +414,11 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.statuscol')",
     })
 
+    use({
+        "b0o/incline.nvim",
+        config = "require('plugins.configs.incline')",
+    })
+
     -- Diagnostics
     use({
         "folke/trouble.nvim",
