@@ -34,10 +34,11 @@ navic.setup({
         Operator = icons.kind.Operator,
         TypeParameter = icons.kind.TypeParameter,
     },
-    separator = " " .. icons.ui.ChevronRight .. " ",
+    separator = " " .. icons.ui.SeperatorLeft .. " ",
     highlight = true,
     depth_limit = 0,
     depth_limit_indicator = "..",
+    safe_output = true,
 })
 
 vim.g.navic_silence = true

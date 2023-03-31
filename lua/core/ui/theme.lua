@@ -40,7 +40,7 @@ require("tokyonight").setup({
         hl.DapStopped = { bg = "#533d12" }
 
         -- Telescope borderless
-        local prompt = "#292e42"
+        local prompt = "#2F334D"
         hl.TelescopeNormal = {
             bg = c.bg_dark,
             fg = c.fg_dark,
@@ -57,17 +57,47 @@ require("tokyonight").setup({
             fg = prompt,
         }
         hl.TelescopePromptTitle = {
-            bg = prompt,
-            fg = prompt,
+            bg = c.red,
+            fg = c.bg,
         }
         hl.TelescopePreviewTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
+            bg = c.blue,
+            fg = c.bg,
         }
         hl.TelescopeResultsTitle = {
             bg = c.bg_dark,
             fg = c.bg_dark,
         }
+
+        -- nvim-navic
+        hl.NavicIconsFile.bg = c.bg_statusline
+        hl.NavicIconsModule.bg = c.bg_statusline
+        hl.NavicIconsNamespace.bg = c.bg_statusline
+        hl.NavicIconsPackage.bg = c.bg_statusline
+        hl.NavicIconsClass.bg = c.bg_statusline
+        hl.NavicIconsMethod.bg = c.bg_statusline
+        hl.NavicIconsProperty.bg = c.bg_statusline
+        hl.NavicIconsField.bg = c.bg_statusline
+        hl.NavicIconsConstructor.bg = c.bg_statusline
+        hl.NavicIconsEnum.bg = c.bg_statusline
+        hl.NavicIconsInterface.bg = c.bg_statusline
+        hl.NavicIconsFunction.bg = c.bg_statusline
+        hl.NavicIconsVariable.bg = c.bg_statusline
+        hl.NavicIconsConstant.bg = c.bg_statusline
+        hl.NavicIconsString.bg = c.bg_statusline
+        hl.NavicIconsNumber.bg = c.bg_statusline
+        hl.NavicIconsBoolean.bg = c.bg_statusline
+        hl.NavicIconsArray.bg = c.bg_statusline
+        hl.NavicIconsObject.bg = c.bg_statusline
+        hl.NavicIconsKey.bg = c.bg_statusline
+        hl.NavicIconsNull.bg = c.bg_statusline
+        hl.NavicIconsEnumMember.bg = c.bg_statusline
+        hl.NavicIconsStruct.bg = c.bg_statusline
+        hl.NavicIconsEvent.bg = c.bg_statusline
+        hl.NavicIconsOperator.bg = c.bg_statusline
+        hl.NavicIconsTypeParameter.bg = c.bg_statusline
+        hl.NavicText.bg = c.bg_statusline
+        hl.NavicSeparator.bg = c.bg_statusline
     end,
 })
 vim.cmd([[colorscheme tokyonight-moon]])

@@ -12,7 +12,7 @@ function M.lsp_diagnostics()
         virtual_lines = { only_current_line = true },
         float = {
             source = "always",
-            border = border()
+            border = border(),
         },
         signs = true,
         underline = true,
@@ -32,7 +32,7 @@ function M.lsp_diagnostics()
             vim.diagnostic.open_float({
                 scope = "cursor",
                 focusable = false,
-                border = border()
+                border = border(),
             })
         end
     end
