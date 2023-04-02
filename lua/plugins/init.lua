@@ -407,7 +407,7 @@ require("packer").startup(function(use)
         "romgrk/barbar.nvim",
         event = "BufReadPre",
         requires = { "kyazdani42/nvim-web-devicons" },
-        config = "require('plugins.configs.bufferline')",
+        config = "require('plugins.configs.barbar')",
     })
 
     use({
