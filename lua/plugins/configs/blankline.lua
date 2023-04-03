@@ -54,5 +54,4 @@ require("indent_blankline").setup({
     show_first_indent_level = true,
     show_foldtext = false,
     strict_tabs = true,
-    max_indent_increase = 1,
 })
