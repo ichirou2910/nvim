@@ -56,32 +56,6 @@ require("telescope").setup({
         },
         preview = {
             treesitter = false,
-            mime_hook = function(filepath, bufnr, opts)
-                local is_image = function(file)
-                    local image_extensions = { "png", "jpg" } -- Supported image formats
-                    local split_path = vim.split(file:lower(), ".", { plain = true })
-                    local extension = split_path[#split_path]
-                    return vim.tbl_contains(image_extensions, extension)
-                end
-                if is_image(filepath) then
-                    local term = vim.api.nvim_open_term(bufnr, {})
-                    local function send_output(_, data, _)
-                        for _, d in ipairs(data) do
-                            vim.api.nvim_chan_send(term, d .. "\r\n")
-                        end
-                    end
-                    vim.fn.jobstart({
-                        "catimg",
-                        filepath, -- Terminal image viewer command
-                    }, { on_stdout = send_output, stdout_buffered = true })
-                else
-                    require("telescope.previewers.utils").set_preview_message(
-                        bufnr,
-                        opts.winid,
-                        "Binary cannot be previewed"
-                    )
-                end
-            end,
         },
     },
     extensions = {
@@ -96,29 +70,19 @@ require("telescope").setup({
             hijack_netrw = true,
         },
     },
-    -- pickers = {
-    --     buffers = {
-    --         theme = "dropdown",
-    --     },
-    --     find_files = {
-    --         theme = "dropdown",
-    --     },
-    --     lsp_code_actions = {
-    --         theme = "cursor",
-    --     },
-    --     lsp_range_code_actions = {
-    --         theme = "cursor",
-    --     },
-    --     commands = {
-    --         theme = "ivy",
-    --     },
-    --     live_grep = {
-    --         layout_strategy = "horizontal",
-    --         layout_config = {
-    --             preview_width = 0.4,
-    --         },
-    --     },
-    -- },
+    pickers = {
+        git_commits = {
+            mappings = {
+                i = {
+                    ["<C-o>"] = function(prompt_bufnr)
+                        actions.close(prompt_bufnr)
+                        local value = actions.get_selected_entry(prompt_bufnr).value
+                        vim.cmd("DiffviewOpen " .. value .. "~1.." .. value)
+                    end,
+                },
+            },
+        },
+    },
 })
 
 require("telescope").load_extension("fzf")
