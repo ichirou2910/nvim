@@ -88,7 +88,13 @@ local n_mappings = {
         f = { "<cmd>lua require'dapui'.float_element()<cr>", "Elements" },
         g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
         i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-        k = { "<cmd>lua require'dapui'.eval()<cr>", "Eval" },
+        k = {
+            function()
+                require("dapui").eval()
+                require("dapui").eval()
+            end,
+            "Inspect",
+        },
         o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
         p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
         q = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
@@ -251,6 +257,16 @@ local n_mappings = {
 }
 
 local v_mappings = {
+    d = {
+        name = "Debug",
+        k = {
+            function()
+                require("dapui").eval()
+                require("dapui").eval()
+            end,
+            "Inspect",
+        },
+    },
     f = {
         name = "Find",
         r = {
