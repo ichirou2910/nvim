@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local lsp_utils = require("lsp.utils")
 local lsp_path = lspconfig.util.path
@@ -83,6 +84,7 @@ local mason_servers = {
     },
 }
 
+mason.setup()
 mason_lspconfig.setup()
 
 mason_lspconfig.setup_handlers({

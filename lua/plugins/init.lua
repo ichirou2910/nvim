@@ -356,7 +356,7 @@ require("packer").startup(function(use)
     use({ "stevearc/dressing.nvim", event = "BufReadPre", config = "require('plugins.configs.dressing')" })
     use({
         "folke/noice.nvim",
-        --[[ disable = true, ]]
+        -- disable = true,
         config = "require('plugins.configs.noice')",
         requires = {
             "MunifTanjim/nui.nvim",
@@ -429,13 +429,13 @@ require("packer").startup(function(use)
 
     -- Nvim LSP
     use({
-        {
-            "williamboman/mason.nvim",
-            config = function()
-                require("mason").setup()
-            end,
-        },
+        "williamboman/mason.nvim",
+    })
+    use({
         "williamboman/mason-lspconfig.nvim",
+        requires = {
+            "williamboman/mason.nvim",
+        },
     })
     use({
         "neovim/nvim-lspconfig",
