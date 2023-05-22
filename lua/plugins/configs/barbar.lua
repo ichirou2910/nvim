@@ -26,7 +26,8 @@ require("barbar").setup({
     -- if set to 'numbers', will show buffer index in the tabline
     -- if set to 'both', will show buffer index and icons in the tabline
     icons = {
-        filetype = {enabled = true},
+        filetype = { enabled = true },
+        preset = "slanted",
     },
 
     -- If set, the icon color will follow its corresponding buffer
