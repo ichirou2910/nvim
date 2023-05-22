@@ -27,6 +27,7 @@ local sources = {
     -- Code actions
     builtins.code_actions.eslint_d,
     builtins.code_actions.shellcheck,
+    require("typescript.extensions.null-ls.code-actions"),
 }
 
 local M = {}
