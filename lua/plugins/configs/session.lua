@@ -6,7 +6,7 @@ end
 
 auto_session.setup({
     pre_save_cmds = { "SidebarCloseAll" },
-    log_level = "info",
+    log_level = "error",
     auto_session_suppress_dirs = { "~/" },
     auto_session_enable_last_session = false,
     auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
