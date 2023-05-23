@@ -83,13 +83,14 @@ local mason_servers = {
         },
     },
 }
+local mason_server_names = vim.tbl_keys(mason_servers)
 
 mason.setup()
 mason_lspconfig.setup()
 
 mason_lspconfig.setup_handlers({
     function(server_name)
-        if vim.tbl_contains(mason_servers, server_name) then
+        if vim.tbl_contains(mason_server_names, server_name) then
             lspconfig[server_name].setup(mason_servers[server_name])
         end
     end,
