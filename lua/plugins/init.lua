@@ -298,6 +298,11 @@ require("packer").startup(function(use)
         config = vim.cmd([[ source ~/.config/nvim/configs/markdown-preview.vim ]]),
     })
 
+    use({
+        "jbyuki/venn.nvim",
+        config = "require('plugins.configs.venn')",
+    })
+
     -- Colorizer
     use({
         "NvChad/nvim-colorizer.lua",
