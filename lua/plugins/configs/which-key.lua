@@ -230,9 +230,9 @@ local n_mappings = {
 
     S = {
         name = "Session",
-        l = { "<cmd>RestoreSession<CR>", "Load record" },
-        s = { "<cmd>SaveSession<CR>", "Start record" },
-        x = { "<cmd>DeleteSession<CR>", "Stop record" },
+        l = { "<cmd>SessionRestore<CR>", "Restore" },
+        s = { "<cmd>SessionSave<CR>", "Save" },
+        x = { "<cmd>SessionDelete<CR>", "Delete" },
     },
 
     t = {
