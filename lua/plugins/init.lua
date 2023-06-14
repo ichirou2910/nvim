@@ -135,36 +135,32 @@ require("packer").startup(function(use)
         event = "BufRead",
         opt = true,
         config = "require('plugins.configs.treesitter')",
-        requires = {
-            "windwp/nvim-ts-autotag",
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            {
-                "nvim-treesitter/nvim-treesitter-context",
-                config = function()
-                    require("treesitter-context").setup({
-                        patterns = {
-                            default = {
-                                "for",
-                                "while",
-                                "if",
-                                "switch",
-                                "case",
-                            },
-                            typescriptreact = {
-                                "jsx_element",
-                            },
-                        },
-                    })
-                end,
-            },
-            {
-                "nvim-treesitter/playground",
-                cmd = "TSHighlightCapturesUnderCursor",
-            },
-            { "nvim-treesitter/nvim-treesitter-textobjects" },
-            { "mrjones2014/nvim-ts-rainbow" },
-        },
     })
+    use({
+        "nvim-treesitter/playground",
+        cmd = "TSHighlightCapturesUnderCursor",
+    })
+    use({
+        "https://gitlab.com/HiPhish/nvim-ts-rainbow2.git",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
+        "nvim-treesitter/nvim-treesitter-context",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+
     use({
         "windwp/nvim-autopairs",
         wants = "nvim-treesitter",

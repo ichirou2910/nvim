@@ -20,17 +20,30 @@ require("nvim-treesitter.configs").setup({
     },
     rainbow = {
         enable = true,
-        extended_mode = true,
-        colors = {
-            "#ed8796",
-            "#f5a97f",
-            "#eed49f",
-            "#a6da95",
-            "#7dc4e4",
-            "#c6a0f6",
-            --[[ "#ffcb0c", ]]
-            --[[ "#da70d6", ]]
-            --[[ "#179bff", ]]
+        query = {
+            "rainbow-parens",
+            html = "rainbow-tags",
+            tsx = "rainbow-tags",
+        },
+        hlgroups = {
+            "TSRainbowRed",
+            "TSRainbowOrange",
+            "TSRainbowYellow",
+            "TSRainbowGreen",
+            "TSRainbowCyan",
+            "TSRainbowViolet",
+        },
+    },
+    patterns = {
+        default = {
+            "for",
+            "while",
+            "if",
+            "switch",
+            "case",
+        },
+        typescriptreact = {
+            "jsx_element",
         },
     },
     textobjects = {

@@ -20,7 +20,7 @@ require("tokyonight").setup({
         floats = "dark", -- style for floating windows
     },
     on_colors = function(c)
-        c.bg = "#1e1e2e"
+        c.bg = "#222436"
     end,
     on_highlights = function(hl, c)
         hl.FloatBorder = { fg = c.bg_float, bg = c.bg }
@@ -127,6 +127,14 @@ require("tokyonight").setup({
         hl.NavicIconsTypeParameter.bg = c.bg_statusline
         hl.NavicText.bg = c.bg_statusline
         hl.NavicSeparator.bg = c.bg_statusline
+
+        -- nvim-ts-rainbow2
+        hl.TSRainbowRed = { fg = "#ed8796" }
+        hl.TSRainbowOrange = { fg = "#f5a97f" }
+        hl.TSRainbowYellow = { fg = "#eed49f" }
+        hl.TSRainbowGreen = { fg = "#a6da95" }
+        hl.TSRainbowCyan = { fg = "#7dc4e4" }
+        hl.TSRainbowViolet = { fg = "#c6a0f6" }
     end,
 })
 vim.cmd([[colorscheme tokyonight-night]])
