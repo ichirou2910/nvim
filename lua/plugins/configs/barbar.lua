@@ -1,5 +1,3 @@
-vim.cmd("source ~/.config/nvim/configs/bbye.vim")
-
 require("barbar").setup({
     -- Enable/disable animations
     animation = false,
@@ -21,6 +19,8 @@ require("barbar").setup({
     -- Excludes buffers from the tabline
     exclude_ft = { "fugitive" },
     exclude_name = { "[dap-repl]", "project-notes.notes", "api.http" },
+
+    focus_on_close = "right",
 
     -- Enable/disable icons
     -- if set to 'numbers', will show buffer index in the tabline
@@ -61,6 +61,9 @@ require("barbar").setup({
     -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
     -- where X is the buffer number. But only a static string is accepted here.
     no_name_title = nil,
+
+    highlight_alternate = false,
+    highlight_visible = false,
 })
 
 require("core.utils").highlight_group("bufferline")
