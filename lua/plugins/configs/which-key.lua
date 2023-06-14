@@ -253,6 +253,7 @@ local n_mappings = {
         name = "UI",
         l = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Toggle LSP Lines" },
         s = "Toggle shade",
+        v = "Toggle drawing diagram",
     },
 }
 
