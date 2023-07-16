@@ -19,6 +19,9 @@ require("tokyonight").setup({
         sidebars = "dark", -- style for sidebars, see below
         floats = "dark", -- style for floating windows
     },
+    on_colors = function(c)
+        c.bg = "#1e1e2e"
+    end,
     on_highlights = function(hl, c)
         hl.FloatBorder = { fg = c.bg_float, bg = c.bg }
         hl.NormalFloat = { bg = c.bg_float }
@@ -39,8 +42,28 @@ require("tokyonight").setup({
         hl.FoldColumn = { fg = c.fg, bg = nil }
         hl.DapStopped = { bg = "#533d12" }
 
+        -- Noice
+        hl.NoicePopupmenu = {
+            bg = c.bg_dark,
+            fg = c.fg_dark,
+        }
+        hl.NoicePopupmenuBorder = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+        }
+        hl.NoiceCmdlinePopup = {
+            link = "NoicePopupmenu",
+        }
+        hl.NoiceCmdlinePopupTitle = {
+            bg = c.yellow,
+            fg = c.bg_dark,
+        }
+        hl.NoiceCmdlinePopupBorder = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+        }
+
         -- Telescope borderless
-        local prompt = "#2F334D"
         hl.TelescopeNormal = {
             bg = c.bg_dark,
             fg = c.fg_dark,
@@ -49,20 +72,26 @@ require("tokyonight").setup({
             bg = c.bg_dark,
             fg = c.bg_dark,
         }
+        hl.TelescopePrompt = {
+            bg = c.bg_dark,
+        }
+        hl.TelescopePromptPrefix = {
+            bg = c.bg_dark,
+        }
         hl.TelescopePromptNormal = {
-            bg = prompt,
+            bg = c.bg_dark,
         }
         hl.TelescopePromptBorder = {
-            bg = prompt,
-            fg = prompt,
+            bg = c.bg_dark,
+            fg = c.bg_dark,
         }
         hl.TelescopePromptTitle = {
-            bg = c.red,
-            fg = c.bg,
+            bg = c.purple,
+            fg = c.bg_dark,
         }
         hl.TelescopePreviewTitle = {
             bg = c.blue,
-            fg = c.bg,
+            fg = c.bg_dark,
         }
         hl.TelescopeResultsTitle = {
             bg = c.bg_dark,
@@ -100,7 +129,7 @@ require("tokyonight").setup({
         hl.NavicSeparator.bg = c.bg_statusline
     end,
 })
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 -- Vender custom theme
 

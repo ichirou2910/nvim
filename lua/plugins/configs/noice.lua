@@ -31,12 +31,50 @@ noice.setup({
             },
             position = { row = 1, col = 1 },
         },
+        popup = {
+            border = {
+                style = { "", "", "", "", "", "", "", "" },
+            },
+        },
+        popupmenu = {
+            border = {
+                style = { "", "", "", "", "", "", "", "" },
+            },
+        },
+        cmdline_popup = {
+            position = {
+                col = "50%",
+                row = vim.o.lines / 2 - 9,
+            },
+            border = {
+                style = "solid",
+            },
+        },
+        cmdline_popupmenu = {
+            position = {
+                col = "50%",
+                row = vim.o.lines / 2 - 6,
+            },
+            size = {
+                width = 60,
+                height = "auto",
+                max_height = 15,
+            },
+            border = {
+                style = "solid",
+            },
+        },
+        split = {
+            win_options = {
+                winhighlight = { Normal = "Normal" },
+            },
+        },
     },
     presets = {
         -- you can enable a preset by setting it to true, or a table that will override the preset config
         -- you can also add custom presets that you can enable/disable with enabled=true
         bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        command_palette = false, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = true, -- enables an input dialog for inc-rename.nvim
         cmdline_output_to_split = false,
