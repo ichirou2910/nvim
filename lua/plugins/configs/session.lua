@@ -14,5 +14,5 @@ auto_session.setup({
     auto_save_enabled = true,
     auto_restore_enabled = true,
     auto_session_use_git_branch = false,
-    bypass_session_save_file_types = nil,
+    bypass_session_save_file_types = { "noice", "notify" },
 })
