@@ -108,6 +108,12 @@ function M.lsp_formatting(client, bufnr)
     end
 end
 
+function M.lsp_inlayHints(client, bufnr)
+    if client.server_capabilities.documentInlayHintProvider then
+        vim.lsp.inlay_hint(bufnr, true)
+    end
+end
+
 function M.get_capabilities()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -121,6 +127,7 @@ end
 function M.lsp_attach(client, bufnr)
     M.lsp_config(client, bufnr)
     M.lsp_formatting(client, bufnr)
+    M.lsp_inlayHints(client, bufnr)
     M.lsp_highlight()
     M.lsp_diagnostics()
 

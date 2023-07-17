@@ -82,6 +82,13 @@ local mason_servers = {
             ["textDocument/definition"] = require("omnisharp_extended").handler,
         },
     },
+    --[[ csharp_ls = { ]]
+    --[[     on_attach = lsp_utils.lsp_attach, ]]
+    --[[     capabilities = lsp_utils.get_capabilities(), ]]
+    --[[     handlers = { ]]
+    --[[         ["textDocument/definition"] = require("csharpls_extended").handler, ]]
+    --[[     }, ]]
+    --[[ }, ]]
 }
 local mason_server_names = vim.tbl_keys(mason_servers)
 
@@ -103,7 +110,31 @@ local function lsp_tsserver()
         server = {
             on_attach = lsp_utils.lsp_attach,
         },
-        inlayHints = {},
+        settings = {
+            -- specify some or all of the following settings if you want to adjust the default behavior
+            javascript = {
+                inlayHints = {
+                    includeInlayEnumMemberValueHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                },
+            },
+            typescript = {
+                inlayHints = {
+                    includeInlayEnumMemberValueHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                },
+            },
+        },
     })
 end
 
