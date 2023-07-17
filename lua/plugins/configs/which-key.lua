@@ -156,7 +156,8 @@ local n_mappings = {
 
     h = {
         name = "Git hunks",
-        b = "Blame",
+        d = "Diff this",
+        D = "Diff this",
         p = "Preview",
         r = "Reset",
         R = "Reset buffer",
@@ -215,6 +216,24 @@ local n_mappings = {
             vim.api.nvim_set_current_line(nline)
         end,
         "Paste image",
+    },
+
+    r = {
+        name = "REST api",
+        e = {
+            function()
+                local env = vim.fn.input({
+                    prompt = "Select environment: ",
+                    default = vim.fn.expand("%:h") .. "/.env",
+                    completion = "file",
+                })
+                require("rest-nvim").select_env(env)
+            end,
+            "Set environment",
+        },
+        l = { "<cmd>lua require('rest-nvim').last()<cr>", "Run last" },
+        p = { "<cmd>lua require('rest-nvim').run(true)<cr>", "Preview" },
+        r = { "<cmd>lua require('rest-nvim').run()<cr>", "Run at cursor" },
     },
 
     -- plugins/sidebar.vim
