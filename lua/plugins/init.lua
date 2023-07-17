@@ -133,7 +133,6 @@ require("packer").startup(function(use)
         as = "nvim-treesitter",
         run = ":TSUpdate",
         event = "BufRead",
-        opt = true,
         config = "require('plugins.configs.treesitter')",
     })
     use({
@@ -180,6 +179,13 @@ require("packer").startup(function(use)
         config = function()
             require("nvim-ts-autotag").setup({ enable = true })
         end,
+    })
+
+    use({
+        "rest-nvim/rest.nvim",
+        ft = "http",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = "require('plugins.configs.rest')",
     })
 
     -- Indent
@@ -309,6 +315,7 @@ require("packer").startup(function(use)
     -- Seamless navigation with tmux
     use({
         "aserowy/tmux.nvim",
+        disable = true,
         config = function()
             require("tmux").setup({
                 copy_sync = {
@@ -406,8 +413,7 @@ require("packer").startup(function(use)
 
     use({
         "romgrk/barbar.nvim",
-        event = "BufReadPre",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        requires = { "kyazdani42/nvim-web-devicons", "lewis6991/gitsigns.nvim" },
         config = "require('plugins.configs.barbar')",
     })
 
@@ -452,6 +458,7 @@ require("packer").startup(function(use)
             "jose-elias-alvarez/typescript.nvim",
             "p00f/clangd_extensions.nvim",
             { "Hoffs/omnisharp-extended-lsp.nvim" },
+            { "Decodetalkers/csharpls-extended-lsp.nvim" },
             { "jayp0521/mason-null-ls.nvim", commit = "ab5d99619de2263508abb7fb05ef3a0f24a8d73d" },
         },
     })

@@ -49,7 +49,7 @@ local gitcommit = {
 }
 
 local function session_status()
-    local name = require("auto-session-library").current_session_name()
+    local name = require("auto-session.lib").current_session_name()
     if not isEmpty(name) then
         --[[ return " " .. name ]]
         return " "
