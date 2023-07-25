@@ -57,6 +57,15 @@ require("packer").startup(function(use)
     })
 
     use({
+        "stevearc/overseer.nvim",
+        config = function()
+            require("overseer").setup({
+                dap = false,
+            })
+        end,
+    })
+
+    use({
         "vimwiki/vimwiki",
         ft = "vimwiki",
         config = function()
