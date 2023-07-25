@@ -1,3 +1,4 @@
+local rt = require("rust-tools")
 local lsp_utils = require("lsp.utils")
 
 local opts = {
@@ -15,16 +16,7 @@ local opts = {
 
             -- the border that is used for the hover window
             -- see vim.api.nvim_open_win()
-            border = {
-                { "╭", "FloatBorder" },
-                { "─", "FloatBorder" },
-                { "╮", "FloatBorder" },
-                { "│", "FloatBorder" },
-                { "╯", "FloatBorder" },
-                { "─", "FloatBorder" },
-                { "╰", "FloatBorder" },
-                { "│", "FloatBorder" },
-            },
+            border = { "", "", "", "", "", "", "", "" },
 
             -- whether the hover action window gets automatically focused
             -- default: false
@@ -39,7 +31,11 @@ local opts = {
         -- standalone file support
         standalone = true,
         -- on_attach is a callback called when the language server attachs to the buffer
-        on_attach = lsp_utils.lsp_attach,
+        on_attach = function(client, bufnr)
+            lsp_utils.lsp_attach(client, bufnr)
+            vim.keymap.set("n", "<leader>lh", rt.hover_actions.hover_actions, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
         settings = {
             -- to enable rust-analyzer settings visit:
             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
@@ -76,4 +72,4 @@ local opts = {
     },
 }
 
-require("rust-tools").setup(opts)
+rt.setup(opts)
