@@ -11,7 +11,17 @@ local command_resolver = require("null-ls.helpers.command_resolver")
 
 local sources = {
     -- Diagnostics
-    builtins.diagnostics.eslint_d,
+    builtins.diagnostics.eslint_d.with({
+        condition = function(utils)
+            return utils.root_has_file({
+                ".eslintrc",
+                ".eslintrc.json",
+                ".eslintrc.yaml",
+                ".eslintrc.cjs",
+                ".eslintrc.js",
+            })
+        end,
+    }),
     builtins.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
     -- Format
@@ -25,7 +35,17 @@ local sources = {
     builtins.formatting.jq,
 
     -- Code actions
-    builtins.code_actions.eslint_d,
+    builtins.code_actions.eslint_d.with({
+        condition = function(utils)
+            return utils.root_has_file({
+                ".eslintrc",
+                ".eslintrc.json",
+                ".eslintrc.yaml",
+                ".eslintrc.cjs",
+                ".eslintrc.js",
+            })
+        end,
+    }),
     builtins.code_actions.shellcheck,
     require("typescript.extensions.null-ls.code-actions"),
 }
