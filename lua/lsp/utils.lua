@@ -9,7 +9,6 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 function M.lsp_diagnostics()
     vim.diagnostic.config({
         virtual_text = false,
-        virtual_lines = { only_current_line = true },
         float = {
             source = "always",
             border = border(),
@@ -116,7 +115,7 @@ function M.lsp_formatting(client, bufnr)
 end
 
 function M.lsp_inlayHints(client, bufnr)
-    if client.server_capabilities.documentInlayHintProvider then
+    if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint(bufnr, true)
     end
 end

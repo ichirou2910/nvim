@@ -47,7 +47,6 @@ local sources = {
         end,
     }),
     builtins.code_actions.shellcheck,
-    require("typescript.extensions.null-ls.code-actions"),
 }
 
 local M = {}
