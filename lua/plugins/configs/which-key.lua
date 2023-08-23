@@ -90,8 +90,7 @@ local n_mappings = {
         i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
         k = {
             function()
-                require("dapui").eval()
-                require("dapui").eval()
+                require("dap.ui.widgets").hover()
             end,
             "Inspect",
         },
@@ -224,7 +223,7 @@ local n_mappings = {
             function()
                 local env = vim.fn.input({
                     prompt = "Select environment: ",
-                    default = vim.fn.expand("%:h") .. "/.env",
+                    default = vim.fn.expand("%:h") .. "/env",
                     completion = "file",
                 })
                 require("rest-nvim").select_env(env)
