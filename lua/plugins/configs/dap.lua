@@ -166,6 +166,8 @@ dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(s
     notif_data.spinner = nil
 end
 
+dap.defaults.fallback.switchbuf = "useopen,uselast"
+
 -- Load VSCode's launch.json file
 require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" } })
 
