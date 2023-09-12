@@ -135,6 +135,9 @@ require("tokyonight").setup({
         hl.TSRainbowGreen = { fg = "#a6da95" }
         hl.TSRainbowCyan = { fg = "#7dc4e4" }
         hl.TSRainbowViolet = { fg = "#c6a0f6" }
+
+        -- Lightbulb
+        hl.LightBulbFloatWin = { bg = c.bg_dark }
     end,
 })
 vim.cmd([[colorscheme tokyonight-night]])

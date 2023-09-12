@@ -140,7 +140,6 @@ function M.lsp_attach(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
-    --[[ require("lsp-inlayhints").on_attach(client, bufnr, false) ]]
 
     -- Omnisharp's semantic tokens don't work nicely with neovim
     if client.name == "omnisharp" then
