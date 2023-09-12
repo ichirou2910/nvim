@@ -1,6 +1,11 @@
 local actions = require("diffview.actions")
 
 require("diffview").setup({
+    file_panel = {
+        win_config = {
+            width = 55,
+        },
+    },
     keymaps = {
         disable_defaults = false, -- Disable the default keymaps
         view = {

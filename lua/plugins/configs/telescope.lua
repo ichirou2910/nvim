@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 local action_layout = require("telescope.actions.layout")
 
 require("telescope").setup({
@@ -74,10 +75,13 @@ require("telescope").setup({
         git_commits = {
             mappings = {
                 i = {
-                    ["<C-o>"] = function(prompt_bufnr)
+                    ["<C-p>"] = function(prompt_bufnr)
+                        local selected_entry = action_state.get_selected_entry()
+                        local value = selected_entry.value
                         actions.close(prompt_bufnr)
-                        local value = actions.get_selected_entry(prompt_bufnr).value
-                        vim.cmd("DiffviewOpen " .. value .. "~1.." .. value)
+                        vim.schedule(function()
+                            vim.cmd(("DiffviewOpen %s^!"):format(value))
+                        end)
                     end,
                 },
             },
