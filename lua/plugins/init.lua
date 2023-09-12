@@ -65,20 +65,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    --[[ use({ ]]
-    --[[     "vimwiki/vimwiki", ]]
-    --[[     ft = "vimwiki", ]]
-    --[[     config = function() ]]
-    --[[         vim.g.vimwiki_list = { ]]
-    --[[             { ]]
-    --[[                 path = "~/Wiki/", ]]
-    --[[                 syntax = "markdown", ]]
-    --[[                 ext = ".wiki", ]]
-    --[[             }, ]]
-    --[[         } ]]
-    --[[     end, ]]
-    --[[ }) ]]
-
     -- Icons
     use({
         "kyazdani42/nvim-web-devicons",
@@ -102,10 +88,6 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.comment')",
     })
 
-    -- Database
-    -- use({ "tpope/vim-dadbod", config = vim.cmd([[ source ~/.config/nvim/configs/dadbod.vim ]]) })
-    -- use({ "kristijanhusak/vim-dadbod-ui" })
-
     -- Repeat stuff
     use("tpope/vim-repeat")
 
@@ -114,12 +96,6 @@ require("packer").startup(function(use)
         "rcarriga/nvim-notify",
         config = "require('plugins.configs.notify')",
     })
-
-    -- Startup time
-    use("tweekmonster/startuptime.vim")
-
-    -- Async dispatch
-    --[[ use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } }) ]]
 
     -- Surround
     use({ "tpope/vim-surround", event = "InsertEnter" })
@@ -130,11 +106,6 @@ require("packer").startup(function(use)
         "luukvbaal/nnn.nvim",
         config = "require('plugins.configs.nnn')",
     })
-    --[[ use({ ]]
-    --[[     "kyazdani42/nvim-tree.lua", ]]
-    --[[     event = "BufWinEnter", ]]
-    --[[     config = "require('plugins.configs.nvim-tree')", ]]
-    --[[ }) ]]
 
     -- Treesitter
     use({
@@ -144,15 +115,6 @@ require("packer").startup(function(use)
         event = "BufRead",
         config = "require('plugins.configs.treesitter')",
     })
-    --[[ use({ ]]
-    --[[     "nvim-treesitter/playground", ]]
-    --[[     cmd = "TSHighlightCapturesUnderCursor", ]]
-    --[[ }) ]]
-    --[[ use({ ]]
-    --[[     "https://gitlab.com/HiPhish/nvim-ts-rainbow2.git", ]]
-    --[[     after = "nvim-treesitter", ]]
-    --[[     requires = "nvim-treesitter/nvim-treesitter", ]]
-    --[[ }) ]]
     use({
         "JoosepAlviste/nvim-ts-context-commentstring",
         after = "nvim-treesitter",
@@ -210,16 +172,6 @@ require("packer").startup(function(use)
         requires = "kevinhwang91/promise-async",
         config = "require('plugins.configs.ufo')",
     })
-
-    -- Cmake
-    --use({
-    --    "ilyachur/cmake4vim",
-    --    cmd = { "CMake", "CMakeBuild" },
-    --    config = vim.cmd([[ source ~/.config/nvim/configs/cmake4vim.vim ]]),
-    --})
-
-    -- Quickfix
-    --[[ use({ "kevinhwang91/nvim-bqf", ft = "qf", event = "BufWinEnter" }) ]]
 
     -- Sidebar manager
     use({
@@ -311,6 +263,7 @@ require("packer").startup(function(use)
 
     use({
         "jbyuki/venn.nvim",
+        ft = "markdown",
         config = "require('plugins.configs.venn')",
     })
 
@@ -321,27 +274,6 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.colorizer')",
     })
 
-    -- Seamless navigation with tmux
-    --[[ use({ ]]
-    --[[     "aserowy/tmux.nvim", ]]
-    --[[     disable = true, ]]
-    --[[     config = function() ]]
-    --[[         require("tmux").setup({ ]]
-    --[[             copy_sync = { ]]
-    --[[                 enable = true, ]]
-    --[[                 redirect_to_clipboard = true, ]]
-    --[[             }, ]]
-    --[[             navigation = { ]]
-    --[[                 enable_default_keybindings = true, ]]
-    --[[                 persist_zoom = true, ]]
-    --[[             }, ]]
-    --[[             resize = { ]]
-    --[[                 enable_default_keybindings = true, ]]
-    --[[             }, ]]
-    --[[         }) ]]
-    --[[     end, ]]
-    --[[ }) ]]
-
     -- Buffer navigation
     use({
         "ThePrimeagen/harpoon",
@@ -350,22 +282,10 @@ require("packer").startup(function(use)
         config = "require('plugins.configs.harpoon')",
     })
 
-    -- Tmux interaction from vim
-    --use({
-    --    "preservim/vimux",
-    --    config = vim.cmd([[ source ~/.config/nvim/configs/vimux.vim ]]),
-    --})
-
     -- Sessions
     use({
         "rmagatti/auto-session",
         config = "require('plugins.configs.session')",
-    })
-
-    -- Window
-    use({
-        "https://gitlab.com/yorickpeterse/nvim-window.git",
-        config = "require('plugins.configs.window')",
     })
 
     -- UI
@@ -465,6 +385,7 @@ require("packer").startup(function(use)
             { "Hoffs/omnisharp-extended-lsp.nvim" },
             { "Decodetalkers/csharpls-extended-lsp.nvim" },
             { "jayp0521/mason-null-ls.nvim", commit = "ab5d99619de2263508abb7fb05ef3a0f24a8d73d" },
+            { "kosayoda/nvim-lightbulb" },
         },
     })
     use({
@@ -491,23 +412,11 @@ require("packer").startup(function(use)
         end,
         after = { "nvim-lspconfig" },
     })
-    --[[ use({ ]]
-    --[[     "akinsho/flutter-tools.nvim", ]]
-    --[[     ft = "dart", ]]
-    --[[     config = "require('lsp.flutter')", ]]
-    --[[ }) ]]
     use({
         "simrat39/rust-tools.nvim",
         config = "require('lsp.rust')",
         after = { "nvim-lspconfig" },
     })
-    --[[ use({ ]]
-    --[[     "lvimuser/lsp-inlayhints.nvim", ]]
-    --[[     disable = true, ]]
-    --[[     branch = "anticonceal", ]]
-    --[[     event = "LspAttach", ]]
-    --[[     config = "require('plugins.configs.inlay-hints')", ]]
-    --[[ }) ]]
 
     -- Auto complete + snippets
     use({
@@ -519,7 +428,6 @@ require("packer").startup(function(use)
     use({
         "hrsh7th/nvim-cmp",
         requires = {
-            "kristijanhusak/vim-dadbod-completion",
             "rafamadriz/friendly-snippets",
             {
                 "L3MON4D3/LuaSnip",
@@ -541,7 +449,6 @@ require("packer").startup(function(use)
         requires = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            --[[ { "nvim-neotest/neotest-vim-test", requires = "vim-test/vim-test" }, ]]
             { "Issafalcon/neotest-dotnet" },
             { "rouge8/neotest-rust" },
         },
