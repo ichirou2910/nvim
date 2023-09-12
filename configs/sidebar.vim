@@ -39,23 +39,11 @@ let g:sidebars = {
   \     "open": "vnew api.http" .. " | set winfixwidth",
   \     "close": "SidebarCloseApi"
   \ },
-  \ "database": {
-  \     "position": "left",
-  \     "check_win": {nr -> bufname(winbufnr(nr)) =~ "dbui"},
-  \     "open": "DBUIToggle",
-  \     "close": "DBUIToggle"
-  \ },
   \ "debug": {
   \     "position": "left",
   \     "check_win": {nr -> bufname(winbufnr(nr)) =~ "DAP Scopes"},
   \     "open": "lua require'dapui'.toggle()",
   \     "close": "lua require'dapui'.toggle()",
-  \ },
-  \ "files": {
-  \     "position": "left",
-  \     "check_win": {nr -> bufname(winbufnr(nr)) =~ "NvimTree"},
-  \     "open": "NvimTreeOpen",
-  \     "close": "NvimTreeClose"
   \ },
   \ "git": {
   \     "position": "left",
@@ -75,7 +63,5 @@ noremap <silent> <leader>sc :call sidebar#close_all()<CR>
 
 noremap <silent> <leader>sa :call sidebar#toggle("api")<CR>
 noremap <silent> <leader>sb :call sidebar#toggle("debug")<CR>
-noremap <silent> <leader>sd :call sidebar#toggle("database")<CR>
-noremap <silent> <leader>se :call sidebar#toggle("files")<CR>
 noremap <silent> <leader>sg :call sidebar#toggle("git")<CR>
 noremap <silent> <leader>sn :call sidebar#toggle("notes")<CR>
