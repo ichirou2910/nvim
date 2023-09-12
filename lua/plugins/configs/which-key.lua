@@ -177,6 +177,7 @@ local n_mappings = {
             "<cmd>Trouble workspace_diagnostics<cr>",
             "Diagnostics",
         },
+        k = "Open float",
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
         o = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document Symbols" },
         p = {
@@ -240,8 +241,6 @@ local n_mappings = {
         name = "Sidebar",
         b = "Debug",
         c = "Close sidebar",
-        d = "Database",
-        e = "NVIM Tree",
         g = "Git",
         n = "Notes",
     },
