@@ -130,6 +130,10 @@ require("packer").startup(function(use)
         after = "nvim-treesitter",
         requires = "nvim-treesitter/nvim-treesitter",
     })
+    use({
+        "hiphish/rainbow-delimiters.nvim",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
 
     use({
         "windwp/nvim-autopairs",

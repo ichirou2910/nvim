@@ -4,19 +4,17 @@ vim.cmd([[
     endif
 ]])
 
-vim.cmd([[highlight IndentBlanklineContextChar guifg=#f38ba8 gui=nocombine]])
-vim.cmd([[highlight IndentBlanklineContextStart0 guisp=#f38ba8 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart1 guisp=#ed8796 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart2 guisp=#f5a97f gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart3 guisp=#eed49f gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart4 guisp=#a6da95 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart5 guisp=#7dc4e4 gui=underline]])
-vim.cmd([[highlight IndentBlanklineContextStart6 guisp=#c6a0f6 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart1 guisp=#f7768e gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart2 guisp=#e0af68 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart3 guisp=#9ece6a gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart4 guisp=#1abc9c gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart5 guisp=#7aa2f7 gui=underline]])
+vim.cmd([[highlight IndentBlanklineContextStart6 guisp=#bb9af7 gui=underline]])
 
 require("indent_blankline").setup({
     viewport_buffer = 100,
-    char = "▏", -- '│'
-    context_char = "▏", -- '│'
+    char = "▏",
+    context_char = "▏",
     filetype_exclude = {
         "vimwiki",
         "man",
@@ -38,7 +36,6 @@ require("indent_blankline").setup({
         "rainbowcol6",
     },
     context_start_highlight_list = {
-        --[[ "IndentBlanklineContextStart0", ]]
         "IndentBlanklineContextStart1",
         "IndentBlanklineContextStart2",
         "IndentBlanklineContextStart3",
@@ -55,3 +52,24 @@ require("indent_blankline").setup({
     show_foldtext = false,
     strict_tabs = true,
 })
+
+local rainbow_delimiters = require("rainbow-delimiters")
+
+vim.g.rainbow_delimiters = {
+    strategy = {
+        [""] = rainbow_delimiters.strategy["global"],
+        vim = rainbow_delimiters.strategy["local"],
+    },
+    query = {
+        [""] = "rainbow-delimiters",
+        lua = "rainbow-blocks",
+    },
+    highlight = {
+        "rainbowcol1",
+        "rainbowcol2",
+        "rainbowcol3",
+        "rainbowcol4",
+        "rainbowcol5",
+        "rainbowcol6",
+    },
+}
