@@ -1,4 +1,5 @@
 local modules = {
+    "core.commands",
     "core.options",
     "core.mappings",
     "plugins",

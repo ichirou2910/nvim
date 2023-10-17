@@ -41,7 +41,7 @@ return {
             title = " NOTES",
             ft = "notes",
             pinned = true,
-            open = "topleft 55 vnew project-notes.notes | setlocal cursorline noswapfile winfixwidth nobuflisted bufhidden=hide",
+            open = "Note",
         },
     },
     bottom = {
