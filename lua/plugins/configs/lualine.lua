@@ -19,18 +19,6 @@ local dadbod = {
     filetypes = { "dbui" },
 }
 
-local notes = {
-    sections = {
-        lualine_a = {
-            function()
-                return [[Notes]]
-            end,
-        },
-        lualine_c = { "filename" },
-    },
-    filetypes = { "notes" },
-}
-
 local gitcommit = {
     sections = {
         lualine_a = {
@@ -165,7 +153,6 @@ lualine.setup({
         "symbols-outline",
         "quickfix",
         dadbod,
-        notes,
         gitcommit,
     },
 })

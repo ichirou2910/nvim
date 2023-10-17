@@ -88,10 +88,15 @@ require("lazy").setup({
         end,
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        config = function()
-            require("plugins.configs.nvim-tree")
-        end,
+        "nvim-neo-tree/neo-tree.nvim",
+        cmd = "Neotree",
+        opts = require("plugins.configs.neotree"),
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
     },
 
     -- Treesitter
@@ -172,10 +177,13 @@ require("lazy").setup({
 
     -- Sidebar manager
     {
-        "ichirou2910/vim-sidebar-manager",
-        config = function()
-            vim.cmd([[ source ~/.config/nvim/configs/sidebar.vim ]])
+        "folke/edgy.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.opt.laststatus = 3
+            vim.opt.splitkeep = "screen"
         end,
+        opts = require("plugins.configs.edgy"),
     },
 
     -- Git

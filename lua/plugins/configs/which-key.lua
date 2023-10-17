@@ -120,7 +120,7 @@ local n_mappings = {
             "<cmd>Noice telescope<CR>",
             "Notifications",
         },
-        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+        r = { "<cmd>lua require('spectre').open({is_close = true})<cr>", "Replace" },
         s = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "Files" },
         w = {
             "<cmd>lua require('telescope.builtin').grep_string{word_match = '-w'}<cr>",
@@ -239,10 +239,10 @@ local n_mappings = {
     -- plugins/sidebar.vim
     s = {
         name = "Sidebar",
-        b = "Debug",
-        c = "Close sidebar",
-        g = "Git",
-        n = "Notes",
+        b = { "<cmd>Neotree position=top buffers<CR>", "Buffer" },
+        c = { "<cmd>lua require('edgy').close()<CR>", "Close" },
+        e = { "<cmd>Neotree position=top filesystem<CR>", "Files" },
+        g = { "<cmd>Git<CR>", "Git" },
     },
 
     S = {
