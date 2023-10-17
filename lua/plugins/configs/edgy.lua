@@ -71,5 +71,5 @@ return {
     animate = {
         enabled = false,
     },
-    exit_when_last = true,
+    exit_when_last = false,
 }
