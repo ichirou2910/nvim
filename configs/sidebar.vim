@@ -45,6 +45,12 @@ let g:sidebars = {
   \     "open": "lua require'dapui'.toggle()",
   \     "close": "lua require'dapui'.toggle()",
   \ },
+  \ "files": {
+  \     "position": "left",
+  \     "check_win": {nr -> bufname(winbufnr(nr)) =~ "NvimTree"},
+  \     "open": "NvimTreeOpen",
+  \     "close": "NvimTreeClose"
+  \ },
   \ "git": {
   \     "position": "left",
   \     "check_win": {nr -> bufname(winbufnr(nr)) =~? "^fugitive:///"},
@@ -63,5 +69,6 @@ noremap <silent> <leader>sc :call sidebar#close_all()<CR>
 
 noremap <silent> <leader>sa :call sidebar#toggle("api")<CR>
 noremap <silent> <leader>sb :call sidebar#toggle("debug")<CR>
+noremap <silent> <leader>se :call sidebar#toggle("files")<CR>
 noremap <silent> <leader>sg :call sidebar#toggle("git")<CR>
 noremap <silent> <leader>sn :call sidebar#toggle("notes")<CR>
