@@ -1,6 +1,7 @@
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local action_layout = require("telescope.actions.layout")
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
     defaults = {
@@ -50,9 +51,11 @@ require("telescope").setup({
             i = {
                 ["<esc>"] = actions.close,
                 ["<M-p>"] = action_layout.toggle_preview,
+                ["<c-t>"] = trouble.open_with_trouble,
             },
             n = {
                 ["<M-p>"] = action_layout.toggle_preview,
+                ["<c-t>"] = trouble.open_with_trouble,
             },
         },
         preview = {
