@@ -4,9 +4,6 @@ if vim.fn.has("termguicolors") == 1 then
     vim.o.termguicolors = true
 end
 
--- Available themes, set blank to disable highlight system
-vim.g.nv_theme = ""
-
 require("tokyonight").setup({
     styles = {
         -- Style to be applied to different syntax groups

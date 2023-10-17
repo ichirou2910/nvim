@@ -54,6 +54,9 @@ vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,termin
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 
+-- Available themes, set blank to disable highlight system
+vim.g.nv_theme = ""
+
 -- disable some builtin vim plugins
 local disabled_built_ins = {
     "2html_plugin",

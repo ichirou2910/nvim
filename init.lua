@@ -1,4 +1,10 @@
-local modules = { "core", "plugins" }
+local modules = {
+    "core.options",
+    "core.mappings",
+    "plugins",
+    "core.autocmds",
+    "core.ui",
+}
 
 if not vim.g.vscode then
     for _, module in ipairs(modules) do
