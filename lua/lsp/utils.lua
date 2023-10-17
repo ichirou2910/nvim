@@ -117,6 +117,8 @@ end
 function M.lsp_inlayHints(client, bufnr)
     if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint(bufnr, true)
+    elseif client.name == "omnisharp" then
+        vim.lsp.inlay_hint(bufnr, true)
     end
 end
 
@@ -139,78 +141,6 @@ function M.lsp_attach(client, bufnr)
 
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
-    end
-
-    -- Omnisharp's semantic tokens don't work nicely with neovim
-    if client.name == "omnisharp" then
-        client.server_capabilities.semanticTokensProvider.legend.tokenModifiers = { "staticSymbol" }
-        client.server_capabilities.semanticTokensProvider.legend.tokenTypes = {
-            "comment",
-            "excludedCode",
-            "identifier",
-            "keyword",
-            "keyword.control",
-            "number",
-            "operator",
-            "operator.overloaded",
-            "preprocessorKeyword",
-            "string",
-            "whitespace",
-            "text",
-            "staticSymbol",
-            "preprocessorText",
-            "punctuation",
-            "string.verbatim",
-            "string.escapeCharacter",
-            "class",
-            "delegate",
-            "enum",
-            "interface",
-            "module",
-            "struct",
-            "typeParameter",
-            "field",
-            "enumMember",
-            "constant",
-            "local",
-            "parameter",
-            "method",
-            "extensionMethod",
-            "property",
-            "event",
-            "namespace",
-            "label",
-            "xmlDocComment.attribute",
-            "xmlDocComment.attributeQuotes",
-            "xmlDocComment.attributeValue",
-            "xmlDocComment.cdataSection",
-            "xmlDocComment.comment",
-            "xmlDocComment.delimiter",
-            "xmlDocComment.entityReference",
-            "xmlDocComment.name",
-            "xmlDocComment.processingInstruction",
-            "xmlDocComment.text",
-            "xmlLiteral.attribute",
-            "xmlLiteral.attributeQuotes",
-            "xmlLiteral.attributeValue",
-            "xmlLiteral.cdataSection",
-            "xmlLiteral.comment",
-            "xmlLiteral.delimiter",
-            "xmlLiteral.embeddedExpression",
-            "xmlLiteral.entityReference",
-            "xmlLiteral.name",
-            "xmlLiteral.processingInstruction",
-            "xmlLiteral.text",
-            "regex.comment",
-            "regex.characterClass",
-            "regex.anchor",
-            "regex.quantifier",
-            "regex.grouping",
-            "regex.alternation",
-            "regex.text",
-            "regex.selfEscapedCharacter",
-            "regex.otherEscape",
-        }
     end
 end
 

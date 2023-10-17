@@ -129,7 +129,6 @@ mason_lspconfig.setup_handlers({
     end,
 })
 
--- manually handled servers
 -- tsserver
 local function lsp_tsserver()
     require("typescript-tools").setup({
@@ -146,32 +145,6 @@ local function lsp_tsserver()
             },
         },
     })
-end
-
-local function lsp_clangd()
-    require("clangd_extensions").setup({
-        server = {
-            on_attach = lsp_utils.lsp_attach,
-            capabilities = lsp_utils.get_capabilities(),
-        },
-    })
-end
-
--- ccls
-local function lsp_ccls()
-    local config = {
-        init_options = {
-            cache = { directory = "/tmp/ccls" },
-            compilationDatabaseDirectory = "build",
-            index = {
-                threads = 0,
-            },
-            clang = {
-                excludeArgs = { "-frounding-math" },
-            },
-        },
-    }
-    lspconfig.ccls.setup(vim.tbl_extend("force", common_config, config))
 end
 
 -- pyright
@@ -226,10 +199,5 @@ lsp_godot()
 
 -- null-ls
 require("plugins.configs.null-ls").setup()
-
--- lightbulb
-require("nvim-lightbulb").setup({
-    autocmd = { enabled = true },
-})
 
 require("core.utils").highlight_group("lsp")

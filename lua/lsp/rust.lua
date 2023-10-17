@@ -34,7 +34,7 @@ local opts = {
         on_attach = function(client, bufnr)
             lsp_utils.lsp_attach(client, bufnr)
             vim.keymap.set("n", "<leader>lh", rt.hover_actions.hover_actions, { buffer = bufnr })
-            vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+            --[[ vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr }) ]]
         end,
         settings = {
             -- to enable rust-analyzer settings visit:
