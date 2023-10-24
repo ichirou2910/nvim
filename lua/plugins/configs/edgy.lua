@@ -13,6 +13,18 @@ return {
     },
     left = {
         {
+            title = " GIT",
+            ft = "fugitive",
+            pinned = true,
+            open = "Git",
+        },
+        {
+            title = " NOTES",
+            ft = "notes",
+            pinned = true,
+            open = "Note",
+        },
+        {
             title = " FILE",
             ft = "neo-tree",
             filter = function(buf)
@@ -23,12 +35,6 @@ return {
             open = "Neotree position=right filesystem",
         },
         {
-            title = " GIT",
-            ft = "fugitive",
-            pinned = true,
-            open = "Git",
-        },
-        {
             title = " BUFFERS",
             ft = "neo-tree",
             filter = function(buf)
@@ -36,12 +42,6 @@ return {
             end,
             pinned = true,
             open = "Neotree position=top buffers",
-        },
-        {
-            title = " NOTES",
-            ft = "notes",
-            pinned = true,
-            open = "Note",
         },
     },
     bottom = {
