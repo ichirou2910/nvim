@@ -527,4 +527,19 @@ require("lazy").setup({
             "rouge8/neotest-rust",
         },
     },
+
+    -- Obsidian
+    {
+        "epwalsh/obsidian.nvim",
+        event = {
+            "BufReadPre /media/home/ichirou2910/Documents/Obsidian/**/*.md",
+            "BufNewFile /media/home/ichirou2910/Documents/Obsidian/**/*.md",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+            "nvim-telescope/telescope.nvim",
+        },
+        opts = require("plugins.configs.obsidian"),
+    },
 })
