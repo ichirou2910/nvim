@@ -11,7 +11,7 @@ local common_config = {
 }
 
 -- servers with default config
-local default_servers = { "html", "cssls" }
+local default_servers = { "html", "cssls", "gdscript" }
 
 for _, s in pairs(default_servers) do
     lspconfig[s].setup(common_config)
@@ -186,16 +186,8 @@ local function lsp_pyright()
     lspconfig.pyright.setup(vim.tbl_extend("keep", common_config, config))
 end
 
-local function lsp_godot()
-    local config = {
-        --[[ cmd = vim.lsp.rpc.connect("127.0.0.1", port), ]]
-    }
-    lspconfig.gdscript.setup(vim.tbl_extend("force", common_config, config))
-end
-
 lsp_tsserver()
 lsp_pyright()
-lsp_godot()
 
 -- null-ls
 require("plugins.configs.null-ls").setup()
