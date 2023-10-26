@@ -542,4 +542,22 @@ require("lazy").setup({
         },
         opts = require("plugins.configs.obsidian"),
     },
+}, {
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+                "rplugin",
+                "shada",
+                "spellfile",
+            },
+        },
+    },
 })
