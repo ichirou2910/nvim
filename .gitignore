@@ -10,3 +10,4 @@ session
 wiki/
 pack/
 packer_compiled.lua
+lazy-lock.json
