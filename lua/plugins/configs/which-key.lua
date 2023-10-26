@@ -209,10 +209,15 @@ local n_mappings = {
     p = {
         function()
             local filename = os.date("%s") .. ".png"
-            vim.fn.system("xclip -selection clipboard -t image/png -o > assets/images/" .. filename)
+            local parent = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":h")
+            local images = parent .. "/images"
+            if vim.fn.isdirectory(images) == 0 then
+                vim.fn.mkdir(images, "p")
+            end
+            vim.fn.system("xclip -selection clipboard -t image/png -o > " .. images .. "/" .. filename)
             local pos = vim.api.nvim_win_get_cursor(0)[2]
             local line = vim.api.nvim_get_current_line()
-            local nline = line:sub(0, pos) .. "![](/assets/images/" .. filename .. ")" .. line:sub(pos + 1)
+            local nline = line:sub(0, pos) .. "![](./images/" .. filename .. ")" .. line:sub(pos + 1)
             vim.api.nvim_set_current_line(nline)
         end,
         "Paste image",
