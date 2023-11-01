@@ -78,6 +78,19 @@ require("lazy").setup({
         end,
     },
 
+    -- Remote development
+    {
+        "amitds1997/remote-nvim.nvim",
+        version = "*",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = require("plugins.configs.remote-nvim"), -- This calls the default setup(); make sure to call it
+    },
+
     -- Repeat stuff
     "tpope/vim-repeat",
 
