@@ -545,8 +545,8 @@ require("lazy").setup({
     {
         "epwalsh/obsidian.nvim",
         event = {
-            "BufReadPre /media/home/ichirou2910/Documents/Obsidian/**/*.md",
-            "BufNewFile /media/home/ichirou2910/Documents/Obsidian/**/*.md",
+            "BufReadPre /home/ichirou2910/Documents/Obsidian/**/*.md",
+            "BufNewFile /home/ichirou2910/Documents/Obsidian/**/*.md",
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
