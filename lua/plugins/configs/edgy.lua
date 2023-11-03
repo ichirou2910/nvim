@@ -15,13 +15,11 @@ return {
         {
             title = " GIT",
             ft = "fugitive",
-            pinned = true,
             open = "Git",
         },
         {
             title = " NOTES",
             ft = "notes",
-            pinned = true,
             open = "Note",
         },
         {
@@ -30,25 +28,39 @@ return {
             filter = function(buf)
                 return vim.b[buf].neo_tree_source == "filesystem"
             end,
-            pinned = true,
             size = { height = 0.5 },
             open = "Neotree position=right filesystem",
         },
         {
-            title = " BUFFERS",
-            ft = "neo-tree",
-            filter = function(buf)
-                return vim.b[buf].neo_tree_source == "buffers"
-            end,
-            pinned = true,
-            open = "Neotree position=top buffers",
+            title = " DEBUG SCOPE",
+            ft = "dapui_scopes",
+            size = { height = 0.4 },
+            open = "lua require'dapui'.open()",
+        },
+        {
+            title = " DEBUG BREAKPOINTS",
+            ft = "dapui_breakpoints",
+            size = { height = 0.2 },
+            open = "lua require'dapui'.open()",
+        },
+        {
+            title = " DEBUG STACKS",
+            ft = "dapui_stacks",
+            size = { height = 0.2 },
+            open = "lua require'dapui'.open()",
+        },
+        {
+            title = " DEBUG WATCHES",
+            ft = "dapui_watches",
+            size = { height = 0.2 },
+            open = "lua require'dapui'.open()",
         },
     },
     bottom = {
         {
             title = " TERMINAL",
             ft = "toggleterm",
-            size = { height = 0.4 },
+            size = { height = 0.3 },
             -- exclude floating windows
             filter = function(_, win)
                 return vim.api.nvim_win_get_config(win).relative == ""
@@ -59,13 +71,28 @@ return {
         {
             title = "󰋖 NEOVIM HELP",
             ft = "help",
-            size = { height = 20 },
+            size = { height = 0.3 },
             -- only show help buffers
             filter = function(buf)
                 return vim.bo[buf].buftype == "help"
             end,
         },
-        { title = " SEARCH & REPLACE", ft = "spectre_panel", size = { height = 0.4 } },
+        {
+            title = " SEARCH & REPLACE",
+            ft = "spectre_panel",
+            wo = {
+                number = false,
+                relativenumber = false,
+            },
+            size = { height = 0.3 },
+        },
+        {
+            title = " DEBUG REPL",
+            ft = "dap-repl",
+            wo = { winbar = false, statuscolumn = "" },
+            size = { height = 0.3 },
+            open = "lua require'dapui'.open()",
+        },
     },
 
     animate = {
