@@ -61,6 +61,11 @@ require("telescope").setup({
         preview = {
             treesitter = false,
         },
+        file_browser = {
+            theme = "ivy",
+            hijack_netrw = true,
+            follow_symlinks = true,
+        },
     },
     extensions = {
         fzf = {

@@ -116,6 +116,7 @@ local n_mappings = {
         c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits" },
         C = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Buffer Commits" },
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
+        F = { "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", "File Browser" },
         n = {
             "<cmd>Noice telescope<CR>",
             "Notifications",
