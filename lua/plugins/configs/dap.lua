@@ -15,7 +15,7 @@ vim.fn.sign_define("DapStopped", {
 })
 vim.fn.sign_define("DapBreakpointRejected", {
     text = "",
-    texthl = "DiagnosticError",
+    texthl = "DiagnosticErros",
     linehl = "",
     numhl = "",
 })
@@ -79,42 +79,32 @@ dap.configurations.c = dap.configurations.cpp
 
 -- C#
 dap.configurations.cs = (function()
-    local fd = vim.loop.fs_open(vim.fn.getcwd() .. "/.vim/dap.json", "r", 438)
     local dap_config = {}
-    if fd then
-        local stat = vim.loop.fs_fstat(fd)
-        local config_string = vim.loop.fs_read(fd, stat.size, 0)
-        local dap_data = vim.fn.json_decode(config_string)["config"]
-        local cwd = vim.fn.getcwd()
-        for _, data in pairs(dap_data) do
-            local env = {
-                ASPNETCORE_ENVIRONMENT = "Development",
-            }
-            if data["env"] ~= nil then
-                env = vim.tbl_extend("force", env, data["env"])
+    -- C# Debug Profiles
+    local files = vim.fn.findfile("launchSettings.json", "**", -1)
+    for _, file in ipairs(files) do
+        local parts = vim.fn.split(file, "/")
+        local project = parts[1]
+        local fd = vim.loop.fs_open(vim.fn.getcwd() .. "/" .. file, "r", 438)
+        if fd then
+            local stat = vim.loop.fs_fstat(fd)
+            local config_string = vim.loop.fs_read(fd, stat.size, 0)
+            local dap_data = vim.fn.json_decode(config_string)["profiles"]
+            local cwd = vim.fn.getcwd() .. "/" .. project
+            for profile, profile_data in pairs(dap_data) do
+                local config = {
+                    type = "netcoredbg",
+                    name = project .. " [" .. profile .. "]",
+                    request = "launch",
+                    preLaunchTask = "dotnet build",
+                    cwd = cwd,
+                    program = cwd .. "/bin/Debug/net6.0/" .. project .. ".dll",
+                    env = profile_data["environmentVariables"],
+                }
+                table.insert(dap_config, config)
             end
-            local config = {
-                type = "netcoredbg",
-                name = data["name"],
-                request = "launch",
-                preLaunchTask = "dotnet build",
-                cwd = cwd .. "/" .. data["cwd"],
-                program = cwd .. "/" .. data["program"],
-                env = env,
-            }
-            table.insert(dap_config, config)
         end
     end
-    table.insert(dap_config, {
-        type = "netcoredbg",
-        name = "Attach",
-        request = "attach",
-        processId = function()
-            local pid = require("dap.utils").pick_process()
-            vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
-            return pid
-        end,
-    })
     return dap_config
 end)()
 
@@ -132,6 +122,6 @@ dap.configurations.gdscript = {
 dap.defaults.fallback.switchbuf = "useopen,uselast"
 
 -- Load VSCode's launch.json file
-require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" } })
+--[[ require("dap.ext.vscode").json_decode = require("overseer.json").decode ]]
 
 require("core.utils").highlight_group("dap")
