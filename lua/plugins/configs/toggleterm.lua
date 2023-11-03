@@ -10,4 +10,6 @@ require("toggleterm").setup({
     highlights = { NormalFloat = { link = "ToggletermFloat" } },
 })
 
+vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], { noremap = true })
+
 require("core.utils").highlight_group("toggleterm")
