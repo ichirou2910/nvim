@@ -79,9 +79,14 @@ dap.configurations.c = dap.configurations.cpp
 
 -- C#
 dap.configurations.cs = (function()
+    -- Check if we're in a C# project
+    if vim.tbl_isempty(vim.fn.glob(vim.fn.getcwd() .. "/*.sln", true, true)) then
+        return {}
+    end
+
     local dap_config = {}
     -- C# Debug Profiles
-    local files = vim.fn.findfile("launchSettings.json", "**", -1)
+    local files = vim.fn.findfile("launchSettings.json", vim.fn.getcwd() .. "/**", -1)
     for _, file in ipairs(files) do
         local parts = vim.fn.split(file, "/")
         local project = parts[1]
@@ -120,8 +125,5 @@ dap.configurations.gdscript = {
 }
 
 dap.defaults.fallback.switchbuf = "useopen,uselast"
-
--- Load VSCode's launch.json file
---[[ require("dap.ext.vscode").json_decode = require("overseer.json").decode ]]
 
 require("core.utils").highlight_group("dap")
