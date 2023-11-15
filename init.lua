@@ -4,6 +4,7 @@ local modules = {
     "core.mappings",
     "plugins",
     "core.autocmds",
+    "core.clipboard",
     "core.ui",
 }
 
