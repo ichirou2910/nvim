@@ -8,17 +8,6 @@ local isEmpty = require("core.utils").isEmpty
 --[[ local theme_colors = require("themes." .. vim.g.nv_theme).base_30 ]]
 
 -- Extensions
-local dadbod = {
-    sections = {
-        lualine_a = {
-            function()
-                return [[Database]]
-            end,
-        },
-    },
-    filetypes = { "dbui" },
-}
-
 local gitcommit = {
     sections = {
         lualine_a = {
@@ -57,38 +46,6 @@ local function navic_location()
     return require("core.ui.winbar").get()
 end
 
---[[ local radium_theme = { ]]
---[[     normal = { ]]
---[[         a = { bg = theme_colors.blue, fg = theme_colors.black }, ]]
---[[         b = { bg = theme_colors.one_bg, fg = theme_colors.blue }, ]]
---[[         c = { bg = theme_colors.statusline_bg, fg = theme_colors.white }, ]]
---[[     }, ]]
---[[]]
---[[     insert = { ]]
---[[         a = { bg = theme_colors.green, fg = theme_colors.black }, ]]
---[[         b = { bg = theme_colors.one_bg, fg = theme_colors.green }, ]]
---[[     }, ]]
---[[]]
---[[     command = { ]]
---[[         a = { bg = theme_colors.yellow, fg = theme_colors.black }, ]]
---[[         b = { bg = theme_colors.one_bg, fg = theme_colors.yellow }, ]]
---[[     }, ]]
---[[]]
---[[     visual = { ]]
---[[         a = { bg = theme_colors.purple, fg = theme_colors.black }, ]]
---[[         b = { bg = theme_colors.one_bg, fg = theme_colors.purple }, ]]
---[[     }, ]]
---[[     replace = { ]]
---[[         a = { bg = theme_colors.red, fg = theme_colors.black }, ]]
---[[         b = { bg = theme_colors.one_bg, fg = theme_colors.red }, ]]
---[[     }, ]]
---[[     inactive = { ]]
---[[         a = { bg = nil, fg = theme_colors.blue }, ]]
---[[         b = { bg = nil, fg = theme_colors.one_bg3, gui = "bold" }, ]]
---[[         c = { bg = nil, fg = theme_colors.one_bg3 }, ]]
---[[     }, ]]
---[[ } ]]
-
 lualine.setup({
     options = {
         theme = "tokyonight",
@@ -125,34 +82,12 @@ lualine.setup({
             "fileformat",
             "filetype",
         },
-        --[[ lualine_x = { ]]
-        --[[     { ]]
-        --[[         require("noice").api.status.message.get_hl, ]]
-        --[[         cond = require("noice").api.status.message.has, ]]
-        --[[     }, ]]
-        --[[     { ]]
-        --[[         require("noice").api.status.command.get, ]]
-        --[[         cond = require("noice").api.status.command.has, ]]
-        --[[         color = { fg = "ff9e64" }, ]]
-        --[[     }, ]]
-        --[[     { ]]
-        --[[         require("noice").api.status.mode.get, ]]
-        --[[         cond = require("noice").api.status.mode.has, ]]
-        --[[         color = { fg = "ff9e64" }, ]]
-        --[[     }, ]]
-        --[[     { ]]
-        --[[         require("noice").api.status.search.get, ]]
-        --[[         cond = require("noice").api.status.search.has, ]]
-        --[[         color = { fg = "ff9e64" }, ]]
-        --[[     }, ]]
-        --[[ }, ]]
     },
     extensions = {
         "fugitive",
         "nvim-tree",
         "symbols-outline",
         "quickfix",
-        dadbod,
         gitcommit,
     },
 })

@@ -1,14 +1,19 @@
 -- Config for edgy.nvim
 
+local function is_float(win)
+    return vim.api.nvim_win_get_config(win).zindex ~= nil
+end
+
 return {
     options = {
+        top = { size = 0.3 },
         left = { size = 55 },
+        bottom = { size = 0.3 },
     },
     top = {
         {
             title = " GIT COMMIT",
             ft = "gitcommit",
-            size = { height = 0.3 },
         },
     },
     left = {
@@ -21,15 +26,6 @@ return {
             title = " NOTES",
             ft = "notes",
             open = "Note",
-        },
-        {
-            title = " FILE",
-            ft = "neo-tree",
-            filter = function(buf)
-                return vim.b[buf].neo_tree_source == "filesystem"
-            end,
-            size = { height = 0.5 },
-            open = "Neotree position=right filesystem",
         },
         {
             title = " DEBUG SCOPE",
@@ -55,12 +51,19 @@ return {
             size = { height = 0.2 },
             open = "lua require'dapui'.open()",
         },
+        {
+            title = " SEARCH & REPLACE",
+            ft = "spectre_panel",
+            wo = {
+                number = false,
+                relativenumber = false,
+            },
+        },
     },
     bottom = {
         {
             title = " TERMINAL",
             ft = "toggleterm",
-            size = { height = 0.3 },
             -- exclude floating windows
             filter = function(_, win)
                 return vim.api.nvim_win_get_config(win).relative == ""
@@ -71,27 +74,50 @@ return {
         {
             title = "󰋖 NEOVIM HELP",
             ft = "help",
-            size = { height = 0.3 },
             -- only show help buffers
             filter = function(buf)
                 return vim.bo[buf].buftype == "help"
             end,
         },
         {
-            title = " SEARCH & REPLACE",
-            ft = "spectre_panel",
-            wo = {
-                number = false,
-                relativenumber = false,
-            },
-            size = { height = 0.3 },
-        },
-        {
             title = " DEBUG REPL",
             ft = "dap-repl",
             wo = { winbar = false, statuscolumn = "" },
-            size = { height = 0.3 },
             open = "lua require'dapui'.open()",
+        },
+        {
+            title = "References",
+            ft = "Trouble",
+            filter = function(buf, win)
+                return vim.b[buf].trouble_mode == "lsp_references" and not is_float(win)
+            end,
+            open = function()
+                require("trouble").open("lsp_references")
+            end,
+        },
+        {
+            title = "Definitions",
+            ft = "Trouble",
+            filter = function(buf, win)
+                return vim.b[buf].trouble_mode == "lsp_definitions" and not is_float(win)
+            end,
+            open = function()
+                require("trouble").open("lsp_definitions")
+            end,
+        },
+        {
+            title = "Type Definitions",
+            ft = "Trouble",
+            filter = function(buf, win)
+                return vim.b[buf].trouble_mode == "lsp_type_definitions" and not is_float(win)
+            end,
+            open = function()
+                require("trouble").open("lsp_type_definitions")
+            end,
+        },
+        {
+            title = " REST RESULT",
+            ft = "httpResult",
         },
     },
 

@@ -4,10 +4,3 @@ require("spectre").setup({
     highlight = { ui = "String", search = "DiffChange", replace = "DiffDelete" },
     is_block_ui_break = true,
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "spectre_panel",
-    callback = function()
-        vim.wo.signcolumn = "no"
-    end,
-})
