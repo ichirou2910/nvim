@@ -44,15 +44,6 @@ require("lazy").setup({
         end,
     },
 
-    {
-        "stevearc/overseer.nvim",
-        config = function()
-            require("overseer").setup({
-                dap = false,
-            })
-        end,
-    },
-
     -- Icons
     {
         "nvim-tree/nvim-web-devicons",
@@ -80,15 +71,11 @@ require("lazy").setup({
 
     -- Remote development
     {
-        "amitds1997/remote-nvim.nvim",
-        version = "*",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = require("plugins.configs.remote-nvim"), -- This calls the default setup(); make sure to call it
+        "chipsenkbeil/distant.nvim",
+        branch = "v0.3",
+        config = function()
+            require("distant"):setup()
+        end,
     },
 
     -- Repeat stuff
@@ -113,18 +100,6 @@ require("lazy").setup({
             require("plugins.configs.nnn")
         end,
     },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        cmd = "Neotree",
-        opts = require("plugins.configs.neotree"),
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-    },
-
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
@@ -296,8 +271,32 @@ require("lazy").setup({
     {
         "karb94/neoscroll.nvim",
         config = function()
-            require("neoscroll").setup()
+            require("neoscroll").setup({
+                easing_function = "sine",
+                re_hook = function()
+                    vim.opt.eventignore:append({
+                        "WinScrolled",
+                        "CursorMoved",
+                    })
+                end,
+                post_hook = function()
+                    vim.opt.eventignore:remove({
+                        "WinScrolled",
+                        "CursorMoved",
+                    })
+                end,
+            })
         end,
+        keys = {
+            -- stylua: ingore
+            { "<C-f>", mode = { "n", "x" }, desc = "Scroll page down" },
+            { "<C-b>", mode = { "n", "x" }, desc = "Scroll page up" },
+            { "<C-d>", mode = { "n", "x" }, desc = "Scroll half page down" },
+            { "<C-u>", mode = { "n", "x" }, desc = "Scroll half page up" },
+            { "zt", desc = "Top this line" },
+            { "zz", desc = "Center this line" },
+            { "zb", desc = "Bottom this line" },
+        },
     },
 
     -- Markdown Preview
@@ -373,7 +372,7 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         -- https://github.com/nvim-telescope/telescope.nvim/issues/2766
-        commit = "ff8ed2351fac3bfaf99ee6f870b4e9055258a803",
+        --[[ commit = "ff8ed2351fac3bfaf99ee6f870b4e9055258a803", ]]
         module = { "telescope", "telescope.builtin" },
         cmd = { "Telescope" },
         dependencies = {
@@ -430,6 +429,8 @@ require("lazy").setup({
 
     {
         "b0o/incline.nvim",
+        event = "BufReadPre",
+        priority = 1200,
         config = function()
             require("plugins.configs.incline")
         end,
@@ -460,7 +461,7 @@ require("lazy").setup({
             require("lsp")
         end,
         dependencies = {
-            "Hoffs/omnisharp-extended-lsp.nvim",
+            --[[ "Hoffs/omnisharp-extended-lsp.nvim", ]]
             "Decodetalkers/csharpls-extended-lsp.nvim",
             "jose-elias-alvarez/null-ls.nvim",
             { "jayp0521/mason-null-ls.nvim", commit = "ab5d99619de2263508abb7fb05ef3a0f24a8d73d" },
@@ -468,14 +469,8 @@ require("lazy").setup({
         },
     },
     {
-        "aurum77/dotnet.nvim",
-        ft = "csharp",
-        config = function()
-            require("dotnet").setup()
-        end,
-    },
-    {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        enabled = false,
         dependencies = { "neovim/nvim-lspconfig" },
         config = function()
             require("plugins.configs.lsp-lines")
@@ -546,8 +541,8 @@ require("lazy").setup({
     {
         "epwalsh/obsidian.nvim",
         event = {
-            "BufReadPre /home/ichirou2910/Documents/Obsidian/**/*.md",
-            "BufNewFile /home/ichirou2910/Documents/Obsidian/**/*.md",
+            "BufReadPre /**/home/ichirou2910/Documents/Obsidian/**/*.md",
+            "BufNewFile /**/home/ichirou2910/Documents/Obsidian/**/*.md",
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
