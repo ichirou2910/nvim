@@ -27,7 +27,7 @@ require("barbar").setup({
     -- if set to 'both', will show buffer index and icons in the tabline
     icons = {
         filetype = { enabled = true },
-        preset = "slanted",
+        preset = "default",
     },
 
     -- If set, the icon color will follow its corresponding buffer
@@ -35,6 +35,7 @@ require("barbar").setup({
     -- Buffer* group (see Highlighting below). Otherwise, it will take its
     -- default value as defined by devicons.
     icon_custom_colors = false,
+    separator = { left = "▎", right = " " },
 
     -- If true, new buffers will be inserted at the start/end of the list.
     -- Default is to insert after current buffer.
