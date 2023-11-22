@@ -245,9 +245,7 @@ local n_mappings = {
     -- plugins/sidebar.vim
     s = {
         name = "Sidebar",
-        b = { "<cmd>Neotree position=top buffers<CR>", "Buffer" },
         c = { "<cmd>lua require('edgy').close()<CR>", "Close" },
-        e = { "<cmd>Neotree position=top filesystem<CR>", "Files" },
         g = { "<cmd>Git<CR>", "Git" },
         n = {
             "<cmd>Note<CR>",

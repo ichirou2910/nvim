@@ -64,7 +64,7 @@ lualine.setup({
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {
             { "filename", path = 1 },
-            { navic_location },
+            --[[ { navic_location }, ]]
         },
         lualine_x = {
             {

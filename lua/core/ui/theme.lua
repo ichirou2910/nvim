@@ -5,6 +5,8 @@ if vim.fn.has("termguicolors") == 1 then
 end
 
 require("tokyonight").setup({
+    style = "night",
+    transparent = true,
     styles = {
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`
@@ -20,6 +22,7 @@ require("tokyonight").setup({
         c.bg = "#222436"
     end,
     on_highlights = function(hl, c)
+        hl.BufferCurrentSign = { fg = c.blue }
         hl.FloatBorder = { fg = c.bg_float, bg = c.bg }
         hl.NormalFloat = { bg = c.bg_float }
         hl.CmpBorder = { link = "FloatBorder" }
@@ -40,90 +43,52 @@ require("tokyonight").setup({
         hl.DapStopped = { bg = "#533d12" }
 
         -- Noice
-        hl.NoicePopupmenu = {
-            bg = c.bg_dark,
-            fg = c.fg_dark,
-        }
-        hl.NoicePopupmenuBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-        }
-        hl.NoiceCmdlinePopup = {
-            link = "NoicePopupmenu",
-        }
-        hl.NoiceCmdlinePopupTitle = {
-            bg = c.yellow,
-            fg = c.bg_dark,
-        }
-        hl.NoiceCmdlinePopupBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-        }
+        hl.NoicePopupmenu = { bg = c.bg_dark, fg = c.fg_dark }
+        hl.NoicePopupmenuBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.NoiceCmdlinePopup = { link = "NoicePopupmenu" }
+        hl.NoiceCmdlinePopupTitle = { bg = c.yellow, fg = c.bg_dark }
+        hl.NoiceCmdlinePopupBorder = { bg = c.bg_dark, fg = c.bg_dark }
 
         -- Telescope borderless
-        hl.TelescopeNormal = {
-            bg = c.bg_dark,
-            fg = c.fg_dark,
-        }
-        hl.TelescopeBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-        }
-        hl.TelescopePrompt = {
-            bg = c.bg_dark,
-        }
-        hl.TelescopePromptPrefix = {
-            bg = c.bg_dark,
-        }
-        hl.TelescopePromptNormal = {
-            bg = c.bg_dark,
-        }
-        hl.TelescopePromptBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-        }
-        hl.TelescopePromptTitle = {
-            bg = c.purple,
-            fg = c.bg_dark,
-        }
-        hl.TelescopePreviewTitle = {
-            bg = c.blue,
-            fg = c.bg_dark,
-        }
-        hl.TelescopeResultsTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-        }
+        hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
+        hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.TelescopePrompt = { bg = c.bg_dark }
+        hl.TelescopePromptPrefix = { bg = c.bg_dark }
+        hl.TelescopePromptNormal = { bg = c.bg_dark }
+        hl.TelescopePromptBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.TelescopePromptTitle = { bg = c.purple, fg = c.bg_dark }
+        hl.TelescopePreviewTitle = { bg = c.blue, fg = c.bg_dark }
+        hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
 
         -- nvim-navic
-        hl.NavicIconsFile.bg = c.bg_statusline
-        hl.NavicIconsModule.bg = c.bg_statusline
-        hl.NavicIconsNamespace.bg = c.bg_statusline
-        hl.NavicIconsPackage.bg = c.bg_statusline
-        hl.NavicIconsClass.bg = c.bg_statusline
-        hl.NavicIconsMethod.bg = c.bg_statusline
-        hl.NavicIconsProperty.bg = c.bg_statusline
-        hl.NavicIconsField.bg = c.bg_statusline
-        hl.NavicIconsConstructor.bg = c.bg_statusline
-        hl.NavicIconsEnum.bg = c.bg_statusline
-        hl.NavicIconsInterface.bg = c.bg_statusline
-        hl.NavicIconsFunction.bg = c.bg_statusline
-        hl.NavicIconsVariable.bg = c.bg_statusline
-        hl.NavicIconsConstant.bg = c.bg_statusline
-        hl.NavicIconsString.bg = c.bg_statusline
-        hl.NavicIconsNumber.bg = c.bg_statusline
-        hl.NavicIconsBoolean.bg = c.bg_statusline
-        hl.NavicIconsArray.bg = c.bg_statusline
-        hl.NavicIconsObject.bg = c.bg_statusline
-        hl.NavicIconsKey.bg = c.bg_statusline
-        hl.NavicIconsNull.bg = c.bg_statusline
-        hl.NavicIconsEnumMember.bg = c.bg_statusline
-        hl.NavicIconsStruct.bg = c.bg_statusline
-        hl.NavicIconsEvent.bg = c.bg_statusline
-        hl.NavicIconsOperator.bg = c.bg_statusline
-        hl.NavicIconsTypeParameter.bg = c.bg_statusline
-        hl.NavicText.bg = c.bg_statusline
-        hl.NavicSeparator.bg = c.bg_statusline
+        hl.NavicIconsFile = { bg = c.bg_dark }
+        hl.NavicIconsModule = { bg = c.bg_dark }
+        hl.NavicIconsNamespace = { bg = c.bg_dark }
+        hl.NavicIconsPackage = { bg = c.bg_dark }
+        hl.NavicIconsClass = { bg = c.bg_dark }
+        hl.NavicIconsMethod = { bg = c.bg_dark }
+        hl.NavicIconsProperty = { bg = c.bg_dark }
+        hl.NavicIconsField = { bg = c.bg_dark }
+        hl.NavicIconsConstructor = { bg = c.bg_dark }
+        hl.NavicIconsEnum = { bg = c.bg_dark }
+        hl.NavicIconsInterface = { bg = c.bg_dark }
+        hl.NavicIconsFunction = { bg = c.bg_dark }
+        hl.NavicIconsVariable = { bg = c.bg_dark }
+        hl.NavicIconsConstant = { bg = c.bg_dark }
+        hl.NavicIconsString = { bg = c.bg_dark }
+        hl.NavicIconsNumber = { bg = c.bg_dark }
+        hl.NavicIconsBoolean = { bg = c.bg_dark }
+        hl.NavicIconsArray = { bg = c.bg_dark }
+        hl.NavicIconsObject = { bg = c.bg_dark }
+        hl.NavicIconsKey = { bg = c.bg_dark }
+        hl.NavicIconsNull = { bg = c.bg_dark }
+        hl.NavicIconsEnumMember = { bg = c.bg_dark }
+        hl.NavicIconsStruct = { bg = c.bg_dark }
+        hl.NavicIconsEvent = { bg = c.bg_dark }
+        hl.NavicIconsOperator = { bg = c.bg_dark }
+        hl.NavicIconsTypeParameter = { bg = c.bg_dark }
+        hl.NavicText = { bg = c.bg_dark }
+        hl.NavicSeparator = { bg = c.bg_dark }
 
         -- nvim-ts-rainbow2
         hl.TSRainbowRed = { fg = "#ed8796" }
@@ -133,8 +98,8 @@ require("tokyonight").setup({
         hl.TSRainbowCyan = { fg = "#7dc4e4" }
         hl.TSRainbowViolet = { fg = "#c6a0f6" }
 
-        -- Lightbulb
-        hl.LightBulbFloatWin = { bg = c.bg_dark }
+        -- incline.nvim
+        hl.InclineNormalNC = { fg = c.fg, bg = c.terminal_black }
     end,
 })
 vim.cmd([[colorscheme tokyonight-night]])

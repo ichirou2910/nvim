@@ -46,14 +46,6 @@ vim.api.nvim_create_autocmd("WinLeave", {
     pattern = "*",
 })
 
--- Quickfix
-local quickfixForceBottom = vim.api.nvim_create_augroup("QuickfixForceBottom", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-    group = quickfixForceBottom,
-    command = "wincmd J",
-    pattern = "qf",
-})
-
 -- Highlight yank
 local highlightYank = vim.api.nvim_create_augroup("HighlightYank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {

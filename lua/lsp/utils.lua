@@ -102,13 +102,7 @@ function M.lsp_formatting(client, bufnr)
             group = augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({
-                    -- Use csharpier instead of built-in omnisharp
-                    filter = function(cl)
-                        return cl.name ~= "omnisharp"
-                    end,
-                    bufnr = bufnr,
-                })
+                vim.lsp.buf.format()
             end,
         })
     end
@@ -116,9 +110,7 @@ end
 
 function M.lsp_inlayHints(client, bufnr)
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint(bufnr, true)
-    elseif client.name == "omnisharp" then
-        vim.lsp.inlay_hint(bufnr, true)
+        vim.lsp.inlay_hint.enable(bufnr, true)
     end
 end
 

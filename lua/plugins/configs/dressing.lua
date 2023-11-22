@@ -9,6 +9,6 @@ require("dressing").setup({
         border = "rounded",
     },
     select = {
-        backend = { "telescope", "fzf", "builtin" },
+        backend = { "telescope", "builtin" },
     },
 })
