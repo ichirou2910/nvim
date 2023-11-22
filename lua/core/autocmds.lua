@@ -69,3 +69,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     command = "set filetype=notes | set syntax=markdown",
     pattern = "*.notes",
 })
+
+-- C# LSP definition
+vim.api.nvim_command([[
+  autocmd FileType cs nnoremap <buffer> <leader>ld :lua vim.lsp.buf.definition()<CR>
+]])

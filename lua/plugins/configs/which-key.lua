@@ -170,10 +170,10 @@ local n_mappings = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Code Lens" },
-        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        d = { "<cmd>TroubleToggle lsp_definitions<cr>", "Definition" },
         D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         f = "Format",
-        i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Implementation" },
+        i = { "<cmd>TroubleToggle lsp_implementations<cr>", "Implementation" },
         I = {
             "<cmd>Trouble workspace_diagnostics<cr>",
             "Diagnostics",
