@@ -50,7 +50,7 @@ local opts = {
 }
 
 local n_mappings = {
-    [";"] = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
+    [";"] = { "<cmd>lua require('fzf-lua').commands()<cr>", "Commands" },
     ["="] = { "<C-W>=", "Balance windows" },
     ["e"] = { ":NnnPicker %:p:h<CR>", "Explorer" },
     ["E"] = { ":NnnPicker<CR>", "Explorer" },
@@ -111,22 +111,20 @@ local n_mappings = {
 
     f = {
         name = "Find",
-        a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },
-        b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-        c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits" },
-        C = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Buffer Commits" },
-        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
+        a = { "<cmd>lua require('fzf-lua').live_grep()<cr>", "Text" },
+        b = { "<cmd>lua require('fzf-lua').buffers()<cr>", "Buffers" },
+        c = { "<cmd>lua require('fzf-lua').git_commits()<cr>", "Commits" },
+        C = { "<cmd>lua require('fzf-lua').git_bcommits()<cr>", "Buffer Commits" },
+        f = { "<cmd>lua require('fzf-lua').files()<cr>", "Files" },
         F = { "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", "File Browser" },
+        l = { "<cmd>lua require('fzf-lua').live_grep_last()<cr>", "Last search word" },
         n = {
             "<cmd>Noice telescope<CR>",
             "Notifications",
         },
         r = { "<cmd>lua require('spectre').open({is_close = true})<cr>", "Replace" },
-        s = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "Files" },
-        w = {
-            "<cmd>lua require('telescope.builtin').grep_string{word_match = '-w'}<cr>",
-            "Word",
-        },
+        s = { "<cmd>lua require('fzf-lua').search_history()<cr>", "Search history" },
+        w = { "<cmd>lua require('fzf-lua').grep_cword()<cr>", "Word" },
     },
 
     g = {
@@ -138,19 +136,10 @@ local n_mappings = {
         d = { "<cmd>Gitsigns diffthis<CR>", "Diff this" },
         D = { "<cmd>lua require('gitsigns').diffthis('~')<CR>", "Diff last commit" },
         f = { "<cmd>Git fetch<CR>", "Fetch" },
-        g = { "<cmd>diffget<CR>", "Diff get" },
-        o = { "<cmd>diffput<CR>", "Diff put" },
         l = { "<cmd>Git log<CR>", "Log" },
         p = { "<cmd>Git push<CR>", "Push" },
         P = { "<cmd>Git pull<CR>", "Pull" },
         r = { "<cmd>GRemove<CR>", "Remove" },
-        S = { "<cmd>vert Git<CR>", "Status" },
-        u = "UI",
-        v = {
-            name = "View",
-            v = { "<cmd>GV<CR>", "Commit all" },
-            V = { "<cmd>GV<CR>", "Commit current" },
-        },
         x = { "<cmd>Git restore %<CR>", "Restore" },
     },
 
@@ -168,19 +157,19 @@ local n_mappings = {
 
     l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        a = { "<cmd>lua require('fzf-lua').lsp_code_actions()<cr>", "Code Action" },
         c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Code Lens" },
-        d = { "<cmd>TroubleToggle lsp_definitions<cr>", "Definition" },
-        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
+        d = { "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", "Definition" },
+        D = { "<cmd>lua require('fzf-lua').lsp_declarations()<cr>", "Declaration" },
         f = "Format",
-        i = { "<cmd>TroubleToggle lsp_implementations<cr>", "Implementation" },
+        i = { "<cmd>lua require('fzf-lua').lsp_implementations()<cr>", "Implementation" },
         I = {
             "<cmd>Trouble workspace_diagnostics<cr>",
             "Diagnostics",
         },
         k = "Open float",
         l = { "<cmd>Trouble loclist<cr>", "Loclist" },
-        o = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Document Symbols" },
+        o = { "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", "Document Symbols" },
         p = {
             name = "Peek",
             d = { "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", "Definition" },
@@ -191,6 +180,8 @@ local n_mappings = {
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         x = { "<cmd>TroubleToggle<cr>", "Toggle trouble" },
         z = { "<cmd>LspInfo<cr>", "Info" },
+        ["["] = { "<cmd>lua require('fzf-lua').lsp_incoming_calls()<cr>", "Incoming Calls" },
+        ["]"] = { "<cmd>lua require('fzf-lua').lsp_outgoing_calls()<cr>", "Outgoing Calls" },
     },
 
     L = {
@@ -199,12 +190,6 @@ local n_mappings = {
             "<cmd>require('telescope').extensions.flutter.commands()<cr>",
             "Flutter",
         },
-    },
-
-    m = {
-        name = "Minimap",
-        f = { "<cmd>lua require('codewindow').toggle_focus()<cr>", "Toggle Focus" },
-        m = { "<cmd>lua require('codewindow').toggle_minimap()<cr>", "Toggle Map" },
     },
 
     p = {
@@ -299,6 +284,7 @@ local v_mappings = {
             "<cmd>lua require('spectre').open_visual()<cr>",
             "Replace",
         },
+        w = { "<cmd>lua require('fzf-lua').grep_visual()<cr>", "Selected words" },
     },
     h = {
         name = "Git hunks",

@@ -370,9 +370,14 @@ require("lazy").setup({
 
     -- Search
     {
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("plugins.configs.fzf")
+        end,
+    },
+    {
         "nvim-telescope/telescope.nvim",
-        -- https://github.com/nvim-telescope/telescope.nvim/issues/2766
-        --[[ commit = "ff8ed2351fac3bfaf99ee6f870b4e9055258a803", ]]
         module = { "telescope", "telescope.builtin" },
         cmd = { "Telescope" },
         dependencies = {
